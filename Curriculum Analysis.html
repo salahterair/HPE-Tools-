@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Curriculum Analysis &amp; Mapping — Interactive Lecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:     #ffffff;
+  --off:       #f7f9fc;
+  --off2:      #eef2f8;
+  --border:    #dde4ef;
+  --border2:   #c8d4e8;
+  --blue:      #1a56c4;
+  --blue2:     #2d6fe0;
+  --blue-lt:   #e8f0fd;
+  --blue-lt2:  #d0e1fb;
+  --navy:      #0f2d6b;
+  --text:      #111827;
+  --text2:     #374151;
+  --text3:     #6b7280;
+  --text4:     #9ca3af;
+  --green:     #0d7a4e;
+  --green-lt:  #e6f7f1;
+  --amber:     #b45309;
+  --amber-lt:  #fef3e2;
+  --red:       #b91c1c;
+  --red-lt:    #fef2f2;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow:    0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --radius:    10px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  padding: 56px 24px 52px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+.hero-eyebrow {
+  display:inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color:#fff;
+  font-size:11px; font-weight:600;
+  letter-spacing:2.5px; text-transform:uppercase;
+  padding:5px 14px; border-radius:20px;
+  margin-bottom:20px;
+}
+
+.hero h1 {
+  font-family:'Lora', serif;
+  font-size:clamp(26px,6vw,44px);
+  font-weight:700; color:#fff;
+  line-height:1.2; margin-bottom:14px;
+}
+
+.hero h1 span {
+  font-style:italic;
+  color:#93c5fd;
+}
+
+.hero-sub {
+  font-size:15px; color:rgba(255,255,255,0.78);
+  max-width:560px; margin:0 auto 28px;
+  line-height:1.65;
+}
+
+.hero-chips {
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:8px;
+}
+
+.chip {
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff; font-size:12px;
+  padding:5px 12px; border-radius:16px;
+  display:flex; align-items:center; gap:5px;
+}
+
+.hero-glossary-box {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+  padding: 14px 20px;
+  max-width: 390px;
+  margin: 0 auto;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-glossary-box:hover {
+  background: rgba(255,255,255,0.20);
+  border-color: rgba(255,255,255,0.42);
+  transform: translateY(-2px);
+}
+
+.hero-glossary-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hero-glossary-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.5;
+}
+
+/* ── SECTION LAYOUT ─────────────────────────────────── */
+.page { max-width:820px; margin:0 auto; padding:0 18px; }
+
+.sec-head {
+  display:flex; align-items:center; gap:10px;
+  margin:36px 0 16px;
+}
+
+.sec-num {
+  width:32px; height:32px;
+  background:var(--blue); color:#fff;
+  border-radius:8px;
+  font-size:13px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+
+.sec-title {
+  font-family:'Lora', serif;
+  font-size:21px; font-weight:600;
+  color:var(--navy);
+}
+
+.sec-div {
+  height:2px;
+  background:linear-gradient(90deg, var(--blue) 0%, var(--border) 100%);
+  border-radius:1px;
+  margin-bottom:20px;
+}
+
+/* ── LEARNING OBJECTIVES ────────────────────────────── */
+.obj-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:8px;
+}
+
+@media(max-width:540px){ .obj-grid{grid-template-columns:1fr;} }
+
+.obj-card {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  display:flex; gap:12px; align-items:flex-start;
+  transition:box-shadow 0.2s;
+}
+
+.obj-card:hover { box-shadow:var(--shadow); }
+
+.obj-icon {
+  width:34px; height:34px; flex-shrink:0;
+  background:var(--blue-lt);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+
+.obj-text {
+  font-size:13.5px; color:var(--text2); line-height:1.55;
+}
+
+/* ── COLLAPSIBLE CARDS ──────────────────────────────── */
+.lec-card {
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:10px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow 0.2s;
+}
+
+.lec-card:hover { box-shadow:var(--shadow); }
+.lec-card.open { box-shadow:var(--shadow); border-color:var(--blue2); }
+
+.lec-header {
+  display:flex; align-items:center; gap:14px;
+  padding:15px 18px;
+  background:var(--white);
+  cursor:pointer; user-select:none;
+  transition:background 0.15s;
+}
+
+.lec-header:hover { background:var(--off); }
+.lec-card.open .lec-header { background:var(--blue-lt); border-bottom:1px solid var(--blue-lt2); }
+
+.lec-num {
+  width:28px; height:28px; flex-shrink:0;
+  border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:700; color:#fff;
+}
+
+.lec-info { flex:1; }
+
+.lec-title {
+  font-size:15px; font-weight:600;
+  color:var(--text); line-height:1.3;
+}
+
+.lec-sub {
+  font-size:12px; color:var(--text3);
+  margin-top:2px;
+}
+
+.lec-right {
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+}
+
+.lec-tag {
+  font-size:10px; font-weight:600;
+  letter-spacing:0.8px; text-transform:uppercase;
+  padding:3px 8px; border-radius:4px;
+}
+
+.chevron {
+  width:18px; height:18px; color:var(--text3);
+  transition:transform 0.3s; flex-shrink:0;
+}
+
+.lec-card.open .chevron { transform:rotate(180deg); }
+
+.lec-body {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+.lec-card.open .lec-body { max-height:4000px; }
+
+.lec-content {
+  padding:20px 20px 22px;
+  background:var(--white);
+}
+
+.lec-content p {
+  font-size:14.5px; color:var(--text2);
+  line-height:1.75; margin-bottom:14px;
+}
+
+.lec-content p:last-child { margin-bottom:0; }
+
+/* ── GLOSSARY TERMS ─────────────────────────────────── */
+.term {
+  background:var(--blue-lt);
+  border-bottom:2px solid var(--blue2);
+  color:var(--blue);
+  cursor:pointer; padding:0 2px;
+  border-radius:2px;
+  display:inline;
+  transition:background 0.2s;
+  font-weight:500;
+  position:relative;
+}
+
+.term:hover { background:var(--blue-lt2); }
+
+.tooltip-box {
+  display:none;
+  position:fixed; z-index:300;
+  background:var(--navy);
+  color:#fff;
+  border-radius:8px;
+  padding:12px 15px;
+  font-size:13px;
+  max-width:270px;
+  line-height:1.55;
+  box-shadow:var(--shadow-lg);
+  pointer-events:none;
+}
+
+.tooltip-box.show { display:block; }
+.tooltip-box strong {
+  display:block; margin-bottom:4px;
+  font-size:11px; letter-spacing:0.8px;
+  text-transform:uppercase; color:#93c5fd;
+}
+
+/* ── TABLES ─────────────────────────────────────────── */
+.table-wrap { overflow-x:auto; margin:16px 0; border-radius:var(--radius); border:1px solid var(--border); }
+
+table { width:100%; border-collapse:collapse; font-size:13.5px; }
+
+thead { background:var(--navy); color:#fff; }
+thead th { padding:11px 14px; text-align:left; font-weight:600; font-size:12px; letter-spacing:0.4px; }
+
+tbody tr { border-bottom:1px solid var(--border); }
+tbody tr:last-child { border-bottom:none; }
+tbody tr:nth-child(even) { background:var(--off); }
+tbody tr:hover { background:var(--blue-lt); }
+
+tbody td { padding:10px 14px; color:var(--text2); vertical-align:top; line-height:1.55; }
+tbody td:first-child { font-weight:600; color:var(--navy); white-space:nowrap; }
+
+/* ── STEP-BY-STEP PATHWAY ───────────────────────────── */
+.pathway {
+  position:relative;
+  padding-left:0;
+  margin:8px 0;
+}
+
+.pathway-item {
+  display:flex; gap:16px;
+  margin-bottom:0;
+  position:relative;
+}
+
+.pathway-left {
+  display:flex; flex-direction:column; align-items:center;
+  flex-shrink:0; width:44px;
+}
+
+.step-circle {
+  width:44px; height:44px;
+  border-radius:50%;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 2px 8px rgba(26,86,196,0.3);
+  z-index:1;
+  position:relative;
+}
+
+.step-line {
+  width:2px; flex:1;
+  background:linear-gradient(180deg,var(--blue-lt2),var(--border));
+  min-height:24px;
+}
+
+.pathway-item:last-child .step-line { display:none; }
+
+.pathway-right {
+  padding:8px 0 28px;
+  flex:1;
+}
+
+.step-title {
+  font-family:'Lora',serif;
+  font-size:16px; font-weight:600;
+  color:var(--navy); margin-bottom:6px;
+  line-height:1.3;
+}
+
+.step-body {
+  font-size:14px; color:var(--text2);
+  line-height:1.7;
+}
+
+.step-body p { margin-bottom:10px; }
+
+.step-example {
+  background:var(--blue-lt);
+  border-left:3px solid var(--blue);
+  border-radius:0 6px 6px 0;
+  padding:10px 14px;
+  margin-top:10px;
+  font-size:13px; color:var(--text2);
+  line-height:1.6;
+}
+
+.step-example em { color:var(--blue); font-style:normal; font-weight:500; }
+
+/* ── FORMULA CARDS ──────────────────────────────────── */
+.formula-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px; margin:12px 0;
+}
+
+.formula-card {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  text-align:center;
+  transition:box-shadow 0.2s, border-color 0.2s;
+}
+
+.formula-card:hover { box-shadow:var(--shadow); border-color:var(--blue2); }
+
+.formula-label {
+  font-size:11px; font-weight:600;
+  color:var(--blue); letter-spacing:1px;
+  text-transform:uppercase; margin-bottom:8px;
+}
+
+.formula-body {
+  font-size:13.5px; color:var(--text2); line-height:1.6;
+}
+
+/* ── EXAMPLE BOX ─────────────────────────────────────── */
+.example-box {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden; margin:16px 0;
+}
+
+.example-header {
+  background:var(--navy); color:#fff;
+  padding:12px 18px;
+  display:flex; align-items:center; gap:10px;
+}
+
+.example-header h4 {
+  font-family:'Lora',serif;
+  font-size:16px; font-weight:600;
+}
+
+.example-body { padding:18px; }
+
+.ex-step { display:flex; gap:12px; margin-bottom:16px; }
+.ex-step:last-child { margin-bottom:0; }
+
+.ex-badge {
+  background:var(--blue); color:#fff;
+  font-size:11px; font-weight:700;
+  padding:3px 8px; border-radius:4px;
+  height:fit-content; flex-shrink:0;
+  margin-top:3px; letter-spacing:0.5px;
+}
+
+.ex-content { flex:1; }
+.ex-content h5 { font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+.ex-content p  { font-size:13.5px; color:var(--text2); line-height:1.65; margin-bottom:6px; }
+.ex-content p:last-child { margin-bottom:0; }
+
+/* ── CALLOUT BOXES ──────────────────────────────────── */
+.callout {
+  border-radius:var(--radius);
+  padding:14px 16px;
+  margin:14px 0;
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14px; line-height:1.65;
+}
+
+.callout-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+
+.callout.info    { background:var(--blue-lt);  border:1px solid var(--blue-lt2); color:var(--navy); }
+.callout.success { background:var(--green-lt); border:1px solid #a7f3d0;         color:#065f46; }
+.callout.warning { background:var(--amber-lt); border:1px solid #fcd34d;         color:#92400e; }
+
+/* ── DIFF GRID ───────────────────────────────────────── */
+.diff-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px; margin:12px 0;
+}
+
+@media(max-width:480px){ .diff-grid{grid-template-columns:1fr;} }
+
+.diff-card {
+  border-radius:var(--radius);
+  padding:16px; border:1px solid var(--border);
+}
+
+.diff-card.blue-card  { background:var(--blue-lt);  border-color:var(--blue-lt2); }
+.diff-card.green-card { background:var(--green-lt); border-color:#a7f3d0; }
+.diff-card.amber-card { background:var(--amber-lt); border-color:#fcd34d; }
+.diff-card.navy-card  { background:#eef2f8;          border-color:#c8d4e8; }
+
+.diff-card-title {
+  font-size:11px; font-weight:700;
+  letter-spacing:1.2px; text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.diff-card.blue-card  .diff-card-title { color:var(--blue); }
+.diff-card.green-card .diff-card-title { color:var(--green); }
+.diff-card.amber-card .diff-card-title { color:var(--amber); }
+.diff-card.navy-card  .diff-card-title { color:var(--navy); }
+
+.diff-card p { font-size:13.5px; color:var(--text2); line-height:1.6; }
+
+/* ── SUMMARY ─────────────────────────────────────────── */
+.summary-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px; margin:12px 0;
+}
+
+.summary-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow 0.2s, transform 0.2s;
+}
+
+.summary-card:hover { box-shadow:var(--shadow); transform:translateY(-2px); }
+
+.sum-icon  { font-size:24px; margin-bottom:8px; }
+.sum-title { font-family:'Lora',serif; font-size:15px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+.sum-text  { font-size:13px; color:var(--text2); line-height:1.6; }
+
+/* ── CHALLENGE LIST ──────────────────────────────────── */
+.challenge-list { display:flex; flex-direction:column; gap:10px; margin:12px 0; }
+
+.challenge-row {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:13px 16px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:12px;
+}
+
+.ch-badge {
+  font-size:11px; font-weight:700;
+  padding:2px 8px; border-radius:4px;
+  height:fit-content; white-space:nowrap;
+}
+
+.ch-problem { background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+.ch-fix     { background:var(--green-lt); color:#065f46; border:1px solid #a7f3d0; margin-top:6px; }
+
+.ch-text { font-size:13.5px; color:var(--text2); line-height:1.6; }
+
+/* ── GLOSSARY DRAWER ────────────────────────────────── */
+.gloss-fab {
+  position:fixed; bottom:24px; right:18px;
+  z-index:150; width:50px; height:50px;
+  background:var(--blue); color:#fff;
+  border:none; border-radius:50%;
+  font-size:20px; cursor:pointer;
+  box-shadow:0 4px 16px rgba(26,86,196,0.35);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.2s, background 0.2s;
+}
+
+.gloss-fab:hover { background:var(--blue2); transform:scale(1.08); }
+
+.gloss-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.35); z-index:160;
+}
+
+.gloss-overlay.open { display:block; }
+
+.gloss-drawer {
+  position:fixed; bottom:0; left:0; right:0;
+  z-index:170;
+  background:var(--white);
+  border-top:1px solid var(--border2);
+  border-radius:16px 16px 0 0;
+  max-height:78vh;
+  transform:translateY(100%);
+  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  display:flex; flex-direction:column;
+  box-shadow:0 -4px 32px rgba(0,0,0,0.12);
+}
+
+.gloss-drawer.open { transform:translateY(0); }
+
+.drag-handle {
+  width:36px; height:4px;
+  background:var(--border2); border-radius:2px;
+  margin:12px auto 0; flex-shrink:0;
+}
+
+.gloss-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px 10px; border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+
+.gloss-head h3 {
+  font-family:'Lora',serif;
+  font-size:17px; font-weight:600; color:var(--navy);
+  display:flex; align-items:center; gap:8px;
+}
+
+.gloss-close {
+  width:30px; height:30px;
+  background:var(--off); border:1px solid var(--border);
+  border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:var(--text2);
+}
+
+.gloss-search {
+  margin:12px 20px;
+  padding:9px 14px;
+  background:var(--off); border:1px solid var(--border2);
+  border-radius:8px; color:var(--text);
+  font-size:14px; font-family:'DM Sans',sans-serif;
+  width:calc(100% - 40px); flex-shrink:0;
+}
+
+.gloss-search:focus { outline:none; border-color:var(--blue); }
+.gloss-search::placeholder { color:var(--text4); }
+
+.gloss-list { overflow-y:auto; padding:0 20px 40px; flex:1; }
+
+.gitem { padding:13px 0; border-bottom:1px solid var(--border); }
+.gitem:last-child { border-bottom:none; }
+.gitem-name { font-size:14px; font-weight:600; color:var(--blue); margin-bottom:4px; }
+.gitem-def  { font-size:13px; color:var(--text2); line-height:1.6; }
+.gitem.hidden { display:none; }
+
+/* ── SCROLL TOP ─────────────────────────────────────── */
+.scroll-top {
+  position:fixed; bottom:86px; right:18px; z-index:150;
+  width:40px; height:40px;
+  background:var(--white); border:1px solid var(--border2);
+  border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--blue);
+  box-shadow:var(--shadow);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s, transform 0.2s;
+}
+
+.scroll-top.show { opacity:1; pointer-events:all; }
+.scroll-top:hover { transform:translateY(-2px); }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background:var(--blue);
+  color:#fff; text-align:center;
+  padding:32px 24px;
+  margin-top:48px;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.fade-in { opacity:0; animation:fadeUp 0.5s ease forwards; }
+.fade-in:nth-child(1){ animation-delay:0.05s }
+.fade-in:nth-child(2){ animation-delay:0.12s }
+.fade-in:nth-child(3){ animation-delay:0.19s }
+.fade-in:nth-child(4){ animation-delay:0.26s }
+.fade-in:nth-child(5){ animation-delay:0.33s }
+.fade-in:nth-child(6){ animation-delay:0.40s }
+
+/* ── EXPAND CONTROLS ────────────────────────────────── */
+.expand-row { display:flex; gap:8px; margin-bottom:14px; }
+
+.exp-btn {
+  padding:7px 14px;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:6px; font-size:12px;
+  color:var(--text2); cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;
+}
+
+.exp-btn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-lt); }
+
+@media(max-width:480px){
+  .hero { padding:40px 18px 38px; }
+  .page { padding:0 14px; }
+  .lec-content { padding:16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Interactive Workshop · MHPE Series · NationalUniversity</div>
+  <h1>Curriculum Analysis<br>&amp; <span>Curriculum Mapping</span></h1>
+  <p class="hero-sub">A Framework for Modern Health Professions Education — Based on AMEE Guide No. 21 · Harden RM, <em>Medical Teacher</em> 2001; 23(2): 123–137</p>
+  <div class="hero-chips">
+    <div class="hero-glossary-box" onclick="openGloss()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGloss();}">
+      <div class="hero-glossary-title">🔑 Curriculum Mapping Glossary</div>
+      <div class="hero-glossary-sub">Key terms in curriculum analysis and mapping for quick reference</div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+
+<!-- ── SECTION 1: LEARNING OBJECTIVES ───────────────── -->
+<div class="sec-head">
+  <div class="sec-num">1</div>
+  <div class="sec-title">Learning Objectives</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="obj-grid">
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🗺️</div>
+    <div class="obj-text">Define <strong>curriculum mapping and analysis</strong> within the context of health professions education.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🔍</div>
+    <div class="obj-text">Explain the importance of <strong>transparency, accountability, and coherence</strong> in curriculum design.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🪟</div>
+    <div class="obj-text">Apply Harden's AMEE Guide 21 framework including the <strong>10 Windows</strong> and <strong>10 Planning Questions</strong>.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🔎</div>
+    <div class="obj-text">Analyze <strong>curriculum gaps, redundancies, and alignment issues</strong> using the three-curricula model.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🔗</div>
+    <div class="obj-text">Discuss <strong>constructive alignment, spiral design, integration</strong>, and competency frameworks (CanMEDS/ACGME).</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🤖</div>
+    <div class="obj-text">Evaluate evolving <strong>technology, AI, and programmatic assessment</strong> in modern curriculum mapping.</div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: CORE CONCEPT CARDS ────────────────── -->
+<div class="sec-head" style="margin-top:40px;">
+  <div class="sec-num">2</div>
+  <div class="sec-title">Core Concepts in Curriculum Mapping</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="expand-row">
+  <button class="exp-btn" onclick="expandAll()">Expand All</button>
+  <button class="exp-btn" onclick="collapseAll()">Collapse All</button>
+</div>
+
+<!-- ── CARD 1: UNDERSTANDING THE CURRICULUM ──────────── -->
+<div class="lec-card" id="lec1">
+  <div class="lec-header" onclick="toggleLec('lec1')">
+    <div class="lec-num" style="background:#1a56c4">1</div>
+    <div class="lec-info">
+      <div class="lec-title">Understanding the Curriculum</div>
+      <div class="lec-sub">Planned · Delivered · Learned · Formal · Hidden</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e8f0fd;color:#1a56c4;">Foundations</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p>Every educational programme operates on three simultaneous layers of curriculum that must be understood and mapped. The distance between these three layers is what <span class="term" data-key="curriculum-mapping">curriculum mapping</span> is designed to make visible and manageable.</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">📄 Planned Curriculum</div>
+          <div class="formula-body"><strong>The Declared / Written</strong><br>The formal document — syllabus, learning objectives, and intended outcomes as defined by the institution and accrediting bodies.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🎓 Delivered Curriculum</div>
+          <div class="formula-body"><strong>The Taught / Enacted</strong><br>What faculty actually teach. May differ from planned due to faculty discretion, time constraints, or resource limitations.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🧠 Learned Curriculum</div>
+          <div class="formula-body"><strong>The Received / Experienced</strong><br>What students actually retain and master — the ultimate measure of curricular effectiveness, shaped by student and institutional factors.</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💬</span>
+        <div>"Curriculum mapping defines the distance between our intent and the student's reality." — Harden, 2001</div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>Curriculum Analysis vs. Curriculum Evaluation</strong> — two complementary but distinct lenses for reviewing any programme:</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">🔬 Curriculum Analysis — Descriptive</div>
+          <p><strong>Nature:</strong> "What is there?" and "How is it structured?"<br>
+          <strong>Focus:</strong> Structural components, sequencing, and internal alignment.<br>
+          <strong>Output:</strong> Curriculum map, gap report, alignment matrix.</p>
+        </div>
+        <div class="diff-card green-card">
+          <div class="diff-card-title">⚖️ Curriculum Evaluation — Judgmental</div>
+          <p><strong>Nature:</strong> "How good is it?" and "Does it work?"<br>
+          <strong>Focus:</strong> Impact, student outcomes, achievement of intended goals.<br>
+          <strong>Output:</strong> Programme evaluation report, quality improvement plan.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>The Formal and Hidden Curriculum</strong> — every programme has two active layers operating simultaneously:</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">📋 Formal Curriculum — The Stated Intent</div>
+          <p>→ Written learning objectives and outcomes<br>
+          → Scheduled lectures, labs, and clinical rotations<br>
+          → Formal assessment methods and grading criteria<br>
+          → Official textbooks and educational resources</p>
+        </div>
+        <div class="diff-card amber-card">
+          <div class="diff-card-title">👥 Hidden Curriculum — The Unwritten Rules</div>
+          <p>→ Implicit values and norms of the profession<br>
+          → Role modelling by faculty and senior residents<br>
+          → Informal conversations in hallways and clinics<br>
+          → Institutional priorities and what 'really matters'</p>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div>"The hidden curriculum is often more powerful than the formal one in shaping professional identity."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 2: AMEE GUIDE 21 FOUNDATION ──────────────── -->
+<div class="lec-card" id="lec2">
+  <div class="lec-header" onclick="toggleLec('lec2')">
+    <div class="lec-num" style="background:#0d7a4e">2</div>
+    <div class="lec-info">
+      <div class="lec-title">AMEE Guide No. 21 — The Foundation</div>
+      <div class="lec-sub">What · How · When · Whether — Harden's Four Mapping Dimensions</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e6f7f1;color:#0d7a4e;">Framework</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <div class="callout info">
+        <span class="callout-icon">📖</span>
+        <div>"Curriculum mapping is a tool for transparent and authentic teaching and learning." — R.M. Harden, AMEE Guide No. 21, <em>Medical Teacher</em> 2001</div>
+      </div>
+
+      <p>Harden's framework rests on four fundamental questions that every curriculum map must answer. Together they form the structural skeleton of the mapping exercise:</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">📚 WHAT is taught</div>
+          <div class="formula-body">Content, learning outcomes, and areas of expertise — the substance of the map.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🎯 HOW it is taught</div>
+          <div class="formula-body">Learning resources, educational strategies, and opportunities deployed to achieve outcomes.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🕐 WHEN it is taught</div>
+          <div class="formula-body">Timetable, sequencing, and spiral progression through the curriculum year by year.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">✅ WHETHER it is learned</div>
+          <div class="formula-body">Assessment tasks that verify student achievement of the intended outcomes.</div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>Harden's 10 Windows</strong> — the multi-axis framework for comprehensive curriculum mapping. Each window represents a distinct dimension that must be mapped:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Window</th><th>What it captures</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Learning Outcomes</td><td>Expected competencies — the foundation of all curriculum design</td></tr>
+            <tr><td>2</td><td>Curriculum Content</td><td>Topics, knowledge areas, and skills — the substance of what is taught</td></tr>
+            <tr><td>3</td><td>Student Assessment</td><td>Methods that verify outcome achievement — the evidence base</td></tr>
+            <tr><td>4</td><td>Learning Opportunities</td><td>Lectures, labs, PBL, clinical placements, and simulation activities</td></tr>
+            <tr><td>5</td><td>Learning Location</td><td>Spatial dimension — classroom, hospital, simulation lab, community</td></tr>
+            <tr><td>6</td><td>Learning Resources</td><td>Textbooks, e-learning platforms, models, and clinical cases</td></tr>
+            <tr><td>7</td><td>Timetable</td><td>Temporal dimension — when topics are taught and their sequencing</td></tr>
+            <tr><td>8</td><td>Staff</td><td>Who teaches — roles, areas of expertise, and responsibilities</td></tr>
+            <tr><td>9</td><td>Curriculum Management</td><td>Governance, accountability, and continuous improvement structures</td></tr>
+            <tr><td>10</td><td>Student Information</td><td>Learner profiles, progress data, and identified learning needs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout success">
+        <span class="callout-icon">✅</span>
+        <div>"The curriculum map is the glue which holds the curriculum together." — Harden, 2001</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 3: 10 PLANNING QUESTIONS ─────────────────── -->
+<div class="lec-card" id="lec3">
+  <div class="lec-header" onclick="toggleLec('lec3')">
+    <div class="lec-num" style="background:#b45309">3</div>
+    <div class="lec-info">
+      <div class="lec-title">Harden's 10 Planning Questions</div>
+      <div class="lec-sub">A seminal framework for intentional curriculum design</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#fef3e2;color:#b45309;">Planning</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p>Every curriculum designer must systematically address 10 fundamental planning questions before and during curriculum construction. These questions ensure intentional, evidence-based programme design rather than ad hoc course building.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Planning Question</th><th>Core Focus</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Vision &amp; Mission</td><td>What kind of doctor should the school produce? Is social accountability part of the mission?</td></tr>
+            <tr><td>2</td><td>Learning Outcomes</td><td>What are the expected outcomes? Moving from a process emphasis to an outcome-based model.</td></tr>
+            <tr><td>3</td><td>Content Selection</td><td>What should be included? Identifying threshold concepts and avoiding information overload.</td></tr>
+            <tr><td>4</td><td>Sequencing</td><td>Traditional basic-to-clinical vs. integrated or reversed approaches. Bruner's spiral principle.</td></tr>
+            <tr><td>5</td><td>Educational Strategies</td><td>SPICES model: Student-centred, Problem-based, Integrated, Community-based, Elective, Systematic.</td></tr>
+            <tr><td>6</td><td>Teaching Methods</td><td>Selecting lectures, small groups, simulation, or clinical methods to match the chosen strategy.</td></tr>
+            <tr><td>7</td><td>Assessment Organisation</td><td>Aligning formative and summative assessments with outcomes for valid, reliable measurement.</td></tr>
+            <tr><td>8</td><td>Curriculum Management</td><td>Governance, leadership, and faculty development needed to sustain the programme.</td></tr>
+            <tr><td>9</td><td>Educational Environment</td><td>Addressing the <span class="term" data-key="hidden-curriculum">hidden curriculum</span> and fostering a positive climate for professional growth.</td></tr>
+            <tr><td>10</td><td>Evaluating Effectiveness</td><td>Continuous feedback loops and quality improvement processes to refine the curriculum over time.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div>The <span class="term" data-key="spices">SPICES model</span> (Q5) provides a spectrum for each strategic dimension — curricula are rarely at one extreme; mapping reveals where a programme sits on each axis and guides reform decisions.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 4: CURRICULUM DESIGN PRINCIPLES ──────────── -->
+<div class="lec-card" id="lec4">
+  <div class="lec-header" onclick="toggleLec('lec4')">
+    <div class="lec-num" style="background:#1a56c4">4</div>
+    <div class="lec-info">
+      <div class="lec-title">Curriculum Design Principles</div>
+      <div class="lec-sub">Constructive Alignment · Spiral Curriculum · Horizontal &amp; Vertical Integration</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e8f0fd;color:#1a56c4;">Design</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p><strong>Constructive Alignment</strong> — Biggs (2003) established that effective curriculum design requires teaching, learning activities, and assessment to be explicitly aligned to the same intended learning outcomes. No element should be designed in isolation.</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">🎯 Intended Outcomes</div>
+          <div class="formula-body">What should students be able to do? The anchor point for all other design decisions.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">📘 Teaching Activities</div>
+          <div class="formula-body">Strategies that engage students to achieve the stated outcomes — matched to their cognitive level.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">📝 Assessment Tasks</div>
+          <div class="formula-body">Verify that outcomes have been achieved. Must match the cognitive complexity of the outcome (Bloom's Taxonomy).</div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div>A 'Critical Analysis' outcome requires higher-order assessment tasks (synthesis, evaluation) — not simple recall MCQs. Assessment must match the cognitive level of the outcome.</div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>The Spiral Curriculum</strong> — Bruner's (1960) foundational principle that topics should be revisited multiple times with increasing depth and complexity, ensuring long-term retention through spaced repetition:</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">🔄 Iterative Learning</div>
+          <div class="formula-body">Topics revisited multiple times throughout the curriculum with increasing depth and sophistication.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">📈 Increasing Complexity</div>
+          <div class="formula-body">Each revisit adds new layers, linking new knowledge to what was previously mastered.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🧠 Long-Term Retention</div>
+          <div class="formula-body">Spaced repetition and the spiral effect ensure foundational concepts are reinforced and applied.</div>
+        </div>
+      </div>
+
+      <div class="callout info" style="margin-bottom:16px;">
+        <span class="callout-icon">💬</span>
+        <div>"Any subject can be taught effectively in some intellectually honest form to any child at any stage of development." — Bruner, 1960</div>
+      </div>
+
+      <p><strong>Horizontal &amp; Vertical Integration</strong> — integration transforms isolated courses into a unified educational journey:</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">↔️ Horizontal Integration — Cross-disciplinary, same phase</div>
+          <p>› Linking Anatomy and Physiology within Year 1<br>
+          › Organ-systems approach (e.g., Cardiovascular module)<br>
+          › Students see connections, not isolated facts across disciplines</p>
+        </div>
+        <div class="diff-card green-card">
+          <div class="diff-card-title">↕️ Vertical Integration — Cross-phase, basic to clinical</div>
+          <p>› Early introduction of clinical skills alongside basic sciences<br>
+          › Late reinforcement of foundational principles in clinical years<br>
+          › Ensures continuity and application across the entire programme</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 5: GAP ANALYSIS & AUDITING ───────────────── -->
+<div class="lec-card" id="lec5">
+  <div class="lec-header" onclick="toggleLec('lec5')">
+    <div class="lec-num" style="background:#7c3aed">5</div>
+    <div class="lec-info">
+      <div class="lec-title">Gap Analysis &amp; Curriculum Auditing</div>
+      <div class="lec-sub">Content Gaps · Redundancy · CQI Auditing — The Map as a Diagnostic Tool</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#f5f3ff;color:#7c3aed;">Audit</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p>A curriculum map acts as a <strong>diagnostic tool</strong>, revealing where the educational experience fails to meet its intended goals. Four distinct gap types must be identified and addressed:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Gap Type</th><th>Description</th><th>Detection Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>① Content Gap</td>
+              <td>Essential topics required by standards are present in the planned curriculum but missing from the delivered curriculum.</td>
+              <td>Planned → not Delivered</td>
+            </tr>
+            <tr>
+              <td>② Outcome Gap</td>
+              <td>Teaching activities exist but are not explicitly linked to any intended learning outcome — activities 'float freely'.</td>
+              <td>Teaching without Links</td>
+            </tr>
+            <tr>
+              <td>③ Assessment Gap</td>
+              <td>Content is delivered, but no formal assessment exists to verify student mastery of that specific content.</td>
+              <td>Teaching without Testing</td>
+            </tr>
+            <tr>
+              <td>④ Alignment Gap</td>
+              <td>Misalignment between the cognitive complexity of the outcome and the level of teaching or assessment used.</td>
+              <td>Complexity Mismatch</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Curriculum Redundancy</strong> — the map distinguishes between intentional reinforcement and accidental overlap:</p>
+
+      <div class="diff-grid">
+        <div class="diff-card green-card">
+          <div class="diff-card-title">✅ Planned Redundancy — Intentional Reinforcement</div>
+          <p><strong>Intentional Reinforcement:</strong> Revisiting complex topics to deepen understanding.<br>
+          <strong>Scaffolding:</strong> Building systematically on prior knowledge with increasing sophistication.<br>
+          <strong>Spiral Effect:</strong> Ensures long-term retention via Bruner's spaced-repetition principle.</p>
+        </div>
+        <div class="diff-card amber-card">
+          <div class="diff-card-title">⚠️ Unplanned Redundancy — Accidental Overlap</div>
+          <p><strong>Accidental Repetition:</strong> Teaching the same content multiple times without educational intent.<br>
+          <strong>Inefficient Time Use:</strong> Wasting valuable curriculum hours on unnecessary duplication.<br>
+          <strong>Student Frustration:</strong> Students perceive the curriculum as disorganised — a trust problem.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>Curriculum Auditing</strong> — the map as a tool for Continuous Quality Improvement (CQI). Three iterative audit levels:</p>
+
+      <div class="example-box">
+        <div class="example-header">
+          <span style="font-size:20px">🔍</span>
+          <h4>Three-Level Curriculum Audit Process</h4>
+        </div>
+        <div class="example-body">
+          <div class="ex-step">
+            <div class="ex-badge">LEVEL 1</div>
+            <div class="ex-content">
+              <h5>Internal Review</h5>
+              <p>Faculty self-audit of course objectives and content. Verifying alignment between intended and taught curriculum. Identifying immediate gaps or obvious redundancies. First-pass quality check before external review.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-badge">LEVEL 2</div>
+            <div class="ex-content">
+              <h5>Peer &amp; Student Audit</h5>
+              <p>External perspective to surface hidden systemic issues. Analysing student feedback on curriculum coherence. Cross-disciplinary review for horizontal integration. Students as active agents in identifying learned-curriculum gaps.</p>
+            </div>
+          </div>
+          <div class="ex-step">
+            <div class="ex-badge">LEVEL 3</div>
+            <div class="ex-content">
+              <h5>Action &amp; Synthesis</h5>
+              <p>Implementing data-driven changes to the curriculum. Monitoring the impact of changes on student outcomes. Updating the map to reflect the 'living' curriculum. Closing the CQI loop for sustained improvement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div>"Curriculum auditing without action is just documentation. The map must drive decisions."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 6: COMPETENCIES, ASSESSMENT & TECHNOLOGY ─── -->
+<div class="lec-card" id="lec6">
+  <div class="lec-header" onclick="toggleLec('lec6')">
+    <div class="lec-num" style="background:#0d7a4e">6</div>
+    <div class="lec-info">
+      <div class="lec-title">Competencies, Assessment &amp; Technology</div>
+      <div class="lec-sub">CanMEDS · ACGME · EPAs · Milestones · Programmatic Assessment · AI Tools</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e6f7f1;color:#0d7a4e;">Competency</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p>Curriculum mapping gains full power when linked to established <strong>competency frameworks</strong>. The map aligns local learning objectives to global professional standards, surfaces under-represented domains, and ensures qualifications are internationally recognised.</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">🇨🇦 CanMEDS Framework (Royal College of Canada)</div>
+          <p><strong>Medical Expert:</strong> Core role integrating all others<br>
+          <strong>Communicator:</strong> Therapeutic relationships, informed consent<br>
+          <strong>Collaborator:</strong> Effective teamwork across disciplines<br>
+          <strong>Leader:</strong> System management &amp; resource stewardship<br>
+          <strong>Health Advocate:</strong> Patient &amp; community advocacy<br>
+          <strong>Scholar:</strong> Lifelong learning &amp; evidence generation<br>
+          <strong>Professional:</strong> Ethics, accountability, and values</p>
+        </div>
+        <div class="diff-card green-card">
+          <div class="diff-card-title">🇺🇸 ACGME Core Competencies</div>
+          <p><strong>Patient Care:</strong> Compassionate, evidence-based care<br>
+          <strong>Medical Knowledge:</strong> Scientific &amp; clinical knowledge base<br>
+          <strong>Practice-Based Learning:</strong> Self-assessment and improvement<br>
+          <strong>Interpersonal Skills:</strong> Communication with patients &amp; teams<br>
+          <strong>Professionalism:</strong> Ethics, accountability, humanism<br>
+          <strong>Systems-Based Practice:</strong> Healthcare system navigation</p>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>EPAs, Milestones &amp; CBME</strong> — the map supports the transition to <span class="term" data-key="cbme">Competency-Based Medical Education</span>:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Concept</th><th>Definition</th><th>Role in Mapping</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>EPAs</td>
+              <td>Entrustable Professional Activities — discrete tasks a trainee can perform unsupervised.</td>
+              <td>Mapped to specific clinical experiences and learning modules.</td>
+            </tr>
+            <tr>
+              <td>Milestones</td>
+              <td>Developmental markers describing progressive levels of competence.</td>
+              <td>Mapping milestones to assessment points gives a data-rich view of student progress.</td>
+            </tr>
+            <tr>
+              <td>Competencies</td>
+              <td>The standards framework underpinning EPAs and milestones.</td>
+              <td>The map ensures all competencies are addressed and assessed at appropriate levels.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Programmatic Assessment</strong> — replacing single high-stakes exams with a continuous, distributed evidence base:</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">📊 Multiple Data Points</div>
+          <div class="formula-body">Continuous low-stakes assessments distributed across the entire curriculum timeline.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🔢 Aggregation</div>
+          <div class="formula-body">High-stakes decisions based on diverse data — written, observed, simulation, and portfolio evidence.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">💬 Feedback-Rich</div>
+          <div class="formula-body">Primary purpose is to guide student growth and professional development, not merely to rank or certify.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🗺️ Role of the Map</div>
+          <div class="formula-body">Provides the blueprint: where, when, and how each competency is assessed across the programme.</div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>Technology &amp; The Dynamic Curriculum Map</strong> — from static documents to living, data-driven systems:</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">📄 Manual &amp; Static</div>
+          <div class="formula-body">Excel/Word spreadsheets. Difficult to maintain. No relational links. Suitable only for small, simple programmes.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🖥️ Relational Platforms</div>
+          <div class="formula-body">Medtrics, MapEDU, E*Value. Real-time access, searchable dashboards, dynamic querying across all 10 windows.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🤖 AI &amp; Analytics</div>
+          <div class="formula-body">Auto-tagging, predictive gap detection, NLP-driven syllabus mapping, personalised learning path recommendations.</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div>"The future of curriculum mapping is a living system: dynamic, collaborative, and data-driven."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CARD 7: STAKEHOLDERS & IMPLEMENTATION ─────────── -->
+<div class="lec-card" id="lec7">
+  <div class="lec-header" onclick="toggleLec('lec7')">
+    <div class="lec-num" style="background:#0f2d6b">7</div>
+    <div class="lec-info">
+      <div class="lec-title">Stakeholders &amp; Implementation Challenges</div>
+      <div class="lec-sub">Faculty · Students · Administrators · Overcoming Barriers to Successful Mapping</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#eef2f8;color:#0f2d6b;">People</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+
+      <p>Successful curriculum mapping is not a technical task — it is a <strong>collaborative cultural shift</strong>. Three stakeholder groups have distinct roles in building and maintaining a living curriculum map:</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">👩‍🏫 Faculty</div>
+          <div class="formula-body"><strong>Content Experts</strong> — primary creators of map data.<br>
+          <strong>Collaborators</strong> — coordinating content across disciplines.<br>
+          <strong>Reflective Practitioners</strong> — using the map to refine teaching.<br>
+          <em>Key role: populating and validating the map.</em></div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🧑‍🎓 Students</div>
+          <div class="formula-body"><strong>Active Navigators</strong> — tracking their own learning path.<br>
+          <strong>Feedback Providers</strong> — identifying gaps in the learned curriculum.<br>
+          <strong>Self-Regulated Learners</strong> — understanding long-term goals.<br>
+          <em>Key role: closing the feedback loop.</em></div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🏛️ Administrators</div>
+          <div class="formula-body"><strong>Strategic Planners</strong> — ensuring alignment with institutional vision.<br>
+          <strong>Compliance Officers</strong> — reporting for accreditation (LCME, WFME).<br>
+          <strong>Resource Managers</strong> — allocating staff, space, and budget.<br>
+          <em>Key role: governance and quality assurance.</em></div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;"><strong>Common Implementation Challenges &amp; How to Overcome Them:</strong></p>
+
+      <div class="challenge-list">
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ Faculty Resistance</div>
+          </div>
+          <div>
+            <div class="ch-text">Focus on benefits for faculty (clarity, reduced duplication) rather than compliance. Build leadership support and celebrate early wins.</div>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ Resource Intensity</div>
+          </div>
+          <div>
+            <div class="ch-text">Start small with one module. Use a phased approach. Invest in user-friendly platforms to minimise manual data entry burden.</div>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ Technical Hurdles</div>
+          </div>
+          <div>
+            <div class="ch-text">Provide dedicated training and IT support. Choose platforms with strong usability. Appoint a curriculum mapping champion.</div>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ The Static Map Problem</div>
+          </div>
+          <div>
+            <div class="ch-text">Institutionalise mapping as a regular, living activity. Assign dedicated staff for maintenance. Link map updates to annual curriculum review cycles.</div>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ Keeping Maps Current</div>
+          </div>
+          <div>
+            <div class="ch-text">Integrate map updates into faculty workflow. Use platforms with real-time editing. Automate alerts when outcomes or content change.</div>
+          </div>
+        </div>
+        <div class="challenge-row">
+          <div>
+            <div class="ch-badge ch-problem">⚠ Depth vs. Breadth Balance</div>
+          </div>
+          <div>
+            <div class="ch-text">Too granular becomes unmanageable; too broad loses analytical value. Align map depth to the specific mapping purpose and audience.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: REFLECTIVE PRACTICE PATHWAY ────────── -->
+<div class="sec-head" style="margin-top:44px;">
+  <div class="sec-num">3</div>
+  <div class="sec-title">Reflective Practice — Mapping Your Own Curriculum</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="callout info" style="margin-bottom:20px;">
+  <span class="callout-icon">🤔</span>
+  <div>Is your curriculum map a <strong>living system</strong> that guides daily practice — or a static document sitting in a drawer? Work through these four steps with a single learning outcome from your own programme.</div>
+</div>
+
+<div class="pathway">
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle" style="background:var(--navy);">1</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Select an Outcome</div>
+      <div class="step-body">
+        <p>Choose a single, specific learning outcome from your curriculum that you are responsible for or most familiar with. Be precise — do not choose an entire module or course theme.</p>
+        <div class="step-example"><em>Guiding Question:</em> Is this outcome clearly written with observable, measurable verbs? Could a student read it and know exactly what they need to demonstrate?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">2</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Map to Teaching Activity</div>
+      <div class="step-body">
+        <p>Identify the specific teaching and learning activity designed to help students achieve this outcome in your programme. Document the modality, location, timing, and responsible faculty member.</p>
+        <div class="step-example"><em>Guiding Question:</em> Is there an explicit, documented link between this outcome and the teaching activity in your curriculum map — or has it always been assumed?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">3</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Identify the Assessment Point</div>
+      <div class="step-body">
+        <p>Locate the exact assessment point where this outcome is formally measured and student mastery is verified. Determine what form the assessment takes and at what Bloom's level it operates.</p>
+        <div class="step-example"><em>Guiding Question:</em> If you cannot name the exact assessment item linked to this outcome, you have just identified an <strong>Assessment Gap</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">4</div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Evaluate Alignment &amp; Act</div>
+      <div class="step-body">
+        <p>Does the teaching activity and assessment truly match the cognitive complexity of the stated outcome? If not — what is missing or mismatched? This gap is your starting point for curriculum reform.</p>
+        <div class="step-example"><em>Guiding Question:</em> If an external auditor traced this assessment item all the way back to your institutional mission, would the chain hold? If not — what link is broken?</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SECTION 4: KEY TAKEAWAYS ──────────────────────── -->
+<div class="sec-head" style="margin-top:44px;">
+  <div class="sec-num">4</div>
+  <div class="sec-title">Key Takeaways</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="sum-icon">🌉</div>
+    <div class="sum-title">Bridge the Three Curricula</div>
+    <div class="sum-text">Curriculum mapping bridges the gap between <strong>Planned, Delivered, and Learned</strong> curricula — making the educational reality visible and addressable.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🪟</div>
+    <div class="sum-title">Harden's Dual Framework</div>
+    <div class="sum-text">Harden's <strong>10 Windows</strong> and <strong>10 Planning Questions</strong> provide a comprehensive, multi-axis framework for transparent, intentional programme design.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🔗</div>
+    <div class="sum-title">Design Principles Matter</div>
+    <div class="sum-text"><strong>Constructive alignment</strong> (Biggs), the <strong>spiral curriculum</strong> (Bruner), and <strong>integration</strong> principles underpin all effective curriculum architecture.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🔎</div>
+    <div class="sum-title">The Map as Diagnostic Tool</div>
+    <div class="sum-text">The map reveals <strong>content gaps, outcome gaps, assessment gaps, and alignment gaps</strong> — turning invisible curriculum problems into actionable improvement plans.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🏅</div>
+    <div class="sum-title">Competency Frameworks</div>
+    <div class="sum-text"><strong>CanMEDS, ACGME, EPAs, milestones</strong>, and programmatic assessment all require a curriculum map as their structural backbone and evidence base.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🔄</div>
+    <div class="sum-title">A Living, Collaborative System</div>
+    <div class="sum-text">Successful mapping demands collaboration across <strong>all stakeholders</strong> and must be institutionalised as a living, dynamic, data-driven system — not a static document.</div>
+  </div>
+</div>
+
+<div class="callout success" style="margin-top:20px;">
+  <span class="callout-icon">🎓</span>
+  <div>"The curriculum map is the bridge between the educational vision and the daily reality of the classroom. It transforms a list of topics into a coherent journey of discovery." — Harden, 2001</div>
+</div>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-family:'Lora',serif; font-size:18px; font-weight:700; margin-bottom:8px;">Curriculum Analysis &amp; Curriculum Mapping</p>
+  <p style="font-size:13px; opacity:0.75; margin-bottom:12px;">MHPE Programme · National University · Interactive Lecture Series</p>
+  <p style="font-size:12px; opacity:0.65; border-top:1px solid rgba(255,255,255,0.2); padding-top:14px; margin-top:4px;">Designed by Dr. Salaheldin Terair. Based on AMEE Guide No. 21 — Harden RM, <em>Medical Teacher</em> 2001; 23(2): 123–137.</p>
+</footer>
+
+<!-- GLOSSARY FAB -->
+<button class="gloss-fab" onclick="openGloss()" title="Open Glossary">🔑</button>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- GLOSSARY DRAWER -->
+<div class="gloss-overlay" id="glossOverlay" onclick="closeGloss()"></div>
+<div class="gloss-drawer" id="glossDrawer">
+  <div class="drag-handle"></div>
+  <div class="gloss-head">
+    <h3>🔑 Curriculum Mapping Glossary</h3>
+    <div class="gloss-close" onclick="closeGloss()">✕</div>
+  </div>
+  <input class="gloss-search" id="glossSearch" type="text" placeholder="Search terms…" oninput="filterGloss(this.value)">
+  <div class="gloss-list" id="glossList"></div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip-box" id="tooltip"></div>
+
+<script>
+// ── GLOSSARY DATA ─────────────────────────────────────
+const G = {
+  "curriculum-mapping":       ["Curriculum Mapping", "A process of linking and making transparent the key elements of a curriculum — what is taught, how it is taught, when it is taught, and whether it is learned. Defined by Harden (2001) as 'a tool for transparent and authentic teaching and learning.'"],
+  "planned-curriculum":       ["Planned Curriculum", "The formal, declared, or written curriculum. Includes the syllabus, learning objectives, and intended outcomes as defined by the institution and accrediting bodies. Also called the 'intended curriculum.'"],
+  "delivered-curriculum":     ["Delivered Curriculum", "The taught or enacted curriculum — what faculty actually teach in lectures, labs, and clinics. May differ from the planned curriculum due to faculty discretion, time constraints, or resource limitations."],
+  "learned-curriculum":       ["Learned Curriculum", "The received or experienced curriculum — what students actually retain, master, and apply. The ultimate measure of curricular effectiveness, shaped by student factors and institutional context."],
+  "curriculum-analysis":      ["Curriculum Analysis", "A descriptive lens for curriculum review asking 'What is there?' and 'How is it structured?' Produces an objective map of the existing curriculum state, including gap reports and alignment matrices."],
+  "curriculum-evaluation":    ["Curriculum Evaluation", "A judgmental lens for curriculum review asking 'How good is it?' and 'Does it work?' Provides decision-based evidence needed for reform and resource allocation. Output: programme evaluation report."],
+  "formal-curriculum":        ["Formal Curriculum", "The stated intent of the educational programme — written objectives, scheduled sessions, formal assessments, and official resources. Represents the curriculum as designed by faculty and approved by the institution."],
+  "hidden-curriculum":        ["Hidden Curriculum", "The implicit values, norms, and professional behaviours transmitted through role modelling, institutional culture, and informal interactions. Often more powerful than the formal curriculum in shaping professional identity."],
+  "constructive-alignment":   ["Constructive Alignment", "A curriculum design principle by Biggs (2003) ensuring that intended learning outcomes, teaching activities, and assessment tasks are explicitly and logically connected. The curriculum map makes this alignment visible."],
+  "spiral-curriculum":        ["Spiral Curriculum", "Bruner's (1960) principle that topics should be revisited multiple times throughout the curriculum with increasing depth and complexity, linking new knowledge to prior learning to ensure long-term retention."],
+  "horizontal-integration":   ["Horizontal Integration", "Linking content across disciplines within the same year or phase (e.g., linking Anatomy and Physiology in Year 1). Helps students see connections rather than isolated facts."],
+  "vertical-integration":     ["Vertical Integration", "Linking content across different years or phases of the curriculum (e.g., introducing clinical skills alongside early basic sciences). Ensures continuity and application across the full programme."],
+  "content-gap":              ["Content Gap", "A curriculum gap where essential topics or threshold concepts required by standards are present in the planned curriculum but missing from the delivered curriculum."],
+  "outcome-gap":              ["Outcome Gap", "A curriculum gap where teaching activities exist but are not explicitly linked to any intended learning outcome — activities 'float freely' without a stated educational purpose."],
+  "assessment-gap":           ["Assessment Gap", "A curriculum gap where content is delivered but no formal assessment exists to verify student mastery of that specific content or outcome."],
+  "alignment-gap":            ["Alignment Gap", "A curriculum gap characterised by a mismatch between the cognitive complexity of the intended outcome and the level of the teaching method or assessment instrument used."],
+  "canmeds":                  ["CanMEDS Framework", "A competency framework developed by the Royal College of Physicians and Surgeons of Canada defining 7 physician roles: Medical Expert, Communicator, Collaborator, Leader, Health Advocate, Scholar, and Professional."],
+  "acgme":                    ["ACGME Core Competencies", "Six competencies defined by the Accreditation Council for Graduate Medical Education: Patient Care, Medical Knowledge, Practice-Based Learning, Interpersonal Skills, Professionalism, and Systems-Based Practice."],
+  "epa":                      ["Entrustable Professional Activity (EPA)", "In CBME, a discrete clinical task or responsibility a trainee can be trusted to perform unsupervised. EPAs are mapped to specific clinical experiences and learning modules."],
+  "cbme":                     ["Competency-Based Medical Education (CBME)", "An outcomes-based approach to designing, implementing, and evaluating medical education using predetermined competencies. Focuses on demonstrable outcomes rather than time-based training."],
+  "programmatic-assessment":  ["Programmatic Assessment", "An approach replacing single high-stakes exams with multiple low-stakes assessments distributed across the curriculum. High-stakes decisions are based on aggregated, diverse data — written, observed, simulation, and portfolio."],
+  "amee-guide21":             ["AMEE Guide No. 21", "Harden RM's seminal 2001 paper 'Curriculum mapping: a tool for transparent and authentic teaching and learning' published in Medical Teacher 2001; 23(2): 123–137. Provides the 10 Windows and 10 Planning Questions frameworks."],
+  "spices":                   ["SPICES Model", "Harden's model for describing educational strategies along six dimensions: Student-centred, Problem-based, Integrated, Community-based, Elective, and Systematic. Used to characterise and compare curriculum strategies."],
+  "harden-windows":           ["Harden's 10 Windows", "A multi-axis framework for comprehensive curriculum mapping covering 10 dimensions: Learning Outcomes, Content, Assessment, Learning Opportunities, Location, Resources, Timetable, Staff, Curriculum Management, and Student Information."],
+  "three-curricula":          ["Three-Curricula Model", "Harden's model distinguishing the Planned (declared), Delivered (taught), and Learned (received) curriculum. Curriculum mapping makes the gaps between these three layers visible and actionable."],
+};
+
+function buildGloss() {
+  const list = document.getElementById('glossList');
+  Object.entries(G).sort((a,b)=>a[1][0].localeCompare(b[1][0])).forEach(([k,[name,def]])=>{
+    const d = document.createElement('div');
+    d.className='gitem'; d.dataset.k=k; d.dataset.name=name.toLowerCase(); d.dataset.def=def.toLowerCase();
+    d.innerHTML=`<div class="gitem-name">${name}</div><div class="gitem-def">${def}</div>`;
+    list.appendChild(d);
+  });
+}
+
+function filterGloss(q) {
+  const lq=q.toLowerCase().trim();
+  document.querySelectorAll('.gitem').forEach(el=>{
+    el.classList.toggle('hidden', lq && !el.dataset.name.includes(lq) && !el.dataset.def.includes(lq));
+  });
+}
+
+function openGloss() {
+  document.getElementById('glossOverlay').classList.add('open');
+  document.getElementById('glossDrawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeGloss() {
+  document.getElementById('glossOverlay').classList.remove('open');
+  document.getElementById('glossDrawer').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── TOOLTIPS ──────────────────────────────────────────
+const tip = document.getElementById('tooltip');
+let tipTimer;
+
+document.querySelectorAll('.term').forEach(el=>{
+  el.addEventListener('click', e=>{
+    e.stopPropagation();
+    const k = el.dataset.key;
+    const entry = G[k];
+    if(!entry) return;
+    tip.innerHTML=`<strong>${entry[0]}</strong>${entry[1]}`;
+    const r = el.getBoundingClientRect();
+    let top = r.bottom+10, left = r.left;
+    if(left+280>window.innerWidth) left=window.innerWidth-290;
+    if(left<10) left=10;
+    if(top+140>window.innerHeight) top=r.top-150;
+    tip.style.top=top+'px'; tip.style.left=left+'px';
+    tip.classList.add('show');
+    clearTimeout(tipTimer);
+    tipTimer=setTimeout(()=>tip.classList.remove('show'),4500);
+  });
+});
+
+document.addEventListener('click',()=>tip.classList.remove('show'));
+
+// ── CARDS ─────────────────────────────────────────────
+function toggleLec(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function expandAll() {
+  document.querySelectorAll('.lec-card').forEach(c=>c.classList.add('open'));
+}
+
+function collapseAll() {
+  document.querySelectorAll('.lec-card').forEach(c=>c.classList.remove('open'));
+}
+
+// ── SCROLL TOP ────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY>350);
+});
+
+// ── INIT ──────────────────────────────────────────────
+buildGloss();
+</script>
+</body>
+</html>

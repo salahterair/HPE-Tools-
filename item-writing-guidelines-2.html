@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCQ Item Writing Guidelines — Health Sciences Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #f7f4ef;
+  --surface:   #ffffff;
+  --surface2:  #f0ece4;
+  --border:    #ddd6c8;
+
+  --ink:       #1a1410;
+  --ink-mid:   #3d3128;
+  --ink-soft:  #6b5f50;
+  --ink-faint: #a0907c;
+
+  --red:       #8b2020;
+  --red-pale:  #fdf0f0;
+  --red-mid:   #b84040;
+
+  --teal:      #1a5c5c;
+  --teal-pale: #eaf4f4;
+  --teal-mid:  #2a7a7a;
+
+  --gold:      #7a5a10;
+  --gold-pale: #fdf6e3;
+  --gold-mid:  #c9a84c;
+
+  --slate:     #2d3f55;
+  --slate-pale:#ecf0f5;
+  --slate-mid: #4a6080;
+
+  --green:     #1e5c30;
+  --green-pale:#eaf5ee;
+  --green-mid: #2d8044;
+
+  --rule: #ccc3b2;
+
+  /* Blue brand colours for header / footer */
+  --brand:       #1a3a6b;
+  --brand-dark:  #102850;
+  --brand-light: #2558a8;
+  --brand-accent:#4a90d9;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(160deg, #1c3d6e 0%, #1e4a8a 55%, #2563a8 100%);
+  color: #fff;
+  padding: 2.8rem 1.5rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: #4a90d9;
+  opacity: 0.8;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 50px solid rgba(255,255,255,0.04);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  margin-bottom: 0.75rem;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+header h1 em {
+  font-style: italic;
+  color: var(--brand-accent);
+}
+
+header .sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 620px;
+  margin: 0 auto;
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+header .designer-credit {
+  margin-top: 1.2rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+header .designer-credit strong {
+  color: rgba(255,255,255,0.88);
+  font-weight: 500;
+}
+
+/* ── TABS ── */
+nav.tabs {
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+nav.tabs ul {
+  list-style: none;
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+nav.tabs ul::-webkit-scrollbar { display: none; }
+
+nav.tabs ul li a {
+  display: block;
+  padding: 0.9rem 0.85rem;
+  color: #5a6a80;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  letter-spacing: 0.03em;
+  transition: color 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: -2px;
+}
+
+nav.tabs ul li a:hover { color: #1e4a8a; }
+
+nav.tabs ul li a.active {
+  color: #1e4a8a;
+  font-weight: 600;
+  border-bottom-color: #1e4a8a;
+}
+
+/* ── LAYOUT ── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 5rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── SECTION HEADS ── */
+.sec {
+  margin: 2.8rem 0 1.3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.sec:first-child { margin-top: 0; }
+
+.sec h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.sec .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: var(--brand);
+  color: rgba(255,255,255,0.7);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.intro {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  border-left: 3px solid var(--rule);
+  padding-left: 0.9rem;
+  margin-bottom: 1.4rem;
+  max-width: 820px;
+  line-height: 1.75;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.card.good { border-left: 4px solid var(--green); }
+.card.bad  { border-left: 4px solid var(--red); }
+.card.rule { border-left: 4px solid var(--gold); }
+.card.note { border-left: 4px solid var(--teal); }
+.card.warn { border-left: 4px solid var(--slate); }
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.card h3 .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.label-good { background: var(--green-pale); color: var(--green); border: 1px solid #aed4be; }
+.label-bad  { background: var(--red-pale);   color: var(--red);   border: 1px solid #e8b4b4; }
+.label-rule { background: var(--gold-pale);  color: var(--gold);  border: 1px solid #ddc880; }
+.label-note { background: var(--teal-pale);  color: var(--teal);  border: 1px solid #a8d0d0; }
+.label-warn { background: var(--slate-pale); color: var(--slate); border: 1px solid #b8c8d8; }
+
+.card h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin: 0.9rem 0 0.35rem;
+}
+
+.card p, .card li {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.card ul, .card ol { padding-left: 1.3rem; }
+.card ul li, .card ol li { margin-bottom: 0.3rem; }
+.card li strong { color: var(--ink); }
+
+/* ── GRIDS ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* ── EXAMPLE BOXES ── */
+.example {
+  border-radius: 7px;
+  padding: 1rem 1.2rem;
+  margin: 0.8rem 0;
+  font-size: 0.92rem;
+}
+
+.example.eg-good {
+  background: var(--green-pale);
+  border: 1px solid #b8dac8;
+}
+
+.example.eg-bad {
+  background: var(--red-pale);
+  border: 1px solid #e8b4b4;
+}
+
+.example-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.eg-good .example-label { color: var(--green); }
+.eg-bad  .example-label { color: var(--red); }
+
+.example-label::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.example p, .example li { color: var(--ink-mid); line-height: 1.7; font-size: 0.92rem; }
+
+.vignette {
+  background: #f8f5f0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.lead-in {
+  font-size: 0.92rem;
+  color: var(--ink);
+  font-weight: 700;
+  margin: 0.5rem 0 0.3rem;
+  font-style: normal;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0;
+}
+
+.options li {
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  padding: 0.12rem 0;
+  font-style: normal;
+}
+
+.options li.correct { color: var(--green); font-weight: 700; }
+.options li.wrong   { color: var(--red);   }
+.options li .why {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin-left: 0.4rem;
+  opacity: 0.7;
+}
+
+/* ── CALLOUT BOXES ── */
+.box {
+  border-radius: 7px;
+  padding: 1rem 1.2rem;
+  margin: 0.9rem 0;
+  font-size: 0.95rem;
+}
+.box-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.box.key  { background: var(--teal-pale); border: 1px solid #a8d0d0; border-left: 4px solid var(--teal); }
+.box.key .box-title { color: var(--teal); }
+.box.key, .box.key p, .box.key li { color: #0d3030; }
+
+.box.warn { background: var(--gold-pale); border: 1px solid #ddc880; border-left: 4px solid var(--gold); }
+.box.warn .box-title { color: var(--gold); }
+.box.warn, .box.warn p, .box.warn li { color: #3a2800; }
+
+.box ul { padding-left: 1.1rem; margin-top: 0.35rem; }
+.box li { margin-bottom: 0.25rem; font-size: 0.93rem; line-height: 1.7; }
+
+/* ── FLAW TABLE ── */
+.tbl-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+table.dt {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+table.dt thead th {
+  background: var(--brand);
+  color: rgba(255,255,255,0.9);
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+table.dt tbody tr { border-bottom: 1px solid var(--border); }
+table.dt tbody tr:last-child { border-bottom: none; }
+table.dt tbody tr:nth-child(even) { background: var(--surface2); }
+
+table.dt tbody td {
+  padding: 0.65rem 0.9rem;
+  vertical-align: top;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  font-size: 0.88rem;
+}
+
+table.dt tbody td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+/* ── STAT CHIPS ── */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.stat-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 0.65rem 1rem;
+  min-width: 110px;
+}
+
+.stat-chip strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.stat-chip span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.1rem;
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--ink-mid);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: '○';
+  color: var(--rule);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.checklist li strong { color: var(--ink); }
+
+/* ── PROGRESS TRACKER ── */
+.tracker {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tracker h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.steps {
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.step {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  position: relative;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.step:last-child::after { display: none; }
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 2px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.4rem;
+}
+
+.step-label {
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.3;
+}
+
+/* ── INTERACTIVE FLAW SPOTTER ── */
+.flaw-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.flaw-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 1.3rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+
+.flaw-trigger:hover { background: var(--surface2); }
+
+.flaw-trigger .flaw-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.flaw-type.irrel { background: var(--slate-pale); color: var(--slate); border: 1px solid #b8c8d8; }
+.flaw-type.cue   { background: var(--red-pale);   color: var(--red);   border: 1px solid #e8b4b4; }
+
+.flaw-arrow {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.flaw-item.open .flaw-arrow { transform: rotate(90deg); }
+
+.flaw-body {
+  display: none;
+  padding: 0 1.3rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.flaw-item.open .flaw-body { display: block; }
+
+.flaw-body p { font-size: 0.865rem; color: var(--ink-mid); margin-top: 0.8rem; line-height: 1.7; }
+
+/* ── ANALYSIS TABLE ── */
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0.6rem 0;
+}
+
+.analysis-table th {
+  background: var(--ink-mid);
+  color: rgba(255,255,255,0.8);
+  padding: 0.4rem 0.7rem;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+.analysis-table td {
+  padding: 0.35rem 0.7rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-mid);
+}
+
+.analysis-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.analysis-table tr:last-child td { border-bottom: none; }
+.analysis-table .key-row td { background: var(--teal-pale); }
+.analysis-table .problem { color: var(--red); font-weight: 700; }
+.analysis-table .good-val { color: var(--green); font-weight: 700; }
+
+/* ── STAT CHIPS ── */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.stat-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  min-width: 110px;
+}
+
+.stat-chip strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.stat-chip span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.15rem;
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: '○';
+  color: var(--rule);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.checklist li strong { color: var(--ink); }
+
+/* ── PROGRESS TRACKER ── */
+.tracker {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.tracker h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.steps {
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+  min-width: 360px;
+}
+
+.step {
+  flex: 1;
+  min-width: 70px;
+  text-align: center;
+  position: relative;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.step:last-child::after { display: none; }
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 2px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.4rem;
+}
+
+.step-label {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.3;
+}
+
+/* ── INTERACTIVE FLAW SPOTTER ── */
+.flaw-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.flaw-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 1.2rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 52px;
+}
+
+.flaw-trigger:hover { background: var(--surface2); }
+
+.flaw-trigger .flaw-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.flaw-type.irrel { background: var(--slate-pale); color: var(--slate); border: 1px solid #b8c8d8; }
+.flaw-type.cue   { background: var(--red-pale);   color: var(--red);   border: 1px solid #e8b4b4; }
+
+.flaw-arrow {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.flaw-item.open .flaw-arrow { transform: rotate(90deg); }
+
+.flaw-body {
+  display: none;
+  padding: 0 1.2rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.flaw-item.open .flaw-body { display: block; }
+
+.flaw-body p { font-size: 0.93rem; color: var(--ink-mid); margin-top: 0.8rem; line-height: 1.75; }
+
+/* ── ANALYSIS TABLE ── */
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0.6rem 0;
+}
+
+.analysis-table th {
+  background: var(--ink-mid);
+  color: rgba(255,255,255,0.8);
+  padding: 0.45rem 0.7rem;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.analysis-table td {
+  padding: 0.4rem 0.7rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-mid);
+  font-size: 0.85rem;
+}
+
+.analysis-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.analysis-table tr:last-child td { border-bottom: none; }
+.analysis-table .key-row td { background: var(--teal-pale); }
+.analysis-table .problem { color: var(--red); font-weight: 700; }
+.analysis-table .good-val { color: var(--green); font-weight: 700; }
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.9;
+  border-top: 3px solid var(--brand-accent);
+}
+
+footer strong { color: rgba(255,255,255,0.85); }
+
+footer .designer {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  color: var(--brand-accent);
+  letter-spacing: 0.04em;
+}
+
+footer .designer strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  header { padding: 1.8rem 1rem 1.6rem; }
+  main { padding: 1.5rem 0.9rem 3rem; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .sec h2 { font-size: 1.2rem; }
+  .card { padding: 1rem 1.1rem; }
+  .card h3 { font-size: 1rem; }
+  .card p, .card li { font-size: 0.92rem; }
+  .tbl-wrap { font-size: 0.82rem; }
+  table.dt thead th { font-size: 0.65rem; padding: 0.5rem 0.6rem; }
+  table.dt tbody td { padding: 0.5rem 0.6rem; font-size: 0.82rem; }
+  table.dt tbody td:first-child { font-size: 0.78rem; white-space: normal; }
+  .analysis-table { font-size: 0.78rem; }
+  .analysis-table th { font-size: 0.65rem; padding: 0.4rem 0.4rem; }
+  .analysis-table td { padding: 0.35rem 0.4rem; font-size: 0.78rem; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.5rem; }
+  .header-eyebrow { font-size: 0.65rem; }
+  header .sub { font-size: 0.88rem; }
+  nav.tabs ul li a { padding: 0.85rem 0.65rem; font-size: 0.73rem; }
+  .stat-chip { min-width: 90px; padding: 0.6rem 0.8rem; }
+  .stat-chip strong { font-size: 1.25rem; }
+  .flaw-trigger { font-size: 0.9rem; padding: 0.9rem 1rem; }
+  .flaw-trigger .flaw-type { display: none; }
+  .checklist li { font-size: 0.9rem; }
+  .box { font-size: 0.9rem; }
+  .intro { font-size: 0.93rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="header-eyebrow">National University · Master of Health Professions Education</p>
+    <h1>Practical Guidelines for<br><em>Writing High-Quality MCQs</em></h1>
+    <p class="sub">A comprehensive reference for faculty and educators writing multiple-choice items for health sciences assessments.</p>
+    <p class="designer-credit" style="display:none;">Developed for medical education by <strong>Dr. Salaheldin Terair</strong></p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <ul>
+    <li><a href="#" class="active" data-panel="overview">Overview</a></li>
+    <li><a href="#" data-panel="vignette">Vignettes & Lead-ins</a></li>
+    <li><a href="#" data-panel="options">Writing Options</a></li>
+    <li><a href="#" data-panel="flaws">Technical Flaws</a></li>
+    <li><a href="#" data-panel="analysis">Item Analysis</a></li>
+    <li><a href="#" data-panel="checklist">Checklist</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 0 — OVERVIEW
+══════════════════════════════════════════════ -->
+<div class="panel active" id="panel-overview">
+
+  <div class="sec"><h2>Why Item Quality Matters</h2><span class="tag">NBME 2024 · Ch.1–2</span></div>
+  <p class="intro">A poorly written question does not test knowledge — it tests test-taking skill, reading speed, or the ability to interpret an item writer's ambiguous intent. The goal is a level playing field where performance reflects mastery alone.</p>
+
+  <div class="stat-row">
+    <div class="stat-chip"><strong>5</strong><span>CORE RULES</span></div>
+    <div class="stat-chip"><strong>12+</strong><span>ITEM FLAWS</span></div>
+    <div class="stat-chip"><strong>2</strong><span>FLAW TYPES</span></div>
+    <div class="stat-chip"><strong>A-type</strong><span>PREFERRED FORMAT</span></div>
+    <div class="stat-chip"><strong>100+</strong><span>MCQs FOR RELIABILITY</span></div>
+  </div>
+
+  <div class="box key">
+    <div class="box-title">The Fundamental Principle</div>
+    <p>A test-taker's probability of answering correctly should be determined <strong>entirely by their content expertise</strong>, not by structural flaws that add irrelevant difficulty or by cueing strategies that benefit the "testwise" examinee.</p>
+  </div>
+
+  <!-- Item format families -->
+  <div class="sec"><h2>Item Format Families</h2></div>
+
+  <div class="grid-2">
+    <div class="card good">
+      <h3><span class="label label-good">RECOMMENDED</span>One-Best-Answer (A-type)</h3>
+      <p>Select the single best option from 4–5 choices. Options need not be wholly wrong — they are ranked on a single continuum from "least correct" to "most correct." This format best assesses clinical judgment, synthesis, and application.</p>
+      <h4>Advantages</h4>
+      <ul>
+        <li>Assesses judgment and reasoning, not just recall</li>
+        <li>Distractors don't need to be completely false</li>
+        <li>Same stem can support multiple lead-ins (diagnosis + management)</li>
+        <li>Currently the only format used on USMLE/NBME exams</li>
+      </ul>
+    </div>
+
+    <div class="card bad">
+      <h3><span class="label label-bad">AVOID IF POSSIBLE</span>True-False Family</h3>
+      <p>Test-takers must select all "true" options. Requires absolute true/false judgments — any ambiguity collapses the item. Reviewers alter answer keys far more frequently than for one-best-answer items.</p>
+      <h4>Pitfalls</h4>
+      <ul>
+        <li>Forces recall of isolated facts rather than application</li>
+        <li>True/false distinctions are often ambiguous among experts</li>
+        <li>Test-takers must guess the item writer's intent</li>
+        <li>Frequently rewritten or discarded after review</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5 Core Rules -->
+  <div class="sec"><h2>The Five Core Rules</h2><span class="tag">Ch.5</span></div>
+
+  <div class="tracker">
+    <h3>Item Writing Workflow</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">Testing Point</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Vignette</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Lead-in</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-label">Options</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-label">Flaw Review</div></div>
+    </div>
+  </div>
+
+  <div class="card rule">
+    <h3><span class="label label-rule">Rule 1</span>Focus on an Important Concept</h3>
+    <p>Every item must trace back to a specific testing point on the exam blueprint. Ask: <em>"What do I want test-takers to be able to do at the next stage of their training?"</em> Avoid trivia. Prioritise common presentations and potentially catastrophic conditions.</p>
+  </div>
+
+  <div class="card rule">
+    <h3><span class="label label-rule">Rule 2</span>Assess Application, Not Isolated Recall</h3>
+    <p>Recall items ask: <em>"What is the treatment for disease X?"</em> — answerable from a single textbook paragraph. Application items require identifying relevant findings, integrating them, and reaching a decision. Use a clinical or experimental vignette to force this higher-order thinking.</p>
+    <div class="grid-2" style="margin-top:0.8rem;">
+      <div class="example eg-bad">
+        <div class="example-label">Recall — Avoid</div>
+        <p>Which of the following medications is used to decrease preload in systolic heart failure?</p>
+      </div>
+      <div class="example eg-good">
+        <div class="example-label">Application — Preferred</div>
+        <p>A 58-year-old man with a 3-week history of exertional dyspnoea and bilateral ankle oedema… [full vignette] …Which of the following is the most appropriate initial management?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rule">
+    <h3><span class="label label-rule">Rule 3</span>Closed, Focused Lead-in ("Cover-the-Options" Rule)</h3>
+    <p>The lead-in must be a single, clear, closed question. After reading the vignette and lead-in, a knowledgeable test-taker should be able to <strong>cover the options and answer correctly</strong>. This is the single most reliable indicator of a well-written item.</p>
+  </div>
+
+  <div class="card rule">
+    <h3><span class="label label-rule">Rule 4</span>Homogeneous and Plausible Options</h3>
+    <p>All options — including distractors — must address the lead-in in the same manner, belong to the same category, and be ranked on a single dimension from least to most correct. Distractors must be plausible enough to attract test-takers who don't know the answer.</p>
+  </div>
+
+  <div class="card rule">
+    <h3><span class="label label-rule">Rule 5</span>Review for Technical Flaws</h3>
+    <p>After drafting, step back and read critically. Remove any structural flaw that adds irrelevant difficulty or gives away the answer. Ask a colleague to review for content accuracy and structural integrity before finalising.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 1 — VIGNETTES & LEAD-INS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-vignette">
+
+  <div class="sec"><h2>Constructing the Clinical Vignette</h2><span class="tag">Ch.6</span></div>
+  <p class="intro">The vignette is the engine of the item. A rich, authentic clinical scenario forces the test-taker to synthesise information — distinguishing those who know the material from those who are merely familiar with the facts.</p>
+
+  <div class="card note">
+    <h3><span class="label label-note">Template</span>Standard Vignette Structure</h3>
+    <p>Present elements in this order. Not all are required — include only those relevant to the testing point.</p>
+    <ol style="margin-top:0.6rem;">
+      <li><strong>Age, gender</strong> (self-identified where relevant)</li>
+      <li><strong>Site of care</strong> (office, ED, inpatient ward, clinic)</li>
+      <li><strong>Chief concern / presenting symptom</strong></li>
+      <li><strong>Duration of symptoms</strong></li>
+      <li><strong>Relevant history</strong> — past medical, family, psychosocial, medications, allergies</li>
+      <li><strong>Physical examination findings</strong></li>
+      <li><strong>Laboratory / diagnostic study results</strong></li>
+      <li><strong>Initial treatment and subsequent findings</strong> (for management items)</li>
+    </ol>
+  </div>
+
+  <div class="sec"><h2>Vignette Length and Window Dressing</h2></div>
+
+  <div class="grid-2">
+    <div class="card good">
+      <h3><span class="label label-good">APPROPRIATE</span>Necessary Complexity</h3>
+      <p>Longer vignettes that require test-takers to sift relevant from irrelevant information are <strong>valid and intentional</strong> — they mirror real clinical reasoning. Including some window dressing (incidental findings) is acceptable and authentic.</p>
+      <p style="margin-top:0.5rem;">Use: <em>"The family history is noncontributory"</em> to efficiently dispose of irrelevant details rather than omitting them entirely.</p>
+    </div>
+    <div class="card bad">
+      <h3><span class="label label-bad">AVOID</span>Red Herrings and Pure Verbosity</h3>
+      <p>Do not include information designed to deliberately mislead (red herrings) or information that serves no purpose other than increasing reading time. Every sentence should either support the correct answer or make a distractor more plausible.</p>
+      <p style="margin-top:0.5rem;">Avoid basing items too closely on real patients — real cases have atypical features that confuse introductory learners.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Effect of Vignette Length on Performance</h2></div>
+
+  <div class="card note">
+    <h3>Research Finding — Vignette Depth Separates Competence Levels</h3>
+    <p>NBME data on the same testing point across three formats shows clearly that longer vignettes expose the gap between strong and weak performers:</p>
+    <div class="tbl-wrap" style="margin-top:0.8rem;">
+      <table class="dt">
+        <thead><tr><th>Format</th><th>High Group (Top 20%)</th><th>Low Group (Bottom 20%)</th><th>Conclusion</th></tr></thead>
+        <tbody>
+          <tr><td>No vignette</td><td>99%</td><td>90%</td><td>Minimal discrimination — recall only</td></tr>
+          <tr><td>Short vignette</td><td>98%</td><td>82%</td><td>Moderate discrimination</td></tr>
+          <tr><td>Long vignette</td><td>98%</td><td>66%</td><td>Strong discrimination — best for summative exams</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:0.5rem;"><strong>Implication:</strong> For summative, high-stakes assessments, longer clinical vignettes are preferable. For formative in-class quizzes, shorter formats are acceptable.</p>
+  </div>
+
+  <!-- Patient Characteristics -->
+  <div class="sec"><h2>Patient Characteristics — Inclusive and Unbiased Vignettes</h2><span class="tag">Ch.6 · NBME 2024</span></div>
+
+  <div class="box warn">
+    <div class="box-title">Core Principle</div>
+    <p>Patient characteristics (PC) — including sex/gender identity, race/ethnicity, sexual orientation, disability, and socioeconomic status — should be included thoughtfully. They must <strong>never reinforce stereotypes</strong> or cue the correct answer. Always report gender and race/ethnicity as <strong>self-identified</strong>.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card good">
+      <h3><span class="label label-good">Include PCs When</span></h3>
+      <ul>
+        <li>They are clinically relevant to the diagnosis or distractor quality</li>
+        <li>Omitting them would make the item unreasonably difficult</li>
+        <li>They add to exam-level representativeness (even if not clinically essential)</li>
+        <li>Geographic/demographic data is necessary for reasoning (e.g., infectious disease endemic areas)</li>
+      </ul>
+    </div>
+    <div class="card bad">
+      <h3><span class="label label-bad">Omit or Change PCs When</span></h3>
+      <ul>
+        <li>The PC cues too strongly to the diagnosis (e.g., Swedish patient + sarcoidosis)</li>
+        <li>Including the PC perpetuates racial or ethnic stereotypes</li>
+        <li>The condition occurs across multiple populations with similar frequency</li>
+        <li>The PC is not needed for clinical reasoning and risks bias</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Lead-ins -->
+  <div class="sec"><h2>Writing the Lead-in</h2></div>
+
+  <div class="card rule">
+    <h3>The Lead-in Must Be a Single, Closed Question</h3>
+    <p>A closed lead-in ends in a question mark and specifies exactly what is being asked. An open lead-in (e.g., "The diagnosis in this patient is:") forces test-takers to search options before they know what they're looking for.</p>
+    <div class="grid-2" style="margin-top:0.8rem;">
+      <div class="example eg-bad">
+        <div class="example-label">Open Lead-in — Avoid</div>
+        <p>The diagnosis in this patient is:</p>
+        <p style="margin-top:0.4rem;">The most appropriate management would be:</p>
+      </div>
+      <div class="example eg-good">
+        <div class="example-label">Closed Lead-in — Preferred</div>
+        <p>Which of the following is the most likely diagnosis?</p>
+        <p style="margin-top:0.4rem;">Which of the following is the most appropriate initial management?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>High-Yield Lead-in Phrases by Competency</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Competency</th><th>Sample Lead-in Phrases</th></tr></thead>
+      <tbody>
+        <tr><td>Diagnosis</td><td>Which of the following is the most likely diagnosis? / Which of the following is the most likely working diagnosis?</td></tr>
+        <tr><td>Mechanism / Foundational Science</td><td>Which of the following is the most likely cause/mechanism? / Which of the following is the most likely explanation for these findings?</td></tr>
+        <tr><td>Diagnostic Studies</td><td>Which of the following is the most appropriate diagnostic study at this time? / Which of the following laboratory studies is most likely to confirm the diagnosis?</td></tr>
+        <tr><td>Management</td><td>Which of the following is the most appropriate initial management? / Which of the following is the most appropriate pharmacotherapy?</td></tr>
+        <tr><td>Prognosis / Complications</td><td>Which of the following is the most likely complication? / Based on these findings, this patient is most likely to develop which of the following?</td></tr>
+        <tr><td>Prevention / Screening</td><td>Which of the following is the most appropriate screening test? / Which of the following is most likely to have prevented this patient's condition?</td></tr>
+        <tr><td>Communication / Ethics</td><td>Which of the following is the most appropriate provider response? / Which of the following is the most appropriate next step?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 2 — WRITING OPTIONS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-options">
+
+  <div class="sec"><h2>Principles of Option Construction</h2><span class="tag">Ch.5–6</span></div>
+  <p class="intro">Options are where most item flaws originate. The correct answer requires equal craftsmanship as the distractors — in many ways the distractors are harder to write well.</p>
+
+  <div class="box key">
+    <div class="box-title">The Options Must Be</div>
+    <ul>
+      <li><strong>Homogeneous</strong> — all in the same category, rankable on a single dimension</li>
+      <li><strong>Plausible</strong> — distractors must genuinely attract those who don't know the answer</li>
+      <li><strong>Parallel</strong> — same grammatical structure and approximately equal length</li>
+      <li><strong>Clear</strong> — no vague frequency terms, no absolute terms, no ambiguous language</li>
+      <li><strong>Closed</strong> — all options should follow grammatically from the lead-in</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>Anatomy of a Well-Built Option Set</h2></div>
+
+  <div class="card good">
+    <h3><span class="label label-good">CORRECT</span>Homogeneous Options on a Single Dimension</h3>
+    <div class="vignette">A 58-year-old man with type 2 diabetes, hypertension, and hyperlipidaemia presents with a 3-day history of right knee pain. The synovial fluid is cloudy, contains positively birefringent crystals, and Gram stain is negative. X-ray shows chondrocalcinosis. Which of the following is the most appropriate pharmacotherapy?</div>
+    <div class="lead-in">Options (all are pharmacotherapy → homogeneous):</div>
+    <ul class="options">
+      <li>A. Allopurinol</li>
+      <li class="correct">B. Ibuprofen ✓ <span class="why">// pseudogout = NSAIDs</span></li>
+      <li>C. Betamethasone</li>
+      <li>D. Infliximab</li>
+      <li>E. Levofloxacin</li>
+    </ul>
+    <p style="margin-top:0.7rem; font-size:0.83rem; color:var(--ink-soft);">All five options are medications — they answer the lead-in in exactly the same way. A knowledgeable test-taker can cover the options and identify "an NSAID" before seeing the list.</p>
+  </div>
+
+  <div class="card bad">
+    <h3><span class="label label-bad">FLAWED</span>Heterogeneous Options — Multiple Dimensions</h3>
+    <div class="lead-in">Which of the following is true about pseudogout?</div>
+    <ul class="options">
+      <li class="wrong">A. It is clearly hereditary in most cases <span class="why">// inheritance dimension</span></li>
+      <li class="wrong">B. It is seldom associated with acute pain <span class="why">// associations dimension</span></li>
+      <li>C. It may be associated with chondrocalcinosis <span class="why">// associations dimension</span></li>
+      <li class="wrong">D. It occurs frequently in women <span class="why">// gender dimension</span></li>
+      <li class="wrong">E. It responds well to allopurinol <span class="why">// treatment dimension</span></li>
+    </ul>
+    <p style="margin-top:0.7rem; font-size:0.83rem; color:var(--ink-soft);">The options span four different dimensions. A test-taker must decide whether "hereditary" is more or less true than "responds to allopurinol" — an impossible comparison.</p>
+  </div>
+
+  <!-- Distractor writing -->
+  <div class="sec"><h2>Writing Effective Distractors</h2></div>
+
+  <div class="grid-2">
+    <div class="card note">
+      <h3>Start with the Correct Answer</h3>
+      <p>Generate the keyed answer first, then build distractors that are plausible alternatives within the same category. For a diagnosis item (e.g., correct = community-acquired pneumonia), reasonable distractors include pulmonary embolism, lung cancer, and pneumothorax — not unrelated conditions.</p>
+    </div>
+    <div class="card note">
+      <h3>Distractors Need Not Be Wholly Wrong</h3>
+      <p>In one-best-answer format, distractors are "less correct" than the keyed answer — they sit lower on the same dimension. This makes items fairer and harder to write, but correctly separates those who understand gradations from those who only recognise extremes.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Language Precision in Options</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Avoid</th><th>Why</th><th>Instead</th></tr></thead>
+      <tbody>
+        <tr><td>"Is associated with"</td><td>Imprecise — almost anything is associated with almost anything</td><td>Specific causal or mechanistic language</td></tr>
+        <tr><td>"Usually," "often," "frequently"</td><td>Interpreted differently by different people; creates ambiguity</td><td>Quantify: "in &gt;50% of cases" or restructure the option</td></tr>
+        <tr><td>"Always," "never"</td><td>Absolute terms are almost always wrong; testwise examinees eliminate them</td><td>Remove absolute terms; restructure the lead-in</td></tr>
+        <tr><td>"May," "could be," "might"</td><td>Cueing language — almost anything "may" be true</td><td>Commit to specific, definitive statements</td></tr>
+        <tr><td>"None of the above"</td><td>Converts item to true-false; allows guessing outside the option set</td><td>Replace with a specific fifth option or "No intervention is indicated"</td></tr>
+        <tr><td>Open-ended options (e.g., "Treat the underlying cause")</td><td>Vague; multiple options could qualify</td><td>Name the specific treatment or intervention</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- F-type sets -->
+  <div class="sec"><h2>Sequential Item Sets (F-type)</h2><span class="tag">Ch.6</span></div>
+
+  <div class="card rule">
+    <h3>Rules for Writing F-type Sets</h3>
+    <p>F-type sets present 2–3 items around an unfolding clinical scenario. Test-takers cannot return to earlier items once they advance.</p>
+    <h4>Three Rules</h4>
+    <ol>
+      <li><strong>Include enough clinical richness upfront</strong> to support the case as it unfolds — don't introduce the key information only in later scenarios.</li>
+      <li><strong>Advance the case in time</strong> and provide updated patient information to restore context between items.</li>
+      <li><strong>Imply a response to the previous item</strong> but do not turn the next item into a pure recall question — the next clinical decision must still require reasoning.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 3 — TECHNICAL FLAWS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-flaws">
+
+  <div class="sec"><h2>Two Categories of Technical Flaws</h2><span class="tag">Ch.3</span></div>
+  <p class="intro">Technical flaws undermine the validity of every item they appear in. They shift what the item measures — from content knowledge to reading ability, test-taking skill, or luck. There are exactly two categories.</p>
+
+  <div class="grid-2">
+    <div class="card bad">
+      <h3><span class="label label-bad">Category 1</span>Flaws Adding Irrelevant Difficulty</h3>
+      <p>These confuse <strong>all test-takers</strong>, adding construct-irrelevant variance to scores. They make items harder for reasons unrelated to the testing point — often affecting weak and strong students equally.</p>
+    </div>
+    <div class="card bad">
+      <h3><span class="label label-bad">Category 2</span>Flaws Cueing the Testwise Examinee</h3>
+      <p>These help <strong>savvy test-takers</strong> guess correctly without knowing the content. They inflate scores for students who have learned structural test-taking strategies rather than the clinical content.</p>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Flaw Reference — Click to Expand</h2></div>
+
+  <!-- CATEGORY 1: IRRELEVANT DIFFICULTY -->
+  <p style="font-size:0.72rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.6rem;">Category 1 — Irrelevant Difficulty</p>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Long or Complex Options<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Overly long options increase reading load, shifting what is measured from content knowledge to reading speed. This flaw applies to <em>options only</em> — a long vignette is acceptable and often desirable.</p>
+      <p><strong>Fix:</strong> Move common text into the stem. Use parallel construction. Shorten options to the minimum necessary phrase. Options should ideally be 1–5 words.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed</div>
+        <p>A. Reasonable and timely notice, an impartial panel empowered to make a decision, a chance to hear evidence and to confront witnesses, and the ability to present evidence in defence</p>
+      </div>
+      <div class="example eg-good" style="margin-top:0.5rem;">
+        <div class="example-label">Improved</div>
+        <p>A. Timely notice and an impartial hearing panel</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Vague Frequency Terms<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Words like "often," "usually," "frequently," and "sometimes" are interpreted differently by different readers — even content experts. This creates multiple defensible answers and makes the keyed answer arbitrary.</p>
+      <p><strong>Fix:</strong> Replace vague qualifiers with specific figures (e.g., "&gt;60% of cases") or restructure the option so no qualifier is needed.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed Options</div>
+        <p>A. Often is related to endocrine disorders &nbsp;·&nbsp; D. Usually responds dramatically to dietary regimens &nbsp;·&nbsp; E. Usually responds to pharmacotherapy</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Inconsistent Numeric Data<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Mixing numeric formats (ranges vs. specific values) or listing ranges that overlap or contain other options creates logical impossibilities and allows elimination of options without content knowledge.</p>
+      <p><strong>Fix:</strong> Use a single consistent format (all ranges or all specific values). List numbers in ascending order. Ensure no range contains another option as a specific value.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — Mixed formats + overlap</div>
+        <p>A. Less than 20% &nbsp;·&nbsp; B. 20 to 30% &nbsp;·&nbsp; C. Greater than 50% &nbsp;·&nbsp; D. 75% &nbsp;·&nbsp; E. 90%</p>
+        <p style="font-size:0.8rem; color:var(--red); margin-top:0.4rem;">Options D and E fall within C — a testwise student eliminates D and E immediately.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Complicated / Trick Stems<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Stems that ask test-takers to rank multiple items using Roman numerals, perform multiple sequential logical operations, or interpret confusingly encoded information add cognitive load unrelated to clinical knowledge.</p>
+      <p><strong>Fix:</strong> Reduce to a single decision point. Put the ranked/enumerated options in the option set itself. Focus on the single most important clinical judgement.</p>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Negatively Phrased Lead-ins (EXCEPT)<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> "Each of the following is true EXCEPT:" reverses the cognitive task. Test-takers who are accustomed to positive phrasing frequently miss the negative qualifier, even when it is bolded or capitalised.</p>
+      <p><strong>Fix:</strong> Rephrase positively. If testing knowledge of what is <em>not</em> indicated, use an active positive lead-in: "Which of the following is <strong>contraindicated</strong> in this patient?"</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed</div>
+        <p>Each of the following statements about cholesterol is true EXCEPT:</p>
+      </div>
+      <div class="example eg-good" style="margin-top:0.5rem;">
+        <div class="example-label">Improved</div>
+        <p>Which of the following statements about cholesterol is <strong>incorrect</strong>?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Nonparallel Options<span class="flaw-type irrel" style="margin-left:0.6rem;">Irrelevant Difficulty</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Options that differ in grammatical structure, level of specificity, or format force test-takers to perform additional cognitive work to compare them — work that is irrelevant to the testing point.</p>
+      <p><strong>Fix:</strong> Edit all options to the same grammatical form, similar length, and consistent level of detail. All options should complete the lead-in in the same way.</p>
+    </div>
+  </div>
+
+  <!-- CATEGORY 2: CUEING -->
+  <p style="font-size:0.72rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin:1.5rem 0 0.6rem;">Category 2 — Cueing the Testwise Examinee</p>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Grammatical Cues<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> An option that does not follow grammatically from the lead-in is immediately eliminated by a testwise student. This occurs when item writers focus on crafting the correct answer and write distractors hastily.</p>
+      <p><strong>Fix:</strong> Read every option aloud as a continuation of the lead-in. Use closed lead-ins — they prevent grammatical mismatches by forcing all options to complete the same sentence.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — Lead-in ends in "an:"</div>
+        <p>Lead-in: "Her diagnosis is most likely to be an:"<br>
+        A. asthma attack ✓ &nbsp;·&nbsp; B. costochondritis ✗ &nbsp;·&nbsp; C. pleurisy ✗<br>
+        <span style="color:var(--red); font-size:0.8rem;">Only option A follows grammatically ("an asthma attack").</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Word Repetition — "Clang Clues"<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> When a word from the vignette appears in only one option, that option is cued as the correct answer — even etymologically (e.g., "bone pain" in the stem + "osteitis" in one option).</p>
+      <p><strong>Fix:</strong> Scan every option for words that echo the vignette. Either remove the repeated word from the option or include it in <strong>all</strong> options.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — "unreal" in stem, "real" in only one option</div>
+        <p>Stem: "…experiencing the world as <strong>unreal</strong>."<br>
+        A. Depersonalisation &nbsp;·&nbsp; B. Derailment &nbsp;·&nbsp; <span style="color:var(--red)">C. Dere<strong>al</strong>isation ← cued</span> &nbsp;·&nbsp; D. Focal memory deficit</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Correct Answer Stands Out<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> The correct answer is noticeably longer than distractors, contains two components, or includes parenthetical teaching notes. Item writers often over-elaborate the correct answer because they want to explain it.</p>
+      <p><strong>Fix:</strong> Review all options for length consistency. Strip instructional caveats and parenthetical information from the correct option. The rationale belongs in an answer key, not the question.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — Option A is conspicuously longer</div>
+        <p>A. A complication of a variety of illnesses and tends to prolong many (&gt;3) of them ← correct<br>
+        B. A frequent problem in obsessive-compulsive disorder<br>
+        C. Never seen in organic brain damage<br>
+        D. Synonymous with malingering</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Collectively Exhaustive Options<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> A subset of options covers all logically possible outcomes. A testwise student identifies this subset, eliminates the non-subset options, and narrows to a 1-in-3 guess without any content knowledge.</p>
+      <p><strong>Fix:</strong> Replace at least one option in the exhaustive subset with a different type of option. When revising, confirm no new exhaustive subset is created.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — Options A, B, D are collectively exhaustive</div>
+        <p>Administration of furosemide results in:<br>
+        A. a decrease in urine potassium &nbsp;·&nbsp; <span style="color:var(--green)">B. an increase in urine potassium ✓</span> &nbsp;·&nbsp; C. improved glucose control &nbsp;·&nbsp; D. no change in urine potassium &nbsp;·&nbsp; E. requires decreasing dose with renal failure<br>
+        <span style="color:var(--red); font-size:0.8rem;">Urine K can only increase, decrease, or stay the same → one of A, B, or D must be correct. C and E are distractors without merit.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Absolute Terms in Options<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> Options containing "always" or "never" are almost always incorrect in medicine. Testwise students immediately eliminate them, reducing the effective option set.</p>
+      <p><strong>Fix:</strong> Remove absolute terms. Move the verb into the closed lead-in and use short, parallel options without modifiers.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed</div>
+        <p>C. is <strong>never</strong> seen in patients with neurofibrillary tangles at autopsy<br>
+        D. is <strong>never</strong> severe<br>
+        <span style="color:var(--red); font-size:0.8rem;">Both eliminated immediately by any testwise examinee.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flaw-item">
+    <button class="flaw-trigger" onclick="toggleFlaw(this)">
+      <span>Convergence<span class="flaw-type cue" style="margin-left:0.6rem;">Cueing Flaw</span></span>
+      <span class="flaw-arrow">▶</span>
+    </button>
+    <div class="flaw-body">
+      <p><strong>Problem:</strong> The correct answer is the option with the most elements in common with other options. Because item writers often write distractors as permutations of the correct answer, the keyed answer ends up being the "most average" option — identifiable by counting term frequencies.</p>
+      <p><strong>Fix:</strong> Review all options and count how many times each unique term appears. Balance term distribution so no option is distinguishable purely by frequency of shared language.</p>
+      <div class="example eg-bad" style="margin-top:0.8rem;">
+        <div class="example-label">Flawed — Testwise student counts "inside" appears 3×, "cationic" appears 2×</div>
+        <p>A. anionic, inside &nbsp;·&nbsp; <span style="color:var(--green)">B. cationic, inside ✓</span> &nbsp;·&nbsp; C. cationic, outside &nbsp;·&nbsp; D. uncharged, inside &nbsp;·&nbsp; E. uncharged, outside</p>
+        <p style="color:var(--red); font-size:0.8rem; margin-top:0.3rem;">3/5 options say "inside" → correct answer is likely in that group. 2/5 say "cationic" → converges on B.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary table -->
+  <div class="sec"><h2>Quick Reference — Flaws and Fixes</h2></div>
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Flaw</th><th>Category</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td>Long/complex options</td><td>Irrelevant difficulty</td><td>Move common text to stem; shorten to parallel phrases</td></tr>
+        <tr><td>Vague terms (often, usually)</td><td>Irrelevant difficulty</td><td>Quantify or restructure; avoid frequency qualifiers</td></tr>
+        <tr><td>Inconsistent numeric data</td><td>Irrelevant difficulty</td><td>Consistent format; ascending order; no overlapping ranges</td></tr>
+        <tr><td>Complicated stem (Roman numerals)</td><td>Irrelevant difficulty</td><td>Reduce to single decision; put options in option set</td></tr>
+        <tr><td>Negatively phrased lead-in (EXCEPT)</td><td>Irrelevant difficulty</td><td>Rephrase positively (e.g., "contraindicated")</td></tr>
+        <tr><td>Nonparallel options</td><td>Irrelevant difficulty</td><td>Edit all options to same grammatical form and length</td></tr>
+        <tr><td>"None of the above"</td><td>Irrelevant difficulty</td><td>Replace with specific fifth option</td></tr>
+        <tr><td>Grammatical cues</td><td>Cueing</td><td>Use closed lead-ins; read each option after the lead-in</td></tr>
+        <tr><td>Clang clues (word repetition)</td><td>Cueing</td><td>Remove repeated word or use it in all options</td></tr>
+        <tr><td>Correct answer stands out</td><td>Cueing</td><td>Equalise option length; remove teaching rationales</td></tr>
+        <tr><td>Collectively exhaustive subset</td><td>Cueing</td><td>Replace one option in the exhaustive subset</td></tr>
+        <tr><td>Absolute terms (always/never)</td><td>Cueing</td><td>Eliminate; move verb to closed lead-in</td></tr>
+        <tr><td>Convergence</td><td>Cueing</td><td>Balance frequency of repeated terms across all options</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 4 — ITEM ANALYSIS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-analysis">
+
+  <div class="sec"><h2>Using Item Analysis Data</h2><span class="tag">Ch.4</span></div>
+  <p class="intro">After administration, every item can be evaluated statistically. Item analysis provides objective evidence about whether an item worked as intended — and flags problems that expert review may have missed.</p>
+
+  <div class="grid-2">
+    <div class="card note">
+      <h3>P-value (Item Difficulty)</h3>
+      <p>The proportion of all test-takers who answered correctly. A higher p-value = easier item.</p>
+      <h4>Interpretation Guide</h4>
+      <ul>
+        <li><strong>p &gt; 0.95:</strong> Too easy — little discriminating power; consider revision</li>
+        <li><strong>p = 0.50–0.80:</strong> Ideal range for most assessments</li>
+        <li><strong>p &lt; 0.30:</strong> Very difficult — review for miskeying or structural flaws</li>
+        <li><strong>Very low p + negative discrimination:</strong> Almost certainly miskeyed</li>
+      </ul>
+      <p style="margin-top:0.5rem;">Always compare the observed p-value to your expectation. A mismatch signals something unexpected is happening in the item.</p>
+    </div>
+
+    <div class="card note">
+      <h3>Discrimination Index (Item-Total Correlation)</h3>
+      <p>Correlation between performance on the item and performance on the overall test. Ranges from −1.0 to +1.0.</p>
+      <h4>Interpretation Guide</h4>
+      <ul>
+        <li><strong>Positive (+0.2 or higher):</strong> Item discriminates well — high performers answered correctly more often</li>
+        <li><strong>Near zero:</strong> Item measures something unrelated to overall test construct</li>
+        <li><strong>Negative:</strong> Low performers answered correctly more than high performers — likely miskeyed, or flaw benefiting guessing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Option Analysis — Reading the Data</h2></div>
+
+  <div class="card rule">
+    <h3>What to Look for in Each Option</h3>
+    <ul>
+      <li><strong>Was any option never selected?</strong> → Not plausible enough; rewrite as a more attractive distractor</li>
+      <li><strong>Was a distractor selected more often than the key?</strong> → Likely miskeyed, or the item has two defensible answers</li>
+      <li><strong>Did High performers choose a distractor more than Low performers?</strong> → That distractor may be more correct than the key</li>
+      <li><strong>Are Low performers spread evenly across distractors?</strong> → Healthy pattern — they are guessing genuinely</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>Worked Examples — Five Common Scenarios</h2></div>
+
+  <!-- Item 1 -->
+  <div class="card bad">
+    <h3><span class="label label-bad">Pattern 1</span>Miskeyed Item</h3>
+    <div class="tbl-wrap">
+      <table class="analysis-table">
+        <thead><tr><th>Group</th><th>A</th><th>B* (keyed)</th><th>C</th><th>D</th><th>E</th></tr></thead>
+        <tbody>
+          <tr><td>High (top 25%)</td><td>1</td><td class="problem">1</td><td class="good-val">91</td><td>4</td><td>1</td></tr>
+          <tr><td>Low (bottom 25%)</td><td>20</td><td>6</td><td>51</td><td>14</td><td>6</td></tr>
+          <tr><td>Total</td><td>9</td><td class="problem">2</td><td>76</td><td>8</td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>p-value: 2 &nbsp;·&nbsp; Discrimination: −0.21</strong></p>
+    <p style="margin-top:0.5rem;"><strong>Diagnosis:</strong> Classic miskeying pattern. Only 2% answered the keyed answer (B); 91% of high performers chose C. The correct answer is almost certainly C. Rekeying to C gives p = 76, discrimination = +0.40. No further revision needed before using.</p>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="card good">
+    <h3><span class="label label-good">Pattern 2</span>Well-Functioning Item</h3>
+    <div class="tbl-wrap">
+      <table class="analysis-table">
+        <thead><tr><th>Group</th><th>A</th><th>B</th><th>C* (keyed)</th><th>D</th><th>E</th></tr></thead>
+        <tbody>
+          <tr class="key-row"><td>High (top 25%)</td><td>0</td><td>1</td><td class="good-val">90</td><td>3</td><td>3</td></tr>
+          <tr><td>Low (bottom 25%)</td><td>0</td><td>1</td><td class="good-val">60</td><td>25</td><td>8</td></tr>
+          <tr><td>Total</td><td>0</td><td>1</td><td>74</td><td>12</td><td>7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>p-value: 74 &nbsp;·&nbsp; Discrimination: +0.33</strong></p>
+    <p style="margin-top:0.5rem;"><strong>Diagnosis:</strong> Excellent item. Appropriate difficulty, strong discrimination. Options A and B attract almost no one — consider rewriting them to be more plausible distractors, though be aware this may shift difficulty unpredictably.</p>
+  </div>
+
+  <!-- Item 3 -->
+  <div class="card warn">
+    <h3><span class="label label-warn">Pattern 3</span>Difficult Item — Possible Second Answer</h3>
+    <div class="tbl-wrap">
+      <table class="analysis-table">
+        <thead><tr><th>Group</th><th>A</th><th>B</th><th>C* (keyed)</th><th>D</th><th>E</th></tr></thead>
+        <tbody>
+          <tr><td>High (top 25%)</td><td class="problem">44</td><td>1</td><td>50</td><td>2</td><td>1</td></tr>
+          <tr><td>Low (bottom 25%)</td><td>20</td><td>15</td><td>21</td><td>22</td><td>20</td></tr>
+          <tr><td>Total</td><td>32</td><td>7</td><td>34</td><td>14</td><td>11</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>p-value: 34 &nbsp;·&nbsp; Discrimination: +0.30</strong></p>
+    <p style="margin-top:0.5rem;"><strong>Diagnosis:</strong> 44% of High performers chose option A rather than the key (C). This is a red flag — A may be defensible as a correct answer. A content expert should review before scoring. If the key is confirmed correct, A needs revision to be clearly wrong.</p>
+  </div>
+
+  <!-- Item 4 -->
+  <div class="card note">
+    <h3><span class="label label-note">Pattern 4</span>Difficult but Structurally Sound</h3>
+    <div class="tbl-wrap">
+      <table class="analysis-table">
+        <thead><tr><th>Group</th><th>A</th><th>B</th><th>C* (keyed)</th><th>D</th><th>E</th></tr></thead>
+        <tbody>
+          <tr><td>High (top 25%)</td><td>18</td><td>10</td><td>51</td><td>17</td><td>2</td></tr>
+          <tr><td>Low (bottom 25%)</td><td>24</td><td>24</td><td>21</td><td>25</td><td>4</td></tr>
+          <tr><td>Total</td><td>22</td><td>17</td><td>34</td><td>22</td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>p-value: 34 &nbsp;·&nbsp; Discrimination: +0.30</strong></p>
+    <p style="margin-top:0.5rem;"><strong>Diagnosis:</strong> Same difficulty as Pattern 3 but healthier structure. Low performers are spread fairly evenly across distractors — they are genuinely guessing. High performers correctly choose C at 51% vs. only 21% of Low performers. Good discrimination; content review still warranted for distractors A, B, and D.</p>
+  </div>
+
+  <!-- Item 5 -->
+  <div class="card bad">
+    <h3><span class="label label-bad">Pattern 5</span>Two Correct Answers / Structural Flaw</h3>
+    <div class="tbl-wrap">
+      <table class="analysis-table">
+        <thead><tr><th>Group</th><th>A</th><th>B</th><th>C</th><th>D* (keyed)</th><th>E</th></tr></thead>
+        <tbody>
+          <tr><td>High (top 25%)</td><td>10</td><td class="problem">43</td><td>5</td><td>40</td><td>2</td></tr>
+          <tr><td>Low (bottom 25%)</td><td>23</td><td class="problem">36</td><td>12</td><td>26</td><td>3</td></tr>
+          <tr><td>Total</td><td>17</td><td class="problem">43</td><td>7</td><td>31</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>p-value: 31 &nbsp;·&nbsp; Discrimination: −0.09</strong></p>
+    <p style="margin-top:0.5rem;"><strong>Diagnosis:</strong> Both High and Low performers prefer option B over the keyed answer D. Classic two-correct-answers pattern. Do <strong>not</strong> score this item until a content expert resolves the conflict. The item should be either rekeyed to B, revised to make D clearly superior, or withdrawn.</p>
+  </div>
+
+  <div class="box warn" style="margin-top:1rem;">
+    <div class="box-title">Action Decision Tree</div>
+    <ul>
+      <li><strong>Low p + negative discrimination:</strong> Check keying first. Likely miskeyed → rekey and re-check.</li>
+      <li><strong>High p + positive discrimination:</strong> Item is functioning well → keep, consider rewriting weak distractors.</li>
+      <li><strong>High performers favour a distractor:</strong> Possible second correct answer → expert review before scoring.</li>
+      <li><strong>Near-zero discrimination:</strong> Item measuring a different construct, or structural flaw → review and revise.</li>
+      <li><strong>Option never selected:</strong> Implausible distractor → rewrite to be more attractive.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 5 — CHECKLIST
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-checklist">
+
+  <div class="sec"><h2>Pre-Submission Item Quality Checklist</h2><span class="tag">Appendix A · NBME 2024</span></div>
+  <p class="intro">Use this checklist before finalising any item. For each question, check every element systematically. Having a colleague independently apply the same checklist identifies blind spots the item writer cannot see.</p>
+
+  <!-- Vignette -->
+  <div class="card note">
+    <h3>Vignette Quality</h3>
+    <ul class="checklist">
+      <li>The vignette contains <strong>all information needed</strong> to answer the question — nothing essential is deferred to the options</li>
+      <li>The structure follows the standard order: demographics → symptoms → history → examination → investigations → treatment</li>
+      <li>Every sentence either supports the correct answer or makes a distractor more plausible</li>
+      <li>No "red herrings" designed purely to mislead — window dressing is acceptable; deliberate traps are not</li>
+      <li>The vignette is <strong>clinically authentic</strong> — the presentation would be encountered in practice</li>
+      <li>Patient characteristics (age, gender, ethnicity) are included appropriately and do not cue the diagnosis unless clinically essential</li>
+      <li>Gender and race/ethnicity are reported as <strong>self-identified</strong></li>
+      <li>The vignette represents a level of complexity appropriate to the test-taker population</li>
+    </ul>
+  </div>
+
+  <!-- Lead-in -->
+  <div class="card rule">
+    <h3>Lead-in Quality</h3>
+    <ul class="checklist">
+      <li>The lead-in is a <strong>single, closed question</strong> ending with a question mark</li>
+      <li><strong>"Cover-the-options" test passes:</strong> a knowledgeable test-taker can answer without seeing the option set</li>
+      <li>The lead-in is <strong>positively phrased</strong> — no "EXCEPT," "NOT," or other negative qualifiers</li>
+      <li>The lead-in does not contain open-ended phrasing (e.g., "The diagnosis in this patient is:")</li>
+      <li>The lead-in contains an active verb specifying the clinical task (diagnose, manage, investigate, etc.)</li>
+    </ul>
+  </div>
+
+  <!-- Options -->
+  <div class="card rule">
+    <h3>Option Set Quality</h3>
+    <ul class="checklist">
+      <li>All options are <strong>homogeneous</strong> — they all belong to the same category and address the lead-in in the same way</li>
+      <li>All options are <strong>plausible</strong> — each one could attract a test-taker who doesn't know the answer</li>
+      <li>All options are <strong>parallel</strong> in grammatical structure and approximately equal in length</li>
+      <li>The correct answer is <strong>not longer</strong> than distractors and contains no teaching parentheticals</li>
+      <li>Numeric options are in a <strong>single consistent format</strong> (all ranges or all specific values) listed in ascending order</li>
+      <li>No option uses vague frequency terms (often, usually, frequently, sometimes)</li>
+      <li>No option uses absolute terms (always, never)</li>
+      <li>"None of the above" is <strong>not used</strong></li>
+    </ul>
+  </div>
+
+  <!-- Flaws -->
+  <div class="card bad">
+    <h3>Technical Flaw Screening</h3>
+    <ul class="checklist">
+      <li><strong>No grammatical cues:</strong> Every option follows grammatically from the lead-in when read aloud</li>
+      <li><strong>No clang clues:</strong> No word from the vignette appears exclusively in the correct answer option</li>
+      <li><strong>No collectively exhaustive subset:</strong> No group of options covers all logically possible outcomes</li>
+      <li><strong>No convergence:</strong> No individual option is identifiable as correct simply by counting shared terms across options</li>
+      <li><strong>No complicated stem:</strong> The item requires exactly one decision, not a ranking or sequential logical chain</li>
+    </ul>
+  </div>
+
+  <!-- Colleague review -->
+  <div class="card good">
+    <h3>Final Steps Before Submission</h3>
+    <ul class="checklist">
+      <li>You have identified and confirmed the <strong>single defensible correct answer</strong> with a specific reference or rationale</li>
+      <li>You have written a <strong>brief answer rationale</strong> explaining why the keyed answer is correct and why each distractor is incorrect</li>
+      <li>A <strong>colleague with content expertise</strong> has reviewed the item for accuracy and appropriateness</li>
+      <li>A <strong>colleague without content expertise</strong> has read the item for clarity and structural integrity</li>
+      <li>The item addresses a <strong>testing point on the exam blueprint</strong> — it is not testing trivia or an exotic "zebra" diagnosis</li>
+      <li>The item is appropriate for the <strong>competency level</strong> of your test-taker population</li>
+      <li>If media is included: it is essential to answering the question, it is high quality, and it has no identifying patient information or distracting visual cues</li>
+    </ul>
+  </div>
+
+  <!-- Quick decision matrix -->
+  <div class="sec"><h2>Recall vs. Application Decision Guide</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Context</th><th>Recommended Format</th><th>Vignette Length</th><th>Acceptable Item Types</th></tr></thead>
+      <tbody>
+        <tr><td>Formative mid-lecture quiz</td><td>Recall acceptable</td><td>None to short</td><td>A-type (single item)</td></tr>
+        <tr><td>End-of-module formative</td><td>Application preferred</td><td>Short to medium</td><td>A-type; F-type (2 items)</td></tr>
+        <tr><td>End-of-year summative</td><td>Application required</td><td>Medium to long</td><td>A-type; F-type (2–3 items)</td></tr>
+        <tr><td>High-stakes licensing/promotion</td><td>Application required</td><td>Full clinical vignette</td><td>A-type; F-type only</td></tr>
+        <tr><td>Specialty/postgraduate certification</td><td>Application; may include atypical features</td><td>Full vignette; may include chart format</td><td>A-type; F-type; G-type</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box key" style="margin-top:1.5rem;">
+    <div class="box-title">The One-Sentence Summary</div>
+    <p>A high-quality MCQ presents an authentic clinical problem, asks a single focused question that a knowledgeable test-taker can answer without seeing the options, offers five homogeneous and plausible choices of equal length, and contains no structural feature that benefits a test-taker who does not know the content.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p><strong>Source:</strong> NBME Item Writing Guide, 6th Edition (October 2024) — National Board of Medical Examiners, Philadelphia PA.</p>
+  <p>For faculty use · MHPE-NUSU.</p>
+  <p class="designer">Developed for medical education by <strong>Dr. Salaheldin Terair</strong></p>
+</footer>
+
+<script>
+// Tab navigation
+const tabs = document.querySelectorAll('nav.tabs a');
+const panels = document.querySelectorAll('.panel');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', e => {
+    e.preventDefault();
+    const target = tab.dataset.panel;
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    panels.forEach(p => {
+      p.classList.remove('active');
+      if (p.id === 'panel-' + target) p.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Flaw accordion
+function toggleFlaw(btn) {
+  const item = btn.closest('.flaw-item');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

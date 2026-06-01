@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Blueprint — Medical Education Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:          #f5f7fa;
+  --surface:     #ffffff;
+  --surface2:    #eef1f6;
+  --border:      #dde3ec;
+
+  --ink:         #1a1e2e;
+  --ink-mid:     #38404f;
+  --ink-soft:    #606878;
+  --ink-faint:   #9aa0ae;
+
+  --blue:        #1e4a8a;
+  --blue-pale:   #eef3fb;
+  --blue-mid:    #2563a8;
+  --blue-accent: #4a90d9;
+
+  --green:       #1a5c38;
+  --green-pale:  #eaf5ee;
+  --green-mid:   #2a7a4e;
+
+  --red:         #8b2020;
+  --red-pale:    #fdf0f0;
+  --red-mid:     #b84040;
+
+  --amber:       #7a5010;
+  --amber-pale:  #fdf5e6;
+  --amber-mid:   #b8820a;
+
+  --purple:      #4a2880;
+  --purple-pale: #f3f0fb;
+  --purple-mid:  #6a48a8;
+
+  --teal:        #1a5c5c;
+  --teal-pale:   #eaf4f4;
+  --teal-mid:    #2a7a7a;
+
+  --rule:        #d0d8e4;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(160deg, #1c3d6e 0%, #1e4a8a 55%, #2563a8 100%);
+  color: #fff;
+  padding: 2.8rem 1.5rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: #4a90d9;
+  opacity: 0.85;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 50px solid rgba(255,255,255,0.04);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4a90d9;
+  margin-bottom: 0.75rem;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+header h1 em {
+  font-style: italic;
+  color: #4a90d9;
+}
+
+header .sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 620px;
+  margin: 0 auto;
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── TABS ── */
+nav.tabs {
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+nav.tabs ul {
+  list-style: none;
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+nav.tabs ul::-webkit-scrollbar { display: none; }
+
+nav.tabs ul li a {
+  display: block;
+  padding: 0.9rem 0.9rem;
+  color: #5a6a80;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  letter-spacing: 0.03em;
+  transition: color 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: -2px;
+}
+
+nav.tabs ul li a:hover { color: #1e4a8a; }
+
+nav.tabs ul li a.active {
+  color: #1e4a8a;
+  font-weight: 600;
+  border-bottom-color: #1e4a8a;
+}
+
+/* ── LAYOUT ── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 5rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── SECTION HEADS ── */
+.sec {
+  margin: 2.8rem 0 1.3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.sec:first-child { margin-top: 0; }
+
+.sec h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.sec .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: var(--blue);
+  color: rgba(255,255,255,0.8);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.intro {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  border-left: 3px solid var(--rule);
+  padding-left: 0.9rem;
+  margin-bottom: 1.4rem;
+  max-width: 820px;
+  line-height: 1.75;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.card.accent-blue   { border-left: 4px solid var(--blue); }
+.card.accent-green  { border-left: 4px solid var(--green); }
+.card.accent-red    { border-left: 4px solid var(--red); }
+.card.accent-amber  { border-left: 4px solid var(--amber); }
+.card.accent-purple { border-left: 4px solid var(--purple); }
+.card.accent-teal   { border-left: 4px solid var(--teal); }
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.card h3 .badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-blue   { background: var(--blue-pale);   color: var(--blue);   border: 1px solid #c0d4f0; }
+.badge-green  { background: var(--green-pale);  color: var(--green);  border: 1px solid #aed4be; }
+.badge-red    { background: var(--red-pale);    color: var(--red);    border: 1px solid #e8b4b4; }
+.badge-amber  { background: var(--amber-pale);  color: var(--amber);  border: 1px solid #ddc880; }
+.badge-purple { background: var(--purple-pale); color: var(--purple); border: 1px solid #c8b8e8; }
+.badge-teal   { background: var(--teal-pale);   color: var(--teal);   border: 1px solid #a8d0d0; }
+
+.card h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin: 0.9rem 0 0.35rem;
+}
+
+.card p, .card li {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.card ul, .card ol { padding-left: 1.3rem; }
+.card ul li, .card ol li { margin-bottom: 0.3rem; }
+.card li strong { color: var(--ink); }
+
+/* ── GRIDS ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+/* ── CALLOUT BOXES ── */
+.box {
+  border-radius: 7px;
+  padding: 1rem 1.2rem;
+  margin: 0.9rem 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.box-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.box.key    { background: var(--blue-pale);   border: 1px solid #c0d4f0; border-left: 4px solid var(--blue); }
+.box.key    .box-title { color: var(--blue); }
+.box.key,   .box.key p, .box.key li { color: #0d1e3a; }
+
+.box.good   { background: var(--green-pale);  border: 1px solid #aed4be; border-left: 4px solid var(--green); }
+.box.good   .box-title { color: var(--green); }
+.box.good,  .box.good p, .box.good li { color: #0d2a1c; }
+
+.box.warn   { background: var(--amber-pale);  border: 1px solid #ddc880; border-left: 4px solid var(--amber); }
+.box.warn   .box-title { color: var(--amber); }
+.box.warn,  .box.warn p, .box.warn li { color: #3a2800; }
+
+.box.alert  { background: var(--red-pale);    border: 1px solid #e8b4b4; border-left: 4px solid var(--red); }
+.box.alert  .box-title { color: var(--red); }
+.box.alert, .box.alert p, .box.alert li { color: #3a0d0d; }
+
+.box ul { padding-left: 1.1rem; margin-top: 0.35rem; }
+.box li { margin-bottom: 0.25rem; font-size: 0.93rem; }
+
+/* ── TABLES ── */
+.tbl-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+table.dt {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+table.dt thead th {
+  background: var(--blue);
+  color: rgba(255,255,255,0.9);
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+table.dt tbody tr { border-bottom: 1px solid var(--border); }
+table.dt tbody tr:last-child { border-bottom: none; }
+table.dt tbody tr:nth-child(even) { background: var(--surface2); }
+
+table.dt tbody td {
+  padding: 0.65rem 0.9rem;
+  vertical-align: top;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  font-size: 0.88rem;
+}
+
+table.dt tbody td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+/* ── STAT CHIPS ── */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  min-width: 110px;
+}
+
+.chip strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.1;
+}
+
+.chip span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.15rem;
+}
+
+/* ── STEP PROCESS ── */
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0.8rem 0 1.2rem;
+}
+
+.process-step {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.process-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 30px;
+  bottom: -8px;
+  width: 2px;
+  background: var(--rule);
+}
+
+.step-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.step-content {
+  padding-bottom: 1.2rem;
+  flex: 1;
+}
+
+.step-content h4 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+/* ── BLUEPRINT VISUAL ── */
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  background: var(--surface);
+}
+
+.bp-label-col {
+  background: var(--blue);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-label-cell {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+}
+
+.bp-label-cell:last-child { border-bottom: none; }
+.bp-label-cell.header-cell {
+  background: rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+.bp-data-col {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.bp-data-row {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  min-height: 52px;
+}
+
+.bp-data-row:first-child { min-height: 40px; }
+.bp-data-row:last-child { border-bottom: none; }
+
+.bp-cell {
+  flex: 1;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.83rem;
+  color: var(--ink-mid);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+}
+
+.bp-cell:last-child { border-right: none; }
+
+.bp-cell.col-head {
+  background: var(--surface2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  justify-content: center;
+  text-align: center;
+}
+
+.bp-cell.filled {
+  background: var(--blue-pale);
+  font-weight: 700;
+  color: var(--blue);
+  justify-content: center;
+  text-align: center;
+}
+
+.bp-cell.total {
+  background: var(--surface2);
+  font-weight: 700;
+  color: var(--ink);
+  justify-content: center;
+}
+
+/* ── WEIGHT BAR ── */
+.weight-bar {
+  margin: 0.4rem 0 0.8rem;
+}
+
+.weight-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.3rem;
+}
+
+.weight-bar-track {
+  height: 10px;
+  background: var(--surface2);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.weight-bar-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: '○';
+  color: var(--rule);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.checklist li strong { color: var(--ink); }
+
+/* ── EXAMPLE BOXES ── */
+.eg {
+  border-radius: 7px;
+  padding: 1rem 1.2rem;
+  margin: 0.8rem 0;
+}
+
+.eg.eg-good { background: var(--green-pale); border: 1px solid #b8dac8; }
+.eg.eg-bad  { background: var(--red-pale);   border: 1px solid #e8b4b4; }
+.eg.eg-note { background: var(--blue-pale);  border: 1px solid #c0d4f0; }
+
+.eg-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.eg-label::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.eg-good .eg-label { color: var(--green); }
+.eg-bad  .eg-label { color: var(--red); }
+.eg-note .eg-label { color: var(--blue); }
+
+.eg p, .eg li { font-size: 0.92rem; color: var(--ink-mid); line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(135deg, #1c3d6e 0%, #1e4a8a 100%);
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.9;
+  border-top: 3px solid #4a90d9;
+}
+
+footer strong { color: rgba(255,255,255,0.85); }
+
+footer .designer {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  color: #4a90d9;
+  letter-spacing: 0.04em;
+}
+
+footer .designer strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  header { padding: 1.8rem 1rem 1.6rem; }
+  main { padding: 1.5rem 0.9rem 3rem; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .blueprint-grid { grid-template-columns: 130px 1fr; }
+  .bp-label-cell { font-size: 0.78rem; padding: 0.55rem 0.7rem; }
+  .bp-cell { min-width: 65px; font-size: 0.78rem; }
+  .card { padding: 1rem 1.1rem; }
+  .card p, .card li { font-size: 0.92rem; }
+  table.dt thead th { font-size: 0.65rem; }
+  table.dt tbody td { font-size: 0.84rem; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.5rem; }
+  nav.tabs ul li a { padding: 0.85rem 0.65rem; font-size: 0.72rem; }
+  .blueprint-grid { grid-template-columns: 1fr; }
+  .bp-label-col { flex-direction: row; flex-wrap: wrap; }
+  .bp-label-cell { min-height: auto; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="header-eyebrow">National University · Master of Health Professions Education</p>
+    <h1>The <em>Exam Blueprint</em><br>Understanding &amp; Building</h1>
+    <p class="sub">A practical guide for faculty designing course, module, and programme-level assessments in the health sciences.</p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <ul>
+    <li><a href="#" class="active" data-panel="overview">What is a Blueprint?</a></li>
+    <li><a href="#" data-panel="why">Why It Matters</a></li>
+    <li><a href="#" data-panel="dimensions">Blueprint Dimensions</a></li>
+    <li><a href="#" data-panel="build">Building a Blueprint</a></li>
+    <li><a href="#" data-panel="weighting">Weighting &amp; Balance</a></li>
+    <li><a href="#" data-panel="checklist">Quality Checklist</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 0 — WHAT IS A BLUEPRINT?
+══════════════════════════════════════════════ -->
+<div class="panel active" id="panel-overview">
+
+  <div class="sec"><h2>What is an Exam Blueprint?</h2><span class="tag">Foundation</span></div>
+  <p class="intro">A blueprint is the formal specification that defines what an examination tests, how much weight each topic receives, and at what cognitive level test-takers are expected to perform. It is written before any items are drafted — it drives the exam, not the other way around.</p>
+
+  <div class="chip-row">
+    <div class="chip"><strong>2</strong><span>KEY DIMENSIONS</span></div>
+    <div class="chip"><strong>Before</strong><span>ITEMS ARE WRITTEN</span></div>
+    <div class="chip"><strong>Living</strong><span>DOCUMENT — UPDATED</span></div>
+    <div class="chip"><strong>Public</strong><span>SHARED WITH FACULTY</span></div>
+    <div class="chip"><strong>Aligned</strong><span>TO LEARNING OUTCOMES</span></div>
+  </div>
+
+  <div class="box key">
+    <div class="box-title">Core Definition</div>
+    <p>An exam blueprint is a two-dimensional matrix that maps <strong>content topics</strong> against <strong>cognitive tasks</strong>, specifying how many items are allocated to each cell. It ensures the exam samples the curriculum representatively and that score inferences are valid.</p>
+  </div>
+
+  <div class="sec"><h2>Blueprint vs. No Blueprint</h2></div>
+
+  <div class="grid-2">
+    <div class="card accent-red">
+      <h3><span class="badge badge-red">WITHOUT Blueprint</span></h3>
+      <ul>
+        <li>Item writers default to topics they know best → unbalanced coverage</li>
+        <li>Easy-to-write recall items dominate → exam tests memory, not reasoning</li>
+        <li>No defence against challenges to exam validity</li>
+        <li>Curriculum gaps and over-tested topics go undetected</li>
+        <li>Each exam cycle is inconsistent — students cannot predict emphasis</li>
+        <li>Score cannot support valid pass/fail decisions</li>
+      </ul>
+    </div>
+    <div class="card accent-green">
+      <h3><span class="badge badge-green">WITH Blueprint</span></h3>
+      <ul>
+        <li>Content sampling is representative and defensible</li>
+        <li>Cognitive level is intentional — recall and application balanced by design</li>
+        <li>Faculty have clear item-writing assignments</li>
+        <li>Examination can be audited against learning outcomes</li>
+        <li>Year-on-year consistency — parallel forms measure the same construct</li>
+        <li>Supports valid, legally defensible pass/fail decisions</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>The Blueprint Matrix — Basic Structure</h2></div>
+
+  <div class="card accent-blue">
+    <h3>A Blueprint is Always a Matrix</h3>
+    <p style="margin-bottom:0.9rem;">The rows represent <strong>content domains</strong> (what is being tested). The columns represent <strong>cognitive tasks</strong> (how it is being tested). Each cell contains the number of items allocated to that intersection.</p>
+
+    <div class="blueprint-grid">
+      <div class="bp-label-col">
+        <div class="bp-label-cell header-cell">Content Domain</div>
+        <div class="bp-label-cell">Cardiovascular</div>
+        <div class="bp-label-cell">Respiratory</div>
+        <div class="bp-label-cell">Renal</div>
+        <div class="bp-label-cell">Gastrointestinal</div>
+        <div class="bp-label-cell" style="background:rgba(0,0,0,0.12); font-weight:700;">Total</div>
+      </div>
+      <div class="bp-data-col">
+        <div class="bp-data-row">
+          <div class="bp-cell col-head">Recall</div>
+          <div class="bp-cell col-head">Application</div>
+          <div class="bp-cell col-head">Clinical Reasoning</div>
+          <div class="bp-cell col-head">Total</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">3</div>
+          <div class="bp-cell filled">8</div>
+          <div class="bp-cell filled">7</div>
+          <div class="bp-cell total">18</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div>
+          <div class="bp-cell filled">6</div>
+          <div class="bp-cell filled">4</div>
+          <div class="bp-cell total">12</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div>
+          <div class="bp-cell filled">5</div>
+          <div class="bp-cell filled">3</div>
+          <div class="bp-cell total">10</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">1</div>
+          <div class="bp-cell filled">5</div>
+          <div class="bp-cell filled">4</div>
+          <div class="bp-cell total">10</div>
+        </div>
+        <div class="bp-data-row" style="background:var(--surface2);">
+          <div class="bp-cell total">8</div>
+          <div class="bp-cell total">24</div>
+          <div class="bp-cell total">18</div>
+          <div class="bp-cell total" style="background:#dde3ec; font-weight:800; color:var(--ink);">50</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem; color:var(--ink-soft); margin-top:0.4rem;">Example: A 50-item module exam with 4 content domains and 3 cognitive levels. Each cell value = number of items. Row totals = domain weight. Column totals = cognitive level distribution.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 1 — WHY IT MATTERS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-why">
+
+  <div class="sec"><h2>Why Blueprinting Matters</h2><span class="tag">Validity & Fairness</span></div>
+  <p class="intro">A blueprint is not administrative paperwork. It is the primary tool for ensuring an examination is valid — that it measures what it claims to measure, in the proportions that reflect the curriculum, at the cognitive level appropriate for the learner.</p>
+
+  <div class="grid-2">
+    <div class="card accent-blue">
+      <h3><span class="badge badge-blue">Content Validity</span></h3>
+      <p>Content validity asks: <em>does the exam adequately sample the domain of knowledge it claims to assess?</em> A blueprint operationalises this by forcing explicit decisions about what to include, exclude, and how heavily to weight each topic. Without a blueprint, content validity cannot be demonstrated.</p>
+    </div>
+    <div class="card accent-purple">
+      <h3><span class="badge badge-purple">Construct Validity</span></h3>
+      <p>Construct validity asks: <em>does the exam measure the intended cognitive construct?</em> A blueprint that specifies cognitive levels (recall vs. application vs. reasoning) ensures the exam actually assesses clinical thinking — not just memorisation — when that is the intention.</p>
+    </div>
+    <div class="card accent-teal">
+      <h3><span class="badge badge-teal">Reliability</span></h3>
+      <p>A blueprint ensures parallel exam forms cover the same content and cognitive distribution. This consistency is the foundation of score reliability — if two forms of the exam test different things, scores cannot be meaningfully compared or used for promotion decisions.</p>
+    </div>
+    <div class="card accent-green">
+      <h3><span class="badge badge-green">Curricular Alignment</span></h3>
+      <p>The blueprint creates a direct link between what is taught, what is learned, and what is assessed — the basis of constructive alignment (Biggs). When faculty see the blueprint, they understand what to emphasise. When students see it, they understand what to study.</p>
+    </div>
+    <div class="card accent-amber">
+      <h3><span class="badge badge-amber">Fairness & Defensibility</span></h3>
+      <p>Pass/fail decisions based on a blueprinted exam are legally and ethically defensible. If a student challenges a grade, the institution can demonstrate that the exam was a representative, pre-specified sample of the curriculum — not an arbitrary collection of questions.</p>
+    </div>
+    <div class="card accent-red">
+      <h3><span class="badge badge-red">Faculty Accountability</span></h3>
+      <p>A blueprint distributes item-writing responsibility transparently. Each faculty member is assigned a specific content area and cognitive level, reducing duplication, preventing gaps, and ensuring the exam reflects the full teaching team's expertise.</p>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-title">Common Misconception</div>
+    <p>Many faculty believe blueprinting limits academic freedom or "teaches to the test." In reality, a well-designed blueprint <strong>protects</strong> academic rigour — it prevents the exam from drifting toward whatever topics are easiest to write questions about, and ensures higher-order thinking is always represented.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 2 — BLUEPRINT DIMENSIONS
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-dimensions">
+
+  <div class="sec"><h2>The Two Core Dimensions</h2><span class="tag">Structure</span></div>
+  <p class="intro">Every blueprint has at minimum two dimensions: content and cognitive task. Additional dimensions can be added for complex assessments, but these two are non-negotiable. Each dimension must be explicitly defined before item writing begins.</p>
+
+  <!-- DIMENSION 1: CONTENT -->
+  <div class="card accent-blue">
+    <h3><span class="badge badge-blue">Dimension 1</span>Content Domain</h3>
+    <p>The <strong>what</strong> of the exam. Content domains can be organised by:</p>
+
+    <div class="grid-2" style="margin-top:0.8rem;">
+      <div>
+        <h4>By Organ System / Body System</h4>
+        <p>Most common in preclinical and integrated curricula. Cardiovascular, respiratory, renal, GI, neurology, etc. Maps directly to most medical school course structures.</p>
+        <div class="eg eg-note" style="margin-top:0.5rem;">
+          <div class="eg-label">Example domains</div>
+          <p>Cardiovascular · Respiratory · Renal · GI · Endocrine · Neurology · Musculoskeletal · Haematology</p>
+        </div>
+      </div>
+      <div>
+        <h4>By Clinical Presentation / Complaint</h4>
+        <p>Used in problem-based curricula and clinical years. Chest pain, dyspnoea, altered consciousness, fever. Tests integrated reasoning across systems.</p>
+        <div class="eg eg-note" style="margin-top:0.5rem;">
+          <div class="eg-label">Example domains</div>
+          <p>Chest pain · Dyspnoea · Abdominal pain · Fever · Altered consciousness · Rash · Joint pain</p>
+        </div>
+      </div>
+      <div>
+        <h4>By Foundational Science Discipline</h4>
+        <p>Common in Year 1–2 preclinical exams. Anatomy, physiology, biochemistry, pathology, pharmacology, microbiology.</p>
+      </div>
+      <div>
+        <h4>By Disease Category / ICD Chapter</h4>
+        <p>Used for licensing and postgraduate exams. Infectious disease, neoplastic, congenital, degenerative, traumatic. Aligns with clinical practice patterns.</p>
+      </div>
+    </div>
+
+    <div class="box warn" style="margin-top:0.9rem;">
+      <div class="box-title">Key Rule</div>
+      <p>Content domains must be <strong>mutually exclusive and collectively exhaustive</strong> — every item belongs to exactly one domain, and together the domains cover the entire intended curriculum. Overlap between domains causes double-counting and distorts weighting.</p>
+    </div>
+  </div>
+
+  <!-- DIMENSION 2: COGNITIVE TASK -->
+  <div class="card accent-purple">
+    <h3><span class="badge badge-purple">Dimension 2</span>Cognitive Task Level</h3>
+    <p>The <strong>how</strong> of the exam. Specifies the depth of thinking required, not just the topic. Two frameworks are commonly used in medical education:</p>
+
+    <div class="tbl-wrap" style="margin-top:0.9rem;">
+      <table class="dt">
+        <thead>
+          <tr><th>Level</th><th>Bloom's Category</th><th>What the Student Must Do</th><th>Example Lead-in</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 — Recall</td>
+            <td>Remember / Understand</td>
+            <td>Retrieve isolated facts; recognise definitions, normal values, classifications</td>
+            <td>"Which of the following is the mechanism of action of…?"</td>
+          </tr>
+          <tr>
+            <td>2 — Application</td>
+            <td>Apply / Analyse</td>
+            <td>Use knowledge in a new clinical context; interpret data; select from alternatives given a scenario</td>
+            <td>"Which of the following is the most likely diagnosis?"</td>
+          </tr>
+          <tr>
+            <td>3 — Clinical Reasoning</td>
+            <td>Evaluate / Synthesise</td>
+            <td>Integrate multiple findings; justify management decisions; predict outcomes; resolve ambiguity</td>
+            <td>"Which of the following is the most appropriate next step in management?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box key" style="margin-top:0.5rem;">
+      <div class="box-title">Recommended Distribution for MBBS Summative Exams</div>
+      <p>Recall ≤ 20% · Application 50–60% · Clinical Reasoning 25–35%. For formative mid-module quizzes, a higher recall proportion (up to 40%) is acceptable. High-stakes promotion exams should have recall &lt; 15%.</p>
+    </div>
+  </div>
+
+  <!-- ADDITIONAL DIMENSIONS -->
+  <div class="sec"><h2>Optional Additional Dimensions</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Dimension</th><th>What It Specifies</th><th>When to Include</th></tr></thead>
+      <tbody>
+        <tr><td>Clinical Setting</td><td>Inpatient, outpatient, emergency, community, primary care</td><td>Clinical years; clerkship exams; when setting affects management</td></tr>
+        <tr><td>Patient Demographics</td><td>Paediatric, adult, elderly, pregnancy, sex distribution</td><td>When population diversity is a curriculum objective</td></tr>
+        <tr><td>Physician Task</td><td>History taking, examination, investigations, diagnosis, management, prevention, communication</td><td>Comprehensive licensing-style exams; USMLE-aligned blueprints</td></tr>
+        <tr><td>Acuity / Urgency</td><td>Acute, subacute, chronic, preventive</td><td>Emergency medicine modules; triage-focused assessments</td></tr>
+        <tr><td>Foundational Science</td><td>Anatomy, physiology, pathology, pharmacology, microbiology</td><td>Integrated Year 1–2 exams where discipline balance is required</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <div class="box-title">Practical Advice</div>
+    <p>Start with two dimensions only. Adding a third dimension multiplies the number of cells and item-writing burden exponentially. A 5-domain × 3-level matrix has 15 cells; adding a third dimension of 4 settings creates 60 cells. Use additional dimensions only when they address a specific curricular objective that cannot be captured with two.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 3 — BUILDING A BLUEPRINT
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-build">
+
+  <div class="sec"><h2>Building a Blueprint Step by Step</h2><span class="tag">Practical Guide</span></div>
+  <p class="intro">Blueprint development is a faculty-level decision, not an individual item-writer task. It should be completed by the course or module lead, ideally with input from the full teaching team, before any items are written or assigned.</p>
+
+  <div class="process">
+    <div class="process-step">
+      <div class="step-icon">1</div>
+      <div class="step-content">
+        <h4>Identify the Purpose and Stakes of the Exam</h4>
+        <p>Is this formative feedback, a summative end-of-module grade, or a high-stakes promotion decision? Higher stakes require a more detailed blueprint, broader content sampling, and higher proportions of application and reasoning items. The purpose also determines how many items are needed for adequate reliability (typically ≥ 60 for summative, ≥ 100 for high-stakes).</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">2</div>
+      <div class="step-content">
+        <h4>Map the Learning Outcomes</h4>
+        <p>List every stated learning outcome for the module or course. Group them into content domains. If a learning outcome cannot be grouped into any domain, either add a domain or reconsider the outcome. Every assessed learning outcome must appear in the blueprint — and no blueprint cell should represent content that was never taught.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">3</div>
+      <div class="step-content">
+        <h4>Define Content Domains and Assign Weights</h4>
+        <p>Weight reflects <strong>relative importance and teaching time</strong>, not equal distribution. A topic that received 6 hours of teaching should receive roughly 3× more items than one that received 2 hours. Document the rationale for each weighting decision — this is your validity evidence. Weights should sum to 100%.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">4</div>
+      <div class="step-content">
+        <h4>Select and Define Cognitive Levels</h4>
+        <p>Choose 2–3 cognitive levels appropriate for your learner stage. Define each level with a concrete operational description and example lead-in phrase. Vague definitions lead to disagreement among item writers about which cell an item belongs in.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">5</div>
+      <div class="step-content">
+        <h4>Determine Total Item Count</h4>
+        <p>Decide total items based on: exam duration (allow ~1.5 min/item for clinical vignette MCQs), stakes, and reliability target. Distribute items across cells proportionally to domain weights. Minimum recommended per cell is 2–3 items; cells with fewer than 2 items cannot contribute meaningfully to domain scores.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">6</div>
+      <div class="step-content">
+        <h4>Populate the Blueprint Matrix</h4>
+        <p>Fill each cell with the number of items. Check that row totals match domain weights and column totals match the intended cognitive distribution. Adjust individual cells to avoid fractions — always round to whole numbers, then reconcile the total.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">7</div>
+      <div class="step-content">
+        <h4>Assign Item-Writing Responsibilities</h4>
+        <p>Distribute cells to faculty based on their teaching expertise. Provide each writer with: the cell specifications (content domain, cognitive level, item count), example lead-in phrases, and the item writing guidelines. Set a review deadline before the exam is finalised.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-icon">8</div>
+      <div class="step-content">
+        <h4>Review, Audit, and Update</h4>
+        <p>After the exam, compare the blueprint specification against the actual exam using item analysis data. Were all cells adequately filled? Did items sort into the correct cognitive level? Update the blueprint for the next cycle based on item performance and any curriculum changes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Worked Example — 60-Item End-of-Year Module Exam</h2></div>
+
+  <div class="card accent-blue">
+    <h3>Scenario</h3>
+    <p>A Year 2 MBBS integrated systems module covering 5 content domains with a 60-item summative MCQ exam. Teaching time distribution is: Cardiovascular 25%, Respiratory 20%, Renal 15%, GI 20%, Endocrine 20%. Cognitive distribution target: Recall 15%, Application 55%, Clinical Reasoning 30%.</p>
+
+    <div class="blueprint-grid" style="margin-top:1rem;">
+      <div class="bp-label-col">
+        <div class="bp-label-cell header-cell">Domain (Weight)</div>
+        <div class="bp-label-cell">Cardiovascular (25%)</div>
+        <div class="bp-label-cell">Respiratory (20%)</div>
+        <div class="bp-label-cell">Renal (15%)</div>
+        <div class="bp-label-cell">GI (20%)</div>
+        <div class="bp-label-cell">Endocrine (20%)</div>
+        <div class="bp-label-cell" style="background:rgba(0,0,0,0.15); font-weight:700;">Total</div>
+      </div>
+      <div class="bp-data-col">
+        <div class="bp-data-row">
+          <div class="bp-cell col-head">Recall (15%)</div>
+          <div class="bp-cell col-head">Application (55%)</div>
+          <div class="bp-cell col-head">Reasoning (30%)</div>
+          <div class="bp-cell col-head">Total</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div><div class="bp-cell filled">8</div><div class="bp-cell filled">5</div><div class="bp-cell total">15</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div><div class="bp-cell filled">6</div><div class="bp-cell filled">4</div><div class="bp-cell total">12</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">1</div><div class="bp-cell filled">5</div><div class="bp-cell filled">3</div><div class="bp-cell total">9</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div><div class="bp-cell filled">6</div><div class="bp-cell filled">4</div><div class="bp-cell total">12</div>
+        </div>
+        <div class="bp-data-row">
+          <div class="bp-cell">2</div><div class="bp-cell filled">8</div><div class="bp-cell filled">2</div><div class="bp-cell total">12</div>
+        </div>
+        <div class="bp-data-row" style="background:var(--surface2);">
+          <div class="bp-cell total">9</div><div class="bp-cell total">33</div><div class="bp-cell total">18</div>
+          <div class="bp-cell total" style="background:#dde3ec; font-weight:800; color:var(--ink);">60</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--ink-soft); margin-top:0.6rem;">Each cell = item count. Row weights are proportional to teaching time. Column totals confirm cognitive distribution: 15% recall (9/60), 55% application (33/60), 30% reasoning (18/60).</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 4 — WEIGHTING & BALANCE
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-weighting">
+
+  <div class="sec"><h2>Content Weighting — Principles and Common Errors</h2><span class="tag">Validity</span></div>
+  <p class="intro">Weighting decisions are the most consequential part of blueprinting. An exam that over-tests one domain and under-tests another produces biased scores — students who know the over-represented domain perform well regardless of their overall competence.</p>
+
+  <div class="card accent-blue">
+    <h3>How to Derive Weights</h3>
+    <p>Weights should reflect a combination of these factors, discussed and agreed upon by the teaching team:</p>
+    <div class="grid-2" style="margin-top:0.7rem;">
+      <div>
+        <h4>Teaching Time</h4>
+        <p>The most objective proxy. If cardiovascular received 20 of 80 teaching hours, it should represent approximately 25% of the exam. Deviations require explicit justification.</p>
+        <h4>Clinical Importance</h4>
+        <p>Some high-stakes conditions (sepsis, MI, stroke) warrant proportionally more items because errors in these areas have catastrophic patient consequences, even if teaching time is modest.</p>
+      </div>
+      <div>
+        <h4>Learning Outcome Priority</h4>
+        <p>If certain outcomes are explicitly labelled as "core" or "must-know" in the curriculum document, those domains should receive higher weight regardless of time allocation.</p>
+        <h4>Prevalence in Practice</h4>
+        <p>For clinical examinations, common presentations seen frequently in the learner's future practice should be weighted more heavily than rare conditions, which are better assessed via case-based formats.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Weight Visualisation</h2></div>
+
+  <div class="card accent-teal">
+    <h3>Example — Balanced vs. Unbalanced Blueprint</h3>
+
+    <h4>Balanced Blueprint (Derived from Teaching Hours)</h4>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Cardiovascular</span><span>25%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:25%; background:#1e4a8a;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Respiratory</span><span>20%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:20%; background:#2a7a7a;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Renal</span><span>15%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:15%; background:#2a7a4e;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>GI</span><span>20%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:20%; background:#6a48a8;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Endocrine</span><span>20%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:20%; background:#b8820a;"></div></div></div>
+
+    <h4 style="margin-top:1.2rem;">Unbalanced Blueprint (Item-Writer Bias — No Blueprint)</h4>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Cardiovascular</span><span>48%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:48%; background:var(--red-mid);"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Respiratory</span><span>22%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:22%; background:var(--red-mid); opacity:0.7;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Renal</span><span>10%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:10%; background:var(--red-mid); opacity:0.5;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>GI</span><span>12%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:12%; background:var(--red-mid); opacity:0.5;"></div></div></div>
+    <div class="weight-bar"><div class="weight-bar-label"><span>Endocrine</span><span>8%</span></div><div class="weight-bar-track"><div class="weight-bar-fill" style="width:8%; background:var(--red-mid); opacity:0.4;"></div></div></div>
+    <p style="font-size:0.85rem; color:var(--red); margin-top:0.6rem;">Without a blueprint, item writers default to familiar topics. Here the cardiovascular faculty wrote proportionally more items, leaving renal and endocrine under-represented — despite receiving equal teaching time.</p>
+  </div>
+
+  <div class="sec"><h2>Common Weighting Errors</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Error</th><th>Description</th><th>Consequence</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Equal weighting</td><td>Assigning identical item counts to all domains regardless of teaching time or importance</td><td>Over-tests minor topics; under-tests core content; students who study strategically are penalised</td><td>Derive weights from teaching hours and learning outcome priority</td></tr>
+        <tr><td>Expert bias</td><td>Item writers add extra items in their own subspecialty area</td><td>Blueprint drift; unintended domain overrepresentation</td><td>Lock cell counts in advance; assign writers specific cells only</td></tr>
+        <tr><td>Recall inflation</td><td>Recall items are easier to write, so they accumulate</td><td>Exam tests memory not reasoning; fails to identify students who cannot apply knowledge</td><td>Specify and enforce cognitive-level column targets</td></tr>
+        <tr><td>Ignoring curriculum changes</td><td>Blueprint from last year is used without review</td><td>Items assess content no longer taught; students study outdated material</td><td>Annual blueprint review tied to curriculum review cycle</td></tr>
+        <tr><td>Cell counts below minimum</td><td>Some domains receive only 1 item</td><td>Single items cannot reliably assess a domain; pass/fail decisions on 1-item domains are indefensible</td><td>Minimum 3 items per cell; merge small domains if necessary</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec"><h2>Cognitive Level Balance by Exam Type</h2></div>
+
+  <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr><th>Exam Type</th><th>Recall</th><th>Application</th><th>Clinical Reasoning</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Formative quiz (Year 1)</td><td>40%</td><td>45%</td><td>15%</td><td>Students still acquiring factual foundation; heavy recall acceptable</td></tr>
+        <tr><td>End-of-module (Year 1–2)</td><td>25%</td><td>55%</td><td>20%</td><td>Balanced; recall anchors, application dominates</td></tr>
+        <tr><td>End-of-year summative (Year 2)</td><td>15%</td><td>55%</td><td>30%</td><td>Summative decisions require application and reasoning to dominate</td></tr>
+        <tr><td>Clinical clerkship (Year 3–4)</td><td>10%</td><td>50%</td><td>40%</td><td>Clinical context demands management and reasoning emphasis</td></tr>
+        <tr><td>Final / licensing exam</td><td>&lt;10%</td><td>45%</td><td>50%</td><td>Must certify competence for independent practice — reasoning dominates</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 5 — QUALITY CHECKLIST
+══════════════════════════════════════════════ -->
+<div class="panel" id="panel-checklist">
+
+  <div class="sec"><h2>Blueprint Quality Checklist</h2><span class="tag">Pre-Exam Audit</span></div>
+  <p class="intro">Use this checklist before assigning items to faculty and again after the exam is assembled. Each item represents a documented decision that can be used as validity evidence if the exam is ever challenged.</p>
+
+  <div class="card accent-blue">
+    <h3>Design Phase — Before Item Writing</h3>
+    <ul class="checklist">
+      <li>The purpose and stakes of the exam have been explicitly defined (formative / summative / high-stakes promotion)</li>
+      <li>Total item count is appropriate for the exam duration and reliability target (≥ 60 for summative; ≥ 100 for high-stakes)</li>
+      <li>Content domains are <strong>mutually exclusive</strong> — no item can belong to two domains simultaneously</li>
+      <li>Content domains are <strong>collectively exhaustive</strong> — together they cover the entire curriculum being assessed</li>
+      <li>Domain weights are derived from <strong>teaching time, learning outcome priority, or clinical importance</strong> — not arbitrary or equal</li>
+      <li>Cognitive levels are explicitly defined with operational descriptions and example lead-in phrases</li>
+      <li>The target cognitive distribution is specified (% recall / % application / % reasoning) and is appropriate for the learner stage</li>
+      <li>Every cell in the matrix has a minimum of <strong>3 items</strong></li>
+      <li>The blueprint has been reviewed and approved by the full teaching team, not just the module lead</li>
+      <li>The blueprint is documented in writing and stored in the institutional assessment records</li>
+    </ul>
+  </div>
+
+  <div class="card accent-purple">
+    <h3>Assembly Phase — During Item Writing</h3>
+    <ul class="checklist">
+      <li>Each item writer has been assigned a specific cell (content domain + cognitive level) — not a general topic</li>
+      <li>Item writers have been provided with the blueprint, item writing guidelines, and example lead-ins for their assigned cognitive level</li>
+      <li>A content-expert review of every item is scheduled before the exam is finalised</li>
+      <li>Items have been checked against the blueprint to confirm they belong in the assigned cell</li>
+      <li>No item has been added "informally" outside the blueprint specification</li>
+      <li>Items covering sensitive or legally complex content (e.g., ethics, end-of-life care) have received additional review</li>
+    </ul>
+  </div>
+
+  <div class="card accent-green">
+    <h3>Post-Exam Audit — After Item Analysis</h3>
+    <ul class="checklist">
+      <li>Item analysis data has been reviewed to confirm actual cognitive level distribution matches blueprint specification</li>
+      <li>Any items that were miskeyed, ambiguous, or had near-zero discrimination have been identified and documented</li>
+      <li>Domain-level score reports have been generated to identify content areas where students performed unexpectedly well or poorly</li>
+      <li>The blueprint has been updated to reflect any curriculum changes since the last cycle</li>
+      <li>Lessons learned have been documented for the next item-writing cycle</li>
+      <li>The relationship between blueprint content and pass/fail cut score has been reviewed</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>Blueprint Documentation Template</h2></div>
+
+  <div class="card accent-amber">
+    <h3>Minimum Required Documentation for Any Blueprinted Exam</h3>
+    <p>These elements should be on file for every summative examination. For high-stakes decisions, all elements are mandatory.</p>
+    <div class="tbl-wrap" style="margin-top:0.8rem;">
+      <table class="dt">
+        <thead><tr><th>Document</th><th>Contents</th><th>Retention</th></tr></thead>
+        <tbody>
+          <tr><td>Blueprint Matrix</td><td>Two-dimensional table with content domains, cognitive levels, item counts, and weights</td><td>Permanent</td></tr>
+          <tr><td>Weight Rationale</td><td>Written justification for each domain weight, referencing teaching hours and learning outcomes</td><td>5 years minimum</td></tr>
+          <tr><td>Cognitive Level Definitions</td><td>Operational description of each cognitive level with example lead-ins</td><td>Permanent</td></tr>
+          <tr><td>Faculty Assignments</td><td>Record of which faculty member was assigned which cells</td><td>5 years minimum</td></tr>
+          <tr><td>Item Review Record</td><td>Documentation that each item was reviewed by a content expert before use</td><td>5 years minimum</td></tr>
+          <tr><td>Post-Exam Analysis Report</td><td>Item difficulty, discrimination, and option analysis for all items; comparison to blueprint targets</td><td>5 years minimum</td></tr>
+          <tr><td>Blueprint Update Log</td><td>Record of changes made to the blueprint each cycle and the reason</td><td>Permanent</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box key" style="margin-top:1.5rem;">
+    <div class="box-title">The One-Sentence Summary</div>
+    <p>A blueprint is the contract between the curriculum and the examination — it is written first, shapes every item, and is the primary evidence that a score means what it claims to mean. A well-documented blueprint is the single most important validity argument an institution can make about its assessments.</p>
+  </div>
+
+</div>
+
+</main>
+
+<footer>
+  <p><strong>References:</strong> NBME Item Writing Guide, 6th Edition (2024) · Downing SM &amp; Haladyna TM, Handbook of Test Development · Biggs J, Constructive Alignment in University Teaching</p>
+  <p>For faculty use · MHPE-NUSU</p>
+  <p class="designer">Developed for medical education by <strong>Dr. Salaheldin Terair</strong> · 2026</p>
+</footer>
+
+<script>
+const tabs = document.querySelectorAll('nav.tabs a');
+const panels = document.querySelectorAll('.panel');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', e => {
+    e.preventDefault();
+    const target = tab.dataset.panel;
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    panels.forEach(p => {
+      p.classList.remove('active');
+      if (p.id === 'panel-' + target) p.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

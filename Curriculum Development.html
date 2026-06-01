@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Curriculum Development in HPE — Interactive Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:     #ffffff;
+  --off:       #f7f9fc;
+  --off2:      #eef2f8;
+  --border:    #dde4ef;
+  --border2:   #c8d4e8;
+  --blue:      #1a56c4;
+  --blue2:     #2d6fe0;
+  --blue-lt:   #e8f0fd;
+  --blue-lt2:  #d0e1fb;
+  --navy:      #0f2d6b;
+  --text:      #111827;
+  --text2:     #374151;
+  --text3:     #6b7280;
+  --text4:     #9ca3af;
+  --green:     #0d7a4e;
+  --green-lt:  #e6f7f1;
+  --amber:     #b45309;
+  --amber-lt:  #fef3e2;
+  --red:       #b91c1c;
+  --red-lt:    #fef2f2;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow:    0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --radius:    10px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  padding: 56px 24px 52px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+
+.hero-eyebrow {
+  display:inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color:#fff;
+  font-size:11px; font-weight:600;
+  letter-spacing:2.5px; text-transform:uppercase;
+  padding:5px 14px; border-radius:20px;
+  margin-bottom:20px;
+}
+
+.hero h1 {
+  font-family:'Lora', serif;
+  font-size:clamp(26px,6vw,44px);
+  font-weight:700; color:#fff;
+  line-height:1.2; margin-bottom:14px;
+}
+
+.hero h1 span {
+  font-style:italic;
+  color:#93c5fd;
+}
+
+.hero-sub {
+  font-size:15px; color:rgba(255,255,255,0.78);
+  max-width:520px; margin:0 auto 28px;
+  line-height:1.65;
+}
+
+.hero-chips {
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:8px;
+}
+
+.chip {
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff; font-size:12px;
+  padding:5px 12px; border-radius:16px;
+  display:flex; align-items:center; gap:5px;
+}
+
+.hero-glossary-box {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+  padding: 14px 20px;
+  max-width: 390px;
+  margin: 0 auto;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-glossary-box:hover {
+  background: rgba(255,255,255,0.20);
+  border-color: rgba(255,255,255,0.42);
+  transform: translateY(-2px);
+}
+
+.hero-glossary-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hero-glossary-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.5;
+}
+
+/* ── SECTION LAYOUT ─────────────────────────────────── */
+.page { max-width:820px; margin:0 auto; padding:0 18px; }
+
+.sec-head {
+  display:flex; align-items:center; gap:10px;
+  margin:36px 0 16px;
+}
+
+.sec-num {
+  width:32px; height:32px;
+  background:var(--blue); color:#fff;
+  border-radius:8px;
+  font-size:13px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+
+.sec-title {
+  font-family:'Lora', serif;
+  font-size:21px; font-weight:600;
+  color:var(--navy);
+}
+
+.sec-div {
+  height:2px;
+  background:linear-gradient(90deg, var(--blue) 0%, var(--border) 100%);
+  border-radius:1px;
+  margin-bottom:20px;
+}
+
+/* ── LEARNING OBJECTIVES ────────────────────────────── */
+.obj-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:8px;
+}
+
+@media(max-width:540px){ .obj-grid{grid-template-columns:1fr;} }
+
+.obj-card {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  display:flex; gap:12px; align-items:flex-start;
+  transition:box-shadow 0.2s;
+}
+
+.obj-card:hover { box-shadow:var(--shadow); }
+
+.obj-icon {
+  width:34px; height:34px; flex-shrink:0;
+  background:var(--blue-lt);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+
+.obj-text {
+  font-size:13.5px; color:var(--text2); line-height:1.55;
+}
+
+/* ── COLLAPSIBLE CARDS ──────────────────────────────── */
+.lec-card {
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:10px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow 0.2s;
+}
+
+.lec-card:hover { box-shadow:var(--shadow); }
+.lec-card.open { box-shadow:var(--shadow); border-color:var(--blue2); }
+
+.lec-header {
+  display:flex; align-items:center; gap:14px;
+  padding:15px 18px;
+  background:var(--white);
+  cursor:pointer; user-select:none;
+  transition:background 0.15s;
+}
+
+.lec-header:hover { background:var(--off); }
+.lec-card.open .lec-header { background:var(--blue-lt); border-bottom:1px solid var(--blue-lt2); }
+
+.lec-num {
+  width:28px; height:28px; flex-shrink:0;
+  border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:700; color:#fff;
+}
+
+.lec-info { flex:1; }
+
+.lec-title {
+  font-size:15px; font-weight:600;
+  color:var(--text); line-height:1.3;
+}
+
+.lec-sub {
+  font-size:12px; color:var(--text3);
+  margin-top:2px;
+}
+
+.lec-right {
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+}
+
+.lec-tag {
+  font-size:10px; font-weight:600;
+  letter-spacing:0.8px; text-transform:uppercase;
+  padding:3px 8px; border-radius:4px;
+}
+
+.chevron {
+  width:18px; height:18px; color:var(--text3);
+  transition:transform 0.3s; flex-shrink:0;
+}
+
+.lec-card.open .chevron { transform:rotate(180deg); }
+
+.lec-body {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+.lec-card.open .lec-body { max-height:4000px; }
+
+.lec-content {
+  padding:20px 20px 22px;
+  background:var(--white);
+}
+
+.lec-content p {
+  font-size:14.5px; color:var(--text2);
+  line-height:1.75; margin-bottom:14px;
+}
+
+.lec-content p:last-child { margin-bottom:0; }
+
+/* ── GLOSSARY TERMS ─────────────────────────────────── */
+.term {
+  background:var(--blue-lt);
+  border-bottom:2px solid var(--blue2);
+  color:var(--blue);
+  cursor:pointer; padding:0 2px;
+  border-radius:2px;
+  display:inline;
+  transition:background 0.2s;
+  font-weight:500;
+  position:relative;
+}
+
+.term:hover { background:var(--blue-lt2); }
+
+.tooltip-box {
+  display:none;
+  position:fixed; z-index:300;
+  background:var(--navy);
+  color:#fff;
+  border-radius:8px;
+  padding:12px 15px;
+  font-size:13px;
+  max-width:270px;
+  line-height:1.55;
+  box-shadow:var(--shadow-lg);
+  pointer-events:none;
+}
+
+.tooltip-box.show { display:block; }
+.tooltip-box strong {
+  display:block; margin-bottom:4px;
+  font-size:11px; letter-spacing:0.8px;
+  text-transform:uppercase; color:#93c5fd;
+}
+
+/* ── TABLES ─────────────────────────────────────────── */
+.table-wrap { overflow-x:auto; margin:16px 0; border-radius:var(--radius); border:1px solid var(--border); }
+
+table { width:100%; border-collapse:collapse; font-size:13.5px; }
+
+thead { background:var(--navy); color:#fff; }
+thead th { padding:11px 14px; text-align:left; font-weight:600; font-size:12px; letter-spacing:0.4px; }
+
+tbody tr { border-bottom:1px solid var(--border); }
+tbody tr:last-child { border-bottom:none; }
+tbody tr:nth-child(even) { background:var(--off); }
+tbody tr:hover { background:var(--blue-lt); }
+
+tbody td { padding:10px 14px; color:var(--text2); vertical-align:top; line-height:1.55; }
+tbody td:first-child { font-weight:600; color:var(--navy); white-space:nowrap; }
+
+/* ── STEP-BY-STEP PATHWAY ───────────────────────────── */
+.pathway {
+  position:relative;
+  padding-left:0;
+  margin:8px 0;
+}
+
+.pathway-item {
+  display:flex; gap:16px;
+  margin-bottom:0;
+  position:relative;
+}
+
+.pathway-left {
+  display:flex; flex-direction:column; align-items:center;
+  flex-shrink:0; width:44px;
+}
+
+.step-circle {
+  width:44px; height:44px;
+  border-radius:50%;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 2px 8px rgba(26,86,196,0.3);
+  z-index:1;
+  position:relative;
+}
+
+.step-line {
+  width:2px; flex:1;
+  background:linear-gradient(180deg,var(--blue-lt2),var(--border));
+  min-height:24px;
+}
+
+.pathway-item:last-child .step-line { display:none; }
+
+.pathway-right {
+  padding:8px 0 28px;
+  flex:1;
+}
+
+.step-title {
+  font-family:'Lora',serif;
+  font-size:16px; font-weight:600;
+  color:var(--navy); margin-bottom:6px;
+  line-height:1.3;
+}
+
+.step-body {
+  font-size:14px; color:var(--text2);
+  line-height:1.7;
+}
+
+.step-body p { margin-bottom:10px; }
+
+.step-example {
+  background:var(--blue-lt);
+  border-left:3px solid var(--blue);
+  border-radius:0 6px 6px 0;
+  padding:10px 14px;
+  margin-top:10px;
+  font-size:13px; color:var(--text2);
+  line-height:1.6;
+}
+
+.step-example em { color:var(--blue); font-style:normal; font-weight:500; }
+
+/* ── FORMULA CARDS ──────────────────────────────────── */
+.formula-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px; margin:12px 0;
+}
+
+.formula-card {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  text-align:center;
+  transition:box-shadow 0.2s, border-color 0.2s;
+}
+
+.formula-card:hover { box-shadow:var(--shadow); border-color:var(--blue2); }
+
+.formula-label {
+  font-size:11px; font-weight:600;
+  color:var(--blue); letter-spacing:1px;
+  text-transform:uppercase; margin-bottom:10px;
+}
+
+.formula-math {
+  font-family:'Lora',serif;
+  font-size:17px; color:var(--navy);
+  font-weight:600; margin-bottom:8px;
+  line-height:1.5;
+}
+
+.formula-math .frac {
+  display:inline-flex; flex-direction:column;
+  align-items:center; vertical-align:middle;
+  margin:0 4px;
+}
+
+.formula-math .num { border-bottom:2px solid var(--navy); padding-bottom:2px; font-size:15px; }
+.formula-math .den { padding-top:2px; font-size:15px; }
+
+.formula-eg {
+  font-size:12px; color:var(--text3);
+  line-height:1.5;
+}
+
+/* ── WORKED EXAMPLE ─────────────────────────────────── */
+.example-box {
+  background:var(--off);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden; margin:16px 0;
+}
+
+.example-header {
+  background:var(--navy); color:#fff;
+  padding:12px 18px;
+  display:flex; align-items:center; gap:10px;
+}
+
+.example-header h4 {
+  font-family:'Lora',serif;
+  font-size:16px; font-weight:600;
+}
+
+.example-body { padding:18px; }
+
+.ex-step {
+  display:flex; gap:12px; margin-bottom:16px;
+}
+
+.ex-step:last-child { margin-bottom:0; }
+
+.ex-badge {
+  background:var(--blue); color:#fff;
+  font-size:11px; font-weight:700;
+  padding:3px 8px; border-radius:4px;
+  height:fit-content; flex-shrink:0;
+  margin-top:3px; letter-spacing:0.5px;
+}
+
+.ex-content { flex:1; }
+.ex-content h5 {
+  font-size:14px; font-weight:600;
+  color:var(--navy); margin-bottom:6px;
+}
+
+.ex-rows { display:flex; flex-direction:column; gap:6px; }
+
+.ex-row {
+  display:flex; align-items:center;
+  gap:8px; padding:8px 12px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:7px; font-size:13px;
+}
+
+.ex-row-label { color:var(--text2); flex:1; }
+.ex-row-val { font-weight:600; color:var(--blue); }
+
+.ex-total {
+  background:var(--blue); color:#fff;
+  padding:10px 16px; border-radius:8px;
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:10px; font-weight:600;
+}
+
+.ex-total-label { font-size:13px; }
+.ex-total-val { font-size:18px; font-family:'Lora',serif; }
+
+/* ── CALLOUT BOXES ──────────────────────────────────── */
+.callout {
+  border-radius:var(--radius);
+  padding:14px 16px;
+  margin:14px 0;
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14px; line-height:1.65;
+}
+
+.callout-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+
+.callout.info { background:var(--blue-lt); border:1px solid var(--blue-lt2); color:var(--navy); }
+.callout.success { background:var(--green-lt); border:1px solid #a7f3d0; color:#065f46; }
+.callout.warning { background:var(--amber-lt); border:1px solid #fcd34d; color:#92400e; }
+
+/* ── DIFF TABLE ─────────────────────────────────────── */
+.diff-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px; margin:12px 0;
+}
+
+@media(max-width:480px){ .diff-grid{grid-template-columns:1fr;} }
+
+.diff-card {
+  border-radius:var(--radius);
+  padding:16px; border:1px solid var(--border);
+}
+
+.diff-card.blue-card { background:var(--blue-lt); border-color:var(--blue-lt2); }
+.diff-card.green-card { background:var(--green-lt); border-color:#a7f3d0; }
+
+.diff-card-title {
+  font-size:11px; font-weight:700;
+  letter-spacing:1.2px; text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.diff-card.blue-card .diff-card-title { color:var(--blue); }
+.diff-card.green-card .diff-card-title { color:var(--green); }
+
+.diff-card p { font-size:13.5px; color:var(--text2); line-height:1.6; }
+
+/* ── SUMMARY ─────────────────────────────────────────── */
+.summary-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px; margin:12px 0;
+}
+
+.summary-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow 0.2s, transform 0.2s;
+}
+
+.summary-card:hover { box-shadow:var(--shadow); transform:translateY(-2px); }
+
+.sum-icon { font-size:24px; margin-bottom:8px; }
+
+.sum-title {
+  font-family:'Lora',serif;
+  font-size:15px; font-weight:600;
+  color:var(--navy); margin-bottom:6px;
+}
+
+.sum-text { font-size:13px; color:var(--text2); line-height:1.6; }
+
+/* ── GLOSSARY DRAWER ────────────────────────────────── */
+.gloss-fab {
+  position:fixed; bottom:24px; right:18px;
+  z-index:150; width:50px; height:50px;
+  background:var(--blue); color:#fff;
+  border:none; border-radius:50%;
+  font-size:20px; cursor:pointer;
+  box-shadow:0 4px 16px rgba(26,86,196,0.35);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.2s, background 0.2s;
+}
+
+.gloss-fab:hover { background:var(--blue2); transform:scale(1.08); }
+
+.gloss-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.35); z-index:160;
+}
+
+.gloss-overlay.open { display:block; }
+
+.gloss-drawer {
+  position:fixed; bottom:0; left:0; right:0;
+  z-index:170;
+  background:var(--white);
+  border-top:1px solid var(--border2);
+  border-radius:16px 16px 0 0;
+  max-height:78vh;
+  transform:translateY(100%);
+  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  display:flex; flex-direction:column;
+  box-shadow:0 -4px 32px rgba(0,0,0,0.12);
+}
+
+.gloss-drawer.open { transform:translateY(0); }
+
+.drag-handle {
+  width:36px; height:4px;
+  background:var(--border2); border-radius:2px;
+  margin:12px auto 0; flex-shrink:0;
+}
+
+.gloss-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px 10px; border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+
+.gloss-head h3 {
+  font-family:'Lora',serif;
+  font-size:17px; font-weight:600; color:var(--navy);
+  display:flex; align-items:center; gap:8px;
+}
+
+.gloss-close {
+  width:30px; height:30px;
+  background:var(--off); border:1px solid var(--border);
+  border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:var(--text2);
+}
+
+.gloss-search {
+  margin:12px 20px;
+  padding:9px 14px;
+  background:var(--off); border:1px solid var(--border2);
+  border-radius:8px; color:var(--text);
+  font-size:14px; font-family:'DM Sans',sans-serif;
+  width:calc(100% - 40px); flex-shrink:0;
+}
+
+.gloss-search:focus { outline:none; border-color:var(--blue); }
+.gloss-search::placeholder { color:var(--text4); }
+
+.gloss-list {
+  overflow-y:auto; padding:0 20px 40px; flex:1;
+}
+
+.gitem {
+  padding:13px 0; border-bottom:1px solid var(--border);
+}
+
+.gitem:last-child { border-bottom:none; }
+.gitem-name { font-size:14px; font-weight:600; color:var(--blue); margin-bottom:4px; }
+.gitem-def { font-size:13px; color:var(--text2); line-height:1.6; }
+.gitem.hidden { display:none; }
+
+/* ── SCROLL TOP ─────────────────────────────────────── */
+.scroll-top {
+  position:fixed; bottom:86px; right:18px; z-index:150;
+  width:40px; height:40px;
+  background:var(--white); border:1px solid var(--border2);
+  border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--blue);
+  box-shadow:var(--shadow);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s, transform 0.2s;
+}
+
+.scroll-top.show { opacity:1; pointer-events:all; }
+.scroll-top:hover { transform:translateY(-2px); }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background:var(--blue);
+  color:#fff; text-align:center;
+  padding:32px 24px;
+  margin-top:48px;
+}
+
+.footer-logo {
+  font-family:'Lora',serif;
+  font-size:20px; font-weight:700; margin-bottom:8px;
+}
+
+.footer-sub { font-size:13px; opacity:0.75; margin-bottom:16px; }
+
+.footer-links {
+  display:flex; flex-wrap:wrap;
+  justify-content:center; gap:16px;
+  margin-bottom:20px;
+}
+
+.footer-links a {
+  color:rgba(255,255,255,0.8);
+  font-size:13px; text-decoration:none;
+  transition:color 0.2s;
+}
+
+.footer-links a:hover { color:#fff; }
+
+.footer-copy {
+  font-size:12px; opacity:0.55;
+  border-top:1px solid rgba(255,255,255,0.2);
+  padding-top:16px; margin-top:4px;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.fade-in { opacity:0; animation:fadeUp 0.5s ease forwards; }
+.fade-in:nth-child(1){ animation-delay:0.05s }
+.fade-in:nth-child(2){ animation-delay:0.12s }
+.fade-in:nth-child(3){ animation-delay:0.19s }
+.fade-in:nth-child(4){ animation-delay:0.26s }
+.fade-in:nth-child(5){ animation-delay:0.33s }
+.fade-in:nth-child(6){ animation-delay:0.40s }
+
+/* ── EXPAND CONTROLS ────────────────────────────────── */
+.expand-row {
+  display:flex; gap:8px; margin-bottom:14px;
+}
+
+.exp-btn {
+  padding:7px 14px;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:6px; font-size:12px;
+  color:var(--text2); cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;
+}
+
+.exp-btn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-lt); }
+
+@media(max-width:480px){
+  .hero { padding:40px 18px 38px; }
+  .page { padding:0 14px; }
+  .lec-content { padding:16px; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Interactive Workshop · HPE Series. NationalUniversity</div>
+  <h1>Curriculum Development<br>in <span>Health Professions Education</span></h1>
+  <p class="hero-sub">A step-by-step, constructively aligned framework — from institutional vision down to a single measurable lecture objective.</p>
+  <div class="hero-chips">
+    <div class="hero-glossary-box" onclick="openGloss()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGloss();}">
+      <div class="hero-glossary-title">🔑 HPE Glossary</div>
+      <div class="hero-glossary-sub">Key curriculum development terminology for quick reference</div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+
+<!-- ── SECTION 1: LEARNING OBJECTIVES ───────────────── -->
+<div class="sec-head">
+  <div class="sec-num">1</div>
+  <div class="sec-title">Learning Objectives</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="obj-grid">
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🗣️</div>
+    <div class="obj-text">Distinguish between <strong>competency</strong>, <strong>learning outcome</strong>, and <strong>learning objective</strong> using precise HPE definitions.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🔗</div>
+    <div class="obj-text">Apply the principle of <strong>constructive alignment</strong> to cascade institutional mission into session-level objectives.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">⏱️</div>
+    <div class="obj-text">Define a <strong>contact hour</strong> and categorise instructional modalities used in HPE curricula.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🧮</div>
+    <div class="obj-text">Calculate <strong>credit hours</strong> for a given module using the Carnegie Unit timetable conversion formulas.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">📐</div>
+    <div class="obj-text">Compare <strong>lecture, practical, and clinical</strong> credit conversion ratios and apply them to a realistic worked example.</div>
+  </div>
+  <div class="obj-card fade-in">
+    <div class="obj-icon">🎓</div>
+    <div class="obj-text">Describe the <strong>ECTS credit system</strong> and explain how it differs from the Carnegie Unit approach.</div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: COLLAPSIBLE LECTURES ──────────────── -->
+<div class="sec-head" style="margin-top:40px;">
+  <div class="sec-num">2</div>
+  <div class="sec-title">Core Curriculum Development Concepts</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="expand-row">
+  <button class="exp-btn" onclick="expandAll()">Expand All</button>
+  <button class="exp-btn" onclick="collapseAll()">Collapse All</button>
+</div>
+
+<!-- CARD 1 -->
+<div class="lec-card" id="lec1">
+  <div class="lec-header" onclick="toggleLec('lec1')">
+    <div class="lec-num" style="background:#1a56c4">1</div>
+    <div class="lec-info">
+      <div class="lec-title">Vocabulary & Core Definitions</div>
+      <div class="lec-sub">Competency · Learning Outcome · Learning Objective</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e8f0fd;color:#1a56c4;">Foundations</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>Before designing any curriculum component, all stakeholders — faculty, accreditors, and students — must share a precise vocabulary. Three terms are especially prone to conflation: <span class="term" data-key="competency">competency</span>, <span class="term" data-key="learning-outcome">learning outcome</span>, and <span class="term" data-key="learning-objective">learning objective</span>. Confusing these at the design stage leads to misaligned assessments and uncredentialled graduates.</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">📍 Outcome vs Objective</div>
+          <p><strong>Outcomes</strong> are the destination — the holistic result of an entire learning journey (e.g., a full program or phase). <strong>Objectives</strong> are the milestones along the road — the specific, measurable steps taken to reach that destination within a single instructional unit.</p>
+        </div>
+        <div class="diff-card green-card">
+          <div class="diff-card-title">🔬 The Competency Lens</div>
+          <p>A <strong>competency</strong> is durable, transferable, and trackable across clinical placements and years. It integrates knowledge, skills, values, and attitudes — making it more holistic than either a single outcome or objective.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Definition</th>
+              <th>HPE Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Competency</td>
+              <td>Observable capability integrating knowledge, skills, values & attitudes. Durable and transferable.</td>
+              <td>"Demonstrates a structured, focused cardiovascular physical examination."</td>
+            </tr>
+            <tr>
+              <td>Learning Outcome</td>
+              <td>Broad statement of what learners know/do at end of a program or phase. Learner-centred.</td>
+              <td>"By end of Phase 1, the student will interpret basic diagnostic imaging and correlate with pathophysiology."</td>
+            </tr>
+            <tr>
+              <td>Learning Objective</td>
+              <td>Highly specific, measurable statement for a single instructional unit. Includes performance condition and criteria.</td>
+              <td>"By end of this 2-hour lab, the student will identify coronary artery wall layers under a light microscope without error."</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div>A well-written learning objective typically follows <strong>Bloom's Taxonomy</strong> verbs (identify, describe, apply, analyse, evaluate, create) and specifies the <em>condition</em> under which performance occurs and the <em>criterion</em> for success.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="lec-card" id="lec2">
+  <div class="lec-header" onclick="toggleLec('lec2')">
+    <div class="lec-num" style="background:#0d7a4e">2</div>
+    <div class="lec-info">
+      <div class="lec-title">Constructive Alignment — Vision to Assessment</div>
+      <div class="lec-sub">Vision → Mission → PLOs → CLOs → Teaching Activities → Assessment → Evaluation</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e6f7f1;color:#0d7a4e;">Alignment</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>A curriculum should never be built in isolation from its institution. The principle of <span class="term" data-key="constructive-alignment">constructive alignment</span> demands that institutional vision, mission, learning outcomes, teaching activities, assessments, and evaluation systems remain explicitly connected across all curriculum levels. If alignment is properly established, an accreditor should be able to trace a single assessment item or OSCE station all the way back to the institutional vision and graduate profile.</p>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div>Failure of alignment is among the most common causes of accreditation concern. A curriculum that teaches content not reflected in its stated outcomes — or assesses skills not listed in its objectives — fails the alignment test.</div>
+      </div>
+
+      <!-- STEP-BY-STEP PATHWAY -->
+      <div style="margin-top:20px;">
+        <div class="pathway">
+
+          <div class="pathway-item">
+            <div class="pathway-left">
+              <div class="step-circle" style="background:var(--navy);">🏛️</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="pathway-right">
+              <div class="step-title">Level 1 — Institutional Vision</div>
+              <div class="step-body">
+                <p>The institutional vision is a future-oriented aspirational statement that describes what the university or medical school ultimately seeks to become over the long term. It defines the desired future identity, strategic direction, and societal impact the institution aims to achieve.</p>
+                <p style="border-left: 4px solid #0066cc; padding-left: 12px; background-color: #e6f2ff; padding: 12px; border-radius: 4px;"><em style="color: #0066cc; font-weight: 600;">Important Clarification:</em> Some institutions may align vision statements with strategic planning cycles (e.g., Vision 2030), but <span style="color: #0066cc; font-weight: 600;">a specific timeframe is not mandatory</span> for a vision statement.</p>
+
+                <div class="step-example"><em>Example Vision:</em> "To become a nationally recognized leader in socially accountable medical education and community health innovation."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-item">
+            <div class="pathway-left">
+              <div class="step-circle">🎯</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="pathway-right">
+              <div class="step-title">Level 2 — Institutional Mission</div>
+              <div class="step-body">
+                <p>The institutional mission operationalises the vision by defining the institution’s present educational purpose, core functions, target communities, and the graduate characteristics it intends to develop.</p>
+                <div class="step-example"><em>Example Mission:</em> "To graduate compassionate physicians who excel in evidence-based rural primary care and community-oriented medical research."</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-item">
+            <div class="pathway-left">
+              <div class="step-circle">📋</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="pathway-right">
+              <div class="step-title">Level 3 — Program Learning Outcomes (PLOs)</div>
+              <div class="step-body">
+                <p>The mission dictates the graduate profile. Because the example mission prioritises rural primary care and research, the PLOs must explicitly reflect this — not generic physician competencies.</p>
+                <div class="step-example"><em>PLO 1:</em> Formulate comprehensive management plans for common chronic illnesses in underserved rural communities.<br><em>PLO 2:</em> Design and execute epidemiologic research projects addressing local community health disparities.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-item">
+            <div class="pathway-left">
+              <div class="step-circle">📚</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="pathway-right">
+              <div class="step-title">Level 4 — Course Learning Outcomes (CLOs)</div>
+              <div class="step-body">
+                <p>A single module (e.g., a 6-week Cardiovascular/Respiratory Module) takes one slice of the PLOs and makes it module-specific and assessable within the course timeframe.</p>
+                <div class="step-example"><em>CLO derived from PLO 1:</em> Diagnose and manage hypertension and asthma in an outpatient or primary care setting.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pathway-item">
+            <div class="pathway-left">
+              <div class="step-circle">🎯</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="pathway-right">
+              <div class="step-title">Level 5 — Instructional / Session Objectives</div>
+              <div class="step-body">
+                <p>Individual lectures, PBL cases, or clinical rotations drill down to the exact knowledge mechanism or skill targeted in that single session.</p>
+                <div class="step-example"><em>PBL Session Objective:</em> List the steps of the renin-angiotensin-aldosterone system (RAAS) and explain how ACE inhibitors alter blood pressure in a hypertensive patient.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="lec-card" id="lec3">
+  <div class="lec-header" onclick="toggleLec('lec3')">
+    <div class="lec-num" style="background:#b45309">3</div>
+    <div class="lec-info">
+      <div class="lec-title">Defining Instructional Time</div>
+      <div class="lec-sub">Contact Hours · Academic Hour · Modality Categories</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#fef3e2;color:#b45309;">Time</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>Before a course can be assigned a credit value, you must calculate precisely how much time students spend in structured educational environments. This is quantified in <span class="term" data-key="contact-hour">contact hours</span>.</p>
+
+      <p>The <span class="term" data-key="academic-hour">academic hour</span> is formally defined in most health science institutions globally as <strong>50 minutes</strong> of net instructional time. The remaining 10 minutes of the clock hour allow for class transitions, settling, and administrative tasks. This distinction matters when building a timetable, since four consecutive "contact hours" actually represents 200 minutes of instruction — not 240.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Modality</th><th>Description</th><th>Examples</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Didactic / Theoretical</td>
+              <td>Structured large-group instruction led by faculty or facilitated by students</td>
+              <td>Lectures, TBL readiness assurance tests, interactive large-group sessions</td>
+            </tr>
+            <tr>
+              <td>Practical / Laboratory</td>
+              <td>Hands-on supervised activities with specimens, instruments, or simulated environments</td>
+              <td>Anatomy dissection, histology microscopy, physiology simulations, communication skills labs</td>
+            </tr>
+            <tr>
+              <td>Clinical / Experiential</td>
+              <td>Real or simulated patient-facing activities under clinical supervision</td>
+              <td>Bedside teaching, hospital ward rounds, outpatient clinic attachments, community health field visits</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout success">
+        <span class="callout-icon">✅</span>
+        <div>Accurate contact hour tracking across all three modalities is the prerequisite for any valid credit calculation. Timetables must distinguish modality types before conversion formulas can be applied.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 4 -->
+<div class="lec-card" id="lec4">
+  <div class="lec-header" onclick="toggleLec('lec4')">
+    <div class="lec-num" style="background:#1a56c4">4</div>
+    <div class="lec-info">
+      <div class="lec-title">Credit Hour Calculation</div>
+      <div class="lec-sub">Carnegie Unit · Conversion Formulas by Modality</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e8f0fd;color:#1a56c4;">Formulas</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>A <span class="term" data-key="credit-hour">credit hour</span> is the academic currency used to weigh a course's workload, determine student progression, and facilitate credit transfer between institutions. The globally accepted standard is the <span class="term" data-key="carnegie-unit">Carnegie Unit</span>, based on a 15-week semester. All conversion formulas below operate on this basis.</p>
+
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-label">📖 Lectures & PBL/TBL</div>
+          <div class="formula-math">
+            Credits = <span class="frac"><span class="num">Total Hours</span><span class="den">15</span></span>
+          </div>
+          <div class="formula-eg">1 credit = 15 total contact hours<br><em>45 hrs ÷ 15 = 3 credits</em></div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🔬 Practical / Labs</div>
+          <div class="formula-math">
+            Credits = <span class="frac"><span class="num">Total Hours</span><span class="den">30</span></span>
+          </div>
+          <div class="formula-eg">1 credit = 30 total lab hours<br><em>30 hrs ÷ 30 = 1 credit</em></div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🏥 Clinical Rotations</div>
+          <div class="formula-math">
+            Credits = <span class="frac"><span class="num">Total Hours</span><span class="den">45</span></span>
+          </div>
+          <div class="formula-eg">1 credit = 45 total clinical hours<br><em>90 hrs ÷ 45 = 2 credits</em></div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-label">🇪🇺 ECTS (Europe)</div>
+          <div class="formula-math">
+            1 ECTS = <span class="frac"><span class="num">Total Workload</span><span class="den">25–30 hrs</span></span>
+          </div>
+          <div class="formula-eg">Includes contact hours <em>and</em> self-study time. Workload-based, not contact-based.</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div>The rationale for different denominators reflects cognitive load: 2 hours of anatomy lab equals 1 hour of lecture credit because lab preparation, physical work, and post-lab review consume additional student effort. Clinical work is weighted even more heavily (3:1 ratio) due to the complexity and autonomy demands of clinical environments.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 5 -->
+<div class="lec-card" id="lec5">
+  <div class="lec-header" onclick="toggleLec('lec5')">
+    <div class="lec-num" style="background:#0d7a4e">5</div>
+    <div class="lec-info">
+      <div class="lec-title">Worked Example — GI Module Credit Calculation</div>
+      <div class="lec-sub">4-Week Gastrointestinal Module · Full Calculation</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#e6f7f1;color:#0d7a4e;">Example</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>The following is a complete credit hour calculation for a 4-week Gastrointestinal (GI) Module in an undergraduate medical programme, demonstrating the timetable-to-credit conversion process from start to finish.</p>
+
+      <div class="example-box">
+        <div class="example-header">
+          <span style="font-size:20px">🧮</span>
+          <h4>GI Module — Step-by-Step Credit Calculation</h4>
+        </div>
+        <div class="example-body">
+
+          <div class="ex-step">
+            <div class="ex-badge">STEP A</div>
+            <div class="ex-content">
+              <h5>Tally Total Contact Hours (4 weeks)</h5>
+              <div class="ex-rows">
+                <div class="ex-row"><span class="ex-row-label">📖 Lectures</span><span class="ex-row-val">30 hrs</span></div>
+                <div class="ex-row"><span class="ex-row-label">💬 PBL / Small Group Sessions</span><span class="ex-row-val">12 hrs</span></div>
+                <div class="ex-row"><span class="ex-row-label">🔬 Anatomy & Histology Labs</span><span class="ex-row-val">16 hrs</span></div>
+                <div class="ex-row"><span class="ex-row-label">🏥 Clinical Skills Lab (Simulated Patients)</span><span class="ex-row-val">12 hrs</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ex-step">
+            <div class="ex-badge">STEP B</div>
+            <div class="ex-content">
+              <h5>Apply Conversion Formulas by Component</h5>
+              <div class="ex-rows">
+                <div class="ex-row">
+                  <span class="ex-row-label">📖 Theoretical (Lectures + PBL): 30 + 12 = 42 hrs ÷ 15</span>
+                  <span class="ex-row-val">2.8 cr</span>
+                </div>
+                <div class="ex-row">
+                  <span class="ex-row-label">🔬 Practical (Anatomy/Histology): 16 hrs ÷ 30</span>
+                  <span class="ex-row-val">0.53 cr</span>
+                </div>
+                <div class="ex-row">
+                  <span class="ex-row-label">🏥 Clinical (Skills Lab): 12 hrs ÷ 45</span>
+                  <span class="ex-row-val">0.26 cr</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ex-step">
+            <div class="ex-badge">STEP C</div>
+            <div class="ex-content">
+              <h5>Sum & Round per Institutional Policy</h5>
+              <div class="ex-total">
+                <span class="ex-total-label">Total = 2.8 + 0.53 + 0.26 = 3.59 credits → Round to</span>
+                <span class="ex-total-val">3.5 or 4.0 credits</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div>Rounding policy varies by institution. Some round to the nearest 0.5, others to the nearest whole number. Always consult your institution's academic regulations before finalising a module's credit designation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 6 -->
+<div class="lec-card" id="lec6">
+  <div class="lec-header" onclick="toggleLec('lec6')">
+    <div class="lec-num" style="background:#7c3aed">6</div>
+    <div class="lec-info">
+      <div class="lec-title">ECTS vs Carnegie Unit</div>
+      <div class="lec-sub">European Credit Transfer System vs US-Origin Contact Hour Model</div>
+    </div>
+    <div class="lec-right">
+      <span class="lec-tag" style="background:#f5f3ff;color:#7c3aed;">Global</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+  <div class="lec-body">
+    <div class="lec-content">
+      <p>Institutions operating in European academic frameworks — or those seeking international credit recognition — must understand the key philosophical distinction between the <span class="term" data-key="ects">ECTS</span> and Carnegie Unit systems. While the Carnegie Unit counts only structured <em>contact</em> hours with faculty, ECTS counts all student effort regardless of whether it occurs in the classroom.</p>
+
+      <div class="diff-grid">
+        <div class="diff-card blue-card">
+          <div class="diff-card-title">🇺🇸 Carnegie Unit</div>
+          <p><strong>Based on contact hours only.</strong><br>1 credit = 15 hours of lecture contact per semester. Self-study time is not formally counted in the credit formula, though it is assumed to occur.</p>
+        </div>
+        <div class="diff-card green-card">
+          <div class="diff-card-title">🇪🇺 ECTS</div>
+          <p><strong>Based on total student workload.</strong><br>1 ECTS = 25–30 hours of total effort (lectures + self-study + assessments + practicals combined). A full academic year = 60 ECTS.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dimension</th><th>Carnegie Unit</th><th>ECTS</th></tr></thead>
+          <tbody>
+            <tr><td>Basis</td><td>Contact hours with faculty</td><td>Total student workload</td></tr>
+            <tr><td>1 Unit Equivalent</td><td>15 lecture contact hrs / semester</td><td>25–30 hrs total effort</td></tr>
+            <tr><td>Self-Study Counted?</td><td>Not formally</td><td>Yes — explicitly included</td></tr>
+            <tr><td>Full Year Load</td><td>Typically 30 credits</td><td>60 ECTS</td></tr>
+            <tr><td>Primary Region</td><td>Americas, Middle East, Asia-Pacific</td><td>Europe, Bologna Process signatories</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: STEP-BY-STEP PATHWAY ──────────────── -->
+<div class="sec-head" style="margin-top:44px;">
+  <div class="sec-num">3</div>
+  <div class="sec-title">The 6-Step Curriculum Development Framework in HPE</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="pathway">
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">📖</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 1 — Establish Your Vocabulary</div>
+      <div class="step-body">
+        <p>Define and communicate the precise meanings of <span class="term" data-key="competency">competency</span>, <span class="term" data-key="learning-outcome">learning outcome</span>, and <span class="term" data-key="learning-objective">learning objective</span> across all faculty, programme directors, and accreditation committees. Without a shared language, curriculum documents will be inconsistent and alignment audits will fail.</p>
+        <div class="step-example"><em>Key Question:</em> Can every faculty member in your programme correctly distinguish a learning outcome from a learning objective in writing?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">🔗</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 2 — Cascade Intent (Constructive Alignment)</div>
+      <div class="step-body">
+        <p>Translate institutional mission into <span class="term" data-key="plo">Programme Learning Outcomes (PLOs)</span>, then into <span class="term" data-key="clo">Course Learning Outcomes (CLOs)</span>, and finally into session-level objectives. Every level must be traceable upward to the mission and downward to an assessment instrument.</p>
+        <div class="step-example"><em>Key Question:</em> Could an external auditor follow a single MCQ or OSCE station all the way back to the university's mission statement?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">⏱️</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 3 — Define Instructional Time</div>
+      <div class="step-body">
+        <p>Build the timetable before assigning credits. Record every scheduled activity by modality type: didactic, practical/laboratory, or clinical/experiential. Count all contact hours in <strong>50-minute academic hour</strong> units. Do not conflate modalities or combine hours across types before applying the correct formula.</p>
+        <div class="step-example"><em>Key Question:</em> Is your timetable categorising every session by its correct modality type so that the right conversion ratio is applied?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">🧮</div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 4 — Quantify the Curriculum (Credit Calculation)</div>
+      <div class="step-body">
+        <p>Apply the <span class="term" data-key="carnegie-unit">Carnegie Unit</span> formulas (or ECTS workload calculation) to your timetable totals. Sum the component credits, round according to institutional policy, and document the final designation. Repeat this process for every module in the programme to arrive at a total programme credit load.</p>
+        <div class="step-example"><em>Key Question:</em> Does your total programme credit load meet the minimum required by your national accreditation body for the degree being awarded?</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">📝</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 5 — Design Assessment Strategy</div>
+      <div class="step-body">
+        <p>Assessment must align directly with intended learning outcomes and competencies. Every outcome should be assessed using methods appropriate to the cognitive, psychomotor, or affective domain being targeted. Curriculum designers should blueprint assessments to ensure balanced content coverage and alignment with programme expectations.</p>
+        <div class="step-example"><em>Key Question:</em> Are your assessments truly measuring the competencies and outcomes stated in your curriculum documents?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-item">
+    <div class="pathway-left">
+      <div class="step-circle">📊</div>
+    </div>
+    <div class="pathway-right">
+      <div class="step-title">Step 6 — Program Evaluation & Continuous Improvement</div>
+      <div class="step-body">
+        <p>A curriculum is a living educational system that requires regular monitoring and refinement. Programme evaluation uses student feedback, faculty review, graduate performance, accreditation reports, and assessment data to identify strengths and areas requiring improvement. This creates a continuous quality improvement cycle within HPE programmes.</p>
+        <div class="step-example"><em>Key Question:</em> What evidence demonstrates that your curriculum is achieving its intended educational and societal outcomes?</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SECTION 4: FINAL SUMMARY ──────────────────────── -->
+<div class="sec-head" style="margin-top:44px;">
+  <div class="sec-num">4</div>
+  <div class="sec-title">Final Summary</div>
+</div>
+<div class="sec-div"></div>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="sum-icon">🗣️</div>
+    <div class="sum-title">Shared Language First</div>
+    <div class="sum-text">Always begin curriculum development by aligning vocabulary. Competency, outcome, and objective are not synonyms — each operates at a different level of specificity and breadth.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🔗</div>
+    <div class="sum-title">Alignment Is Non-Negotiable</div>
+    <div class="sum-text">Constructive alignment — from institutional mission to a single session objective — is the structural spine of any accreditable curriculum. Every element must be traceable upward and downward.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">⏱️</div>
+    <div class="sum-title">Track Time by Modality</div>
+    <div class="sum-text">Contact hours must be categorised before credits can be calculated. Didactic, practical, and clinical hours carry different credit weights: 15, 30, and 45 hours per credit respectively.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🧮</div>
+    <div class="sum-title">Apply the Right Formula</div>
+    <div class="sum-text">Use the Carnegie Unit formulas (÷15, ÷30, ÷45) or ECTS workload method (25–30 hrs per credit) based on your accreditation framework. Never mix the two systems within a single programme.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">📐</div>
+    <div class="sum-title">Round per Policy</div>
+    <div class="sum-text">Raw credit calculations rarely produce whole numbers. Final credit designations must follow institutional rounding policy — typically to the nearest 0.5 or 1.0 — and be documented transparently.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">🔄</div>
+    <div class="sum-title">Iterate and Audit</div>
+    <div class="sum-text">Curriculum development is cyclical. Regular programme evaluations, student performance data, and accreditation feedback should drive continuous improvement of all four steps.</div>
+  </div>
+
+  <div class="summary-card">
+    <div class="sum-icon">📝</div>
+    <div class="sum-title">Assessment Drives Learning</div>
+    <div class="sum-text">Assessment strategies must align with learning outcomes and competencies. Blueprinting and multimodal assessment improve validity, reliability, and educational impact.</div>
+  </div>
+  <div class="summary-card">
+    <div class="sum-icon">📊</div>
+    <div class="sum-title">Evaluation Sustains Quality</div>
+    <div class="sum-text">Continuous programme evaluation using feedback, graduate outcomes, and accreditation standards supports quality assurance and curriculum improvement over time.</div>
+  </div>
+
+</div>
+
+<div class="callout info" style="margin-top:20px;">
+  <span class="callout-icon">🎓</span>
+  <div>Remember: a well-designed HPE curriculum is not just a document — it is a living system. Its quality is ultimately measured not by its elegance on paper but by the competence and compassion of the graduates it produces.</div>
+</div>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-family:'Lora',serif; font-size:18px; font-weight:700; margin-bottom:10px;">Curriculum Development in HPE</p>
+  <p style="font-size:13px; opacity:0.75; margin-bottom:16px;">Health Professions Education · Interactive Lecture Series</p>
+  <p style="font-size:13px; opacity:0.65; border-top:1px solid rgba(255,255,255,0.2); padding-top:16px; margin-top:4px;">Designed by Dr. Salaheldin Terair.
+Based on principles of curriculum development and constructive alignment in HPE.</p>
+</footer>
+
+<!-- GLOSSARY FAB -->
+<button class="gloss-fab" onclick="openGloss()" title="Open Glossary">🔑</button>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- GLOSSARY DRAWER -->
+<div class="gloss-overlay" id="glossOverlay" onclick="closeGloss()"></div>
+<div class="gloss-drawer" id="glossDrawer">
+  <div class="drag-handle"></div>
+  <div class="gloss-head">
+    <h3>🔑 HPE Glossary</h3>
+    <div class="gloss-close" onclick="closeGloss()">✕</div>
+  </div>
+  <input class="gloss-search" id="glossSearch" type="text" placeholder="Search terms…" oninput="filterGloss(this.value)">
+  <div class="gloss-list" id="glossList"></div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip-box" id="tooltip"></div>
+
+<script>
+// ── GLOSSARY DATA ─────────────────────────────────────
+const G = {
+  "competency":           ["Competency", "An observable capability of a health professional integrating knowledge, skills, values, and attitudes. Competencies are durable, transferable, and trackable across clinical contexts and years of training."],
+  "learning-outcome":     ["Learning Outcome", "A broad statement of what a learner is expected to know, understand, and/or be able to demonstrate after completion of a program or phase. Shifts focus from the teacher to the learner."],
+  "learning-objective":   ["Learning Objective", "A highly specific, measurable statement of what the learner will do during or at the end of a single instructional unit (e.g., a lecture or lab). Includes performance conditions and success criteria."],
+  "constructive-alignment":["Constructive Alignment", "A curriculum design principle (Biggs, 1996) ensuring that all intended learning outcomes, teaching activities, and assessments are logically and explicitly connected to each other and to the institutional mission."],
+  "contact-hour":         ["Contact Hour", "The measure of time spent in direct, structured instruction between a student and a faculty member or approved educational platform. The basis for credit hour calculations."],
+  "academic-hour":        ["Academic Hour", "Formally defined as 50 minutes of net instructional time per clock hour, allowing 10 minutes for transitions. Used in timetable construction and contact hour tallying."],
+  "credit-hour":          ["Credit Hour", "An academic currency used to weigh the value of a course, determine student workload, and enable credit transfer between institutions. Based on the Carnegie Unit in most global HPE systems."],
+  "carnegie-unit":        ["Carnegie Unit", "The standard basis for credit hour calculation globally: 1 credit = 15 contact hours of lecture per 15-week semester. Different ratios apply to practical (30 hrs) and clinical (45 hrs) modalities."],
+  "ects":                 ["ECTS (European Credit Transfer System)", "A workload-based credit system used in Europe. 1 ECTS = 25–30 hours of total student workload (contact hours + self-study + assessments). A full academic year = 60 ECTS."],
+  "plo":                  ["Program Learning Outcomes (PLOs)", "Broad, program-level statements describing the graduate profile produced by an entire degree program. Directly derived from the institutional mission and used to structure all courses within the program."],
+  "clo":                  ["Course Learning Outcomes (CLOs)", "Module- or course-level outcomes that take a slice of the PLOs and make them specific and assessable within the timeframe of a single course or module."],
+  "didactic":             ["Didactic Instruction", "Structured, teacher-led large-group instruction. Includes lectures, TBL readiness assurance tests, and interactive large-group sessions. Credit ratio: 1 credit per 15 contact hours."],
+  "practical":            ["Practical / Laboratory Sessions", "Hands-on supervised activities with specimens, instruments, or simulated environments. Includes anatomy dissection, histology labs, and physiology simulations. Credit ratio: 1 credit per 30 contact hours."],
+  "clinical":             ["Clinical / Experiential Learning", "Real or simulated patient-facing activities under clinical supervision. Includes bedside teaching, ward rounds, and outpatient clinic attachments. Credit ratio: 1 credit per 45 contact hours."],
+  "bloom":                ["Bloom's Taxonomy", "A hierarchical classification of educational objectives (Bloom, 1956; revised Anderson & Krathwohl, 2001) ranging from lower-order (remember, understand, apply) to higher-order (analyse, evaluate, create) cognitive skills."],
+  "tbl":                  ["Team-Based Learning (TBL)", "An active learning strategy using pre-class preparation, individual readiness tests, team readiness tests, and application activities. Readiness assurance tests are typically classified as didactic contact hours."],
+};
+
+function buildGloss() {
+  const list = document.getElementById('glossList');
+  Object.entries(G).sort((a,b)=>a[1][0].localeCompare(b[1][0])).forEach(([k,[name,def]])=>{
+    const d = document.createElement('div');
+    d.className='gitem'; d.dataset.k=k; d.dataset.name=name.toLowerCase(); d.dataset.def=def.toLowerCase();
+    d.innerHTML=`<div class="gitem-name">${name}</div><div class="gitem-def">${def}</div>`;
+    list.appendChild(d);
+  });
+}
+
+function filterGloss(q) {
+  const lq=q.toLowerCase().trim();
+  document.querySelectorAll('.gitem').forEach(el=>{
+    el.classList.toggle('hidden', lq && !el.dataset.name.includes(lq) && !el.dataset.def.includes(lq));
+  });
+}
+
+function openGloss() {
+  document.getElementById('glossOverlay').classList.add('open');
+  document.getElementById('glossDrawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeGloss() {
+  document.getElementById('glossOverlay').classList.remove('open');
+  document.getElementById('glossDrawer').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── TOOLTIPS ──────────────────────────────────────────
+const tip = document.getElementById('tooltip');
+let tipTimer;
+
+document.querySelectorAll('.term').forEach(el=>{
+  el.addEventListener('click', e=>{
+    e.stopPropagation();
+    const k = el.dataset.key;
+    const entry = G[k];
+    if(!entry) return;
+    tip.innerHTML=`<strong>${entry[0]}</strong>${entry[1]}`;
+    const r = el.getBoundingClientRect();
+    let top = r.bottom+10, left = r.left;
+    if(left+280>window.innerWidth) left=window.innerWidth-290;
+    if(left<10) left=10;
+    if(top+140>window.innerHeight) top=r.top-150;
+    tip.style.top=top+'px'; tip.style.left=left+'px';
+    tip.classList.add('show');
+    clearTimeout(tipTimer);
+    tipTimer=setTimeout(()=>tip.classList.remove('show'),4500);
+  });
+});
+
+document.addEventListener('click',()=>tip.classList.remove('show'));
+
+// ── CARDS ─────────────────────────────────────────────
+function toggleLec(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function expandAll() {
+  document.querySelectorAll('.lec-card').forEach(c=>c.classList.add('open'));
+}
+
+function collapseAll() {
+  document.querySelectorAll('.lec-card').forEach(c=>c.classList.remove('open'));
+}
+
+// ── SCROLL TOP ────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY>350);
+});
+
+// ── INIT ──────────────────────────────────────────────
+buildGloss();
+</script>
+</body>
+</html>
