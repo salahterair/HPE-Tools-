@@ -1,4 +1,4 @@
-# MHPE HTML Tools for Health Profession Educators
+#  Tools for Health Profession Educators
 
 A collection of interactive HTML-based medical education resources developed for health profession educators and postgraduate medical education programs.
 
@@ -31,18 +31,14 @@ A practical reference and interactive guide for writing high-quality single best
 
 These are standalone HTML files — no installation or server required.
 
-1. Download or clone this repository
-2. Open any `.html` file directly in a web browser
-3. All tools are mobile-friendly and work offline
+All tools are mobile-friendly and work offline
 
 ---
 
 ## Audience
 
-- Medical educators and curriculum designers
-- Year 1 and Year 2 MBBS students
-- Postgraduate medical education coordinators
-- Exam committee members and item writers
+- Medical educators 
+- Exam committee members
 
 ---
 
